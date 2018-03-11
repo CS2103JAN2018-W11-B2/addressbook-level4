@@ -15,6 +15,9 @@ import seedu.address.model.cinema.Cinema;
 import seedu.address.model.cinema.UniqueCinemaList;
 import seedu.address.model.cinema.exceptions.CinemaNotFoundException;
 import seedu.address.model.cinema.exceptions.DuplicateCinemaException;
+import seedu.address.model.movie.Movie;
+import seedu.address.model.movie.UniqueMovieList;
+import seedu.address.model.movie.exceptions.DuplicateMovieException;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.tag.UniqueTagList;
 import seedu.address.model.tag.exceptions.TagNotFoundException;
@@ -27,6 +30,7 @@ import seedu.address.model.tag.exceptions.TagNotFoundException;
 public class AddressBook implements ReadOnlyAddressBook {
 
     private final UniqueCinemaList cinemas;
+    private final UniqueMovieList movies;
     private final UniqueTagList tags;
 
     /*
@@ -39,6 +43,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     {
         cinemas = new UniqueCinemaList();
         tags = new UniqueTagList();
+        movies = new UniqueMovieList();
     }
 
     public AddressBook() {}
@@ -200,6 +205,16 @@ public class AddressBook implements ReadOnlyAddressBook {
                                         .flatMap(cinema -> cinema.getTags().stream())
                                         .collect(Collectors.toSet());
         tags.setTags(tagsOfCinemas);
+    }
+
+    /**
+     * Adds a Movie to the address book.
+     *
+     * @throws DuplicateMovieException if an equivalent Cinema already exists.
+     */
+    public void addMovie(Movie movie) throws DuplicateMovieException {
+
+        movies.add(movie);
     }
 
     //// util methods
