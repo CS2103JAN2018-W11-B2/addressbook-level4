@@ -1,4 +1,4 @@
-= MoviePlanner Level 4 - Developer Guide
+= MoVie Planner - Developer Guide
 :toc:
 :toc-title:
 :toc-placement: preamble
@@ -14,27 +14,46 @@ endif::[]
 
 By: `Team W11-B2`      Since: `Jun 2016`      Licence: `MIT`
 
+== Introduction
+
+MoVie Planner (MVP) is a desktop application that aims to assist cinema managers in managing schedule of
+movies in different cinemas, providing features such as replicating cinemas’ schedules across periods of
+time, secure storage of cinema schedule and more.
+
+This guide provides information that will help you get started as a MVP contributor. In particular,
+the guide details the design of our backend architecture, implementation of features, and the testing
+methods used in our development.
+
+<<DeveloperGuide.adoc#, Back to top>>
+
+
 == Setting up
+
+To get you started, ensure that the following requirements are met:
 
 === Prerequisites
 
-. *JDK `1.8.0_60`* or later
-+
+Please install the following:
+
+. *Java SE Development Kit* (JDK) `1.8.0_60` or later
+
+You can download the latest JDK version http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html[here].
+
 [NOTE]
 Having any Java 8 version is not enough. +
 This app will not work with earlier versions of Java 8.
-+
 
-. *IntelliJ* IDE
-+
+. *IntelliJ IDEA* Integrated Development Environment (IDE)
+
+You can download IntelliJ IDEA https://www.jetbrains.com/idea/download/[here].
+
 [NOTE]
 IntelliJ by default has Gradle and JavaFx plugins installed. +
 Do not disable them. If you have disabled them, go to `File` > `Settings` > `Plugins` to re-enable them.
 
-
 === Setting up the project in your computer
 
-. Fork this repo, and clone the fork to your computer
+. *Fork* this repo, and *clone* the fork to your computer
 . Open IntelliJ (if you are not in the welcome screen, click `File` > `Close Project` to close the existing project dialog first)
 . Set up the correct JDK version for Gradle
 .. Click `Configure` > `Project Defaults` > `Project Structure`
@@ -43,15 +62,21 @@ Do not disable them. If you have disabled them, go to `File` > `Settings` > `Plu
 . Locate the `build.gradle` file and select it. Click `OK`
 . Click `Open as Project`
 . Click `OK` to accept the default settings
-. Open a console and run the command `gradlew processResources` (Mac/Linux: `./gradlew processResources`). It should finish with the `BUILD SUCCESSFUL` message. +
+. Open a console and run the following command:
+.. Windows: `gradlew processResources`
+.. Mac/Linux: `./gradlew processResources`
+
+[NOTE]
+It should finish with the `BUILD SUCCESSFUL` message. +
 This will generate all resources required by the application and tests.
 
 === Verifying the setup
 
-. Run the `seedu.address.MainApp` and try a few commands
+. Run the `src\main\java\seedu\address\MainApp.java` and try a few commands such as <<UserGuide#,add>>,
+<<UserGuide#,delete>>, <<UserGuide#,list>>, etc.
 . <<Testing,Run the tests>> to ensure they all pass.
 
-=== Configurations to do before writing code
+=== Configuring MVP before writing codes
 
 ==== Configuring the coding style
 
@@ -64,22 +89,18 @@ This project follows https://github.com/oss-generic/process/blob/master/docs/Cod
 * For `Class count to use import with '\*'` and `Names count to use static import with '*'`: Set to `999` to prevent IntelliJ from contracting the import statements
 * For `Import Layout`: The order is `import static all other imports`, `import java.\*`, `import javax.*`, `import org.\*`, `import com.*`, `import all other imports`. Add a `<blank line>` between each `import`
 
+[TIP]
 Optionally, you can follow the <<UsingCheckstyle#, UsingCheckstyle.adoc>> document to configure Intellij to check style-compliance as you write code.
 
 ==== Updating documentation to match your fork
 
-After forking the repo, links in the documentation will still point to the `se-edu/addressbook-level4` repo. If you plan to develop this as a separate product (i.e. instead of contributing to the `se-edu/addressbook-level4`) , you should replace the URL in the variable `repoURL` in `DeveloperGuide.adoc` and `UserGuide.adoc` with the URL of your fork.
+After forking the repo, links in the documentation will still point to the `CS2103JAN2018-W11-B2/main/` repo. If you plan to develop this as a separate product (i.e. instead of contributing to the `CS2103JAN2018-W11-B2/main/`) , you should replace the URL in the variable `repoURL` in `DeveloperGuide.adoc` and `UserGuide.adoc` with the URL of your fork.
 
-==== Setting up CI
+==== Setting up Continuous Integration (CI)
 
-Set up Travis to perform Continuous Integration (CI) for your fork. See <<UsingTravis#, UsingTravis.adoc>> to learn how to set it up.
+You should set up Travis and AppVeyor to perform Continuous Integration (CI) for your fork.
 
-After setting up Travis, you can optionally set up coverage reporting for your team fork (see <<UsingCoveralls#, UsingCoveralls.adoc>>).
-
-[NOTE]
-Coverage reporting could be useful for a team repository that hosts the final version but it is not that useful for your personal fork.
-
-Optionally, you can set up AppVeyor as a second CI (see <<UsingAppVeyor#, UsingAppVeyor.adoc>>).
+See <<UsingTravis#, UsingTravis.adoc>> and <<UsingAppVeyor#, UsingAppVeyor.adoc>> to learn how to set it up.
 
 [NOTE]
 Having both Travis and AppVeyor ensures your App works on both Unix-based platforms and Windows-based platforms (Travis is Unix-based and AppVeyor is Windows-based)
@@ -91,6 +112,8 @@ When you are ready to start coding,
 1. Get some sense of the overall design by reading <<Design-Architecture>>.
 2. Take a look at <<GetStartedProgramming>>.
 
+<<DeveloperGuide.adoc#, Back to top>>
+
 == Design
 
 [[Design-Architecture]]
@@ -99,12 +122,12 @@ When you are ready to start coding,
 .Architecture Diagram
 image::Architecture.png[width="600"]
 
-The *_Architecture Diagram_* given above explains the high-level design of the App. Given below is a quick overview of each component.
+The *_Architecture Diagram_* given above explains the high-level design of MVP. Given below is a quick overview of each component.
 
 [TIP]
 The `.pptx` files used to create diagrams in this document can be found in the link:{repoURL}/docs/diagrams/[diagrams] folder. To update a diagram, modify the diagram in the pptx file, select the objects of the diagram, and choose `Save as picture`.
 
-`Main` has only one class called link:{repoURL}/src/main/java/seedu/address/MainApp.java[`MainApp`]. It is responsible for,
+`Main` has only one class called link:{repoURL}/src/main/java/seedu/address/MainApp.java[`MainApp`]. It is responsible for the following:
 
 * At app launch: Initializes the components in the correct sequence, and connects them up with each other.
 * At shut down: Shuts down the components and invokes cleanup method where necessary.
@@ -112,13 +135,13 @@ The `.pptx` files used to create diagrams in this document can be found in the l
 <<Design-Commons,*`Commons`*>> represents a collection of classes used by multiple other components. Two of those classes play important roles at the architecture level.
 
 * `EventsCenter` : This class (written using https://github.com/google/guava/wiki/EventBusExplained[Google's Event Bus library]) is used by components to communicate with other components using events (i.e. a form of _Event Driven_ design)
-* `LogsCenter` : Used by many classes to write log messages to the App's log file.
+* `LogsCenter` : Used by many classes to write log messages to MVP's log file.
 
-The rest of the App consists of four components.
+The rest of MVP consists of four components.
 
-* <<Design-Ui,*`UI`*>>: The UI of the App.
+* <<Design-Ui,*`UI`*>>: The UI of MVP.
 * <<Design-Logic,*`Logic`*>>: The command executor.
-* <<Design-Model,*`Model`*>>: Holds the data of the App in-memory.
+* <<Design-Model,*`Model`*>>: Holds the data of MVP in-memory.
 * <<Design-Storage,*`Storage`*>>: Reads data from, and writes data to, the hard disk.
 
 Each of the four components
@@ -142,7 +165,7 @@ image::SDforDeleteCinema.png[width="800"]
 [NOTE]
 Note how the `Model` simply raises a `MoviePlannerChangedEvent` when the Movie Planner data are changed, instead of asking the `Storage` to save the updates to the hard disk.
 
-The diagram below shows how the `EventsCenter` reacts to that event, which eventually results in the updates being saved to the hard disk and the status bar of the UI being updated to reflect the 'Last Updated' time.
+Figure 4 shows how the `EventsCenter` reacts to that event, which eventually results in the updates being saved to the hard disk and the status bar of the UI being updated to reflect the 'Last Updated' time.
 
 .Component interactions for `delete 1` command (part 2)
 image::SDforDeleteCinemaEventHandling.png[width="800"]
@@ -155,6 +178,9 @@ The sections below give more details of each component.
 [[Design-Ui]]
 === UI component
 
+The `Ui` component provides the API of <<graphical-user-interface, Graphical User Interface>>. Figure 5 shows
+the structure of the `Ui` component.
+
 .Structure of the UI Component
 image::UiClassDiagram.png[width="800"]
 
@@ -162,16 +188,19 @@ image::UiClassDiagram.png[width="800"]
 
 The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `CinemaListPanel`, `StatusBarFooter`, `BrowserPanel` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class.
 
-The `UI` component uses JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the link:{repoURL}/src/main/java/seedu/address/ui/MainWindow.java[`MainWindow`] is specified in link:{repoURL}/src/main/resources/view/MainWindow.fxml[`MainWindow.fxml`]
+The `Ui` component uses JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the link:{repoURL}/src/main/java/seedu/address/ui/MainWindow.java[`MainWindow`] is specified in link:{repoURL}/src/main/resources/view/MainWindow.fxml[`MainWindow.fxml`]
 
-The `UI` component,
+The `Ui` component is responsible for the following:
 
-* Executes user commands using the `Logic` component.
-* Binds itself to some data in the `Model` so that the UI can auto-update when data in the `Model` change.
-* Responds to events raised from various parts of the App and updates the UI accordingly.
+* Executing user commands using the `Logic` component.
+* Binding itself to some data in the `Model` so that the UI can auto-update when data in the `Model` change.
+* Responding to events raised from various parts of the App and updates the UI accordingly.
 
 [[Design-Logic]]
 === Logic component
+
+The `Logic` component deals with how each command and respective parser are executed in an event-driven design.
+Figures 6 and 7 shows the structure of the `Logic` component.
 
 [[fig-LogicClassDiagram]]
 .Structure of the Logic Component
@@ -188,7 +217,7 @@ link:{repoURL}/src/main/java/seedu/address/logic/Logic.java[`Logic.java`]
 .  The command execution can affect the `Model` (e.g. adding a cinema) and/or raise events.
 .  The result of the command execution is encapsulated as a `CommandResult` object which is passed back to the `Ui`.
 
-Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("delete 1")` API call.
+Figure 8 shows the Sequence Diagram for interactions within the `Logic` component for the `execute("delete 1")` API call.
 
 .Interactions Inside the Logic Component for the `delete 1` Command
 image::DeleteCinemaSdForLogic.png[width="800"]
@@ -196,35 +225,43 @@ image::DeleteCinemaSdForLogic.png[width="800"]
 [[Design-Model]]
 === Model component
 
+The `Model` component manages cinemas and movies in MVP, providing _APIs_ to create, read, update and delete.
+Figure 9 shows the structure of the `Model` component.
+
 .Structure of the Model Component
 image::ModelClassDiagram.png[width="800"]
 
 *API* : link:{repoURL}/src/main/java/seedu/address/model/Model.java[`Model.java`]
 
-The `Model`,
+The `Model` component is responsible for the following:
 
-* stores a `UserPref` object that represents the user's preferences.
-* stores the Movie Planner data.
-* exposes an unmodifiable `ObservableList<Cinema>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
-* does not depend on any of the other three components.
+* storing a `UserPref` object that represents the user's preferences.
+* storing the Movie Planner data.
+* exposing an unmodifiable `ObservableList<Cinema>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
+* not dependent on any of the other three components.
 
 [[Design-Storage]]
 === Storage component
+
+The `Storage` component handles the storage of all data of MVP in the local device. Figure 10 shows the
+structure of the `Storage` component.
 
 .Structure of the Storage Component
 image::StorageClassDiagram.png[width="800"]
 
 *API* : link:{repoURL}/src/main/java/seedu/address/storage/Storage.java[`Storage.java`]
 
-The `Storage` component,
+The `Storage` component is responsible for the following:
 
-* can save `UserPref` objects in json format and read it back.
-* can save the Movie Planner data in xml format and read it back.
+* saving `UserPref` objects in json format and read it back.
+* saving the Movie Planner data in xml format and read it back.
 
 [[Design-Commons]]
 === Common classes
 
-Classes used by multiple components are in the `seedu.addressbook.commons` package.
+Classes used by multiple components are in the `seedu\address\commons` package.
+
+<<DeveloperGuide.adoc#, Back to top>>
 
 == Implementation
 
@@ -232,15 +269,25 @@ This section describes some noteworthy details on how certain features are imple
 
 // tag::undoredo[]
 === Undo/Redo feature
-==== Current Implementation
 
 The undo/redo mechanism is facilitated by an `UndoRedoStack`, which resides inside `LogicManager`. It supports undoing and redoing of commands that modifies the state of the movie planner (e.g. `add`, `edit`). Such commands will inherit from `UndoableCommand`.
 
-`UndoRedoStack` only deals with `UndoableCommands`. Commands that cannot be undone will inherit from `Command` instead. The following diagram shows the inheritance diagram for commands:
+*Current Implementation*
 
+`UndoRedoStack` only deals with `UndoableCommands`. Commands that cannot be undone will inherit from `Command` instead. Figure 11 shows the inheritance diagram for commands:
+
+*Undoable Commands*
+
+.Inheritance diagram for commands
 image::LogicCommandClassDiagram.png[width="800"]
 
-As you can see from the diagram, `UndoableCommand` adds an extra layer between the abstract `Command` class and concrete commands that can be undone, such as the `DeleteCommand`. Note that extra tasks need to be done when executing a command in an _undoable_ way, such as saving the state of the movie planner before execution. `UndoableCommand` contains the high-level algorithm for those extra tasks while the child classes implements the details of how to execute the specific command. Note that this technique of putting the high-level algorithm in the parent class and lower-level steps of the algorithm in child classes is also known as the https://www.tutorialspoint.com/design_pattern/template_pattern.htm[template pattern].
+As you can see from the diagram, `UndoableCommand` adds an extra layer between the abstract `Command` class and concrete commands that can be undone, such as the `DeleteCommand`.
+
+[NOTE]
+====
+* Note that extra tasks need to be done when executing a command in an _undoable_ way, such as saving the state of the movie planner before execution. `UndoableCommand` contains the high-level algorithm for those extra tasks while the child classes implements the details of how to execute the specific command.
+* Note that this technique of putting the high-level algorithm in the parent class and lower-level steps of the algorithm in child classes is also known as the https://www.tutorialspoint.com/design_pattern/template_pattern.htm[template pattern].
+====
 
 Commands that are not undoable are implemented this way:
 [source,java]
@@ -275,12 +322,15 @@ public class DeleteCommand extends UndoableCommand {
 
 Suppose that the user has just launched the application. The `UndoRedoStack` will be empty at the beginning.
 
-The user executes a new `UndoableCommand`, `delete 5`, to delete the 5th cinema in the movie planner. The current state of the movie planner is saved before the `delete 5` command executes. The `delete 5` command will then be pushed onto the `undoStack` (the current state is saved together with the command).
+The user executes a new `UndoableCommand`, `delete 5`, to delete the 5th cinema in MVP. The current state of the MVP is saved before the `delete 5` command executes. The `delete 5` command will then be pushed onto the `undoStack` (the current state is saved together with the command).
+Figure 12 illustrates the procedure.
 
+.Diagram of UndoRedoStack before and after delete command
 image::UndoRedoStartingStackDiagram.png[width="800"]
 
-As the user continues to use the program, more commands are added into the `undoStack`. For example, the user may execute `add n/David ...` to add a new cinema.
+As the user continues to use the program, more commands are added into the `undoStack`. For example, the user may execute `add n/Cathay ...` to add a new cinema as shown in Figure 13.
 
+.Diagram of UndoRedoStack before and after add command
 image::UndoRedoNewCommand1StackDiagram.png[width="800"]
 
 [NOTE]
@@ -288,8 +338,9 @@ If a command fails its execution, it will not be pushed to the `UndoRedoStack` a
 
 The user now decides that adding the cinema was a mistake, and decides to undo that action using `undo`.
 
-We will pop the most recent command out of the `undoStack` and push it back to the `redoStack`. We will restore the movie planner to the state before the `add` command executed.
+We will pop the most recent command out of the `undoStack` and push it back to the `redoStack`. We will restore MVP to its previous state before the `add` command was executed, as shown in Figure 14.
 
+.Diagram of UndoRedoStack before and after undo command
 image::UndoRedoExecuteUndoStackDiagram.png[width="800"]
 
 [NOTE]
@@ -297,23 +348,27 @@ If the `undoStack` is empty, then there are no other commands left to be undone,
 
 The following sequence diagram shows how the undo operation works:
 
+.Sequence Diagram of Undo Command
 image::UndoRedoSequenceDiagram.png[width="800"]
 
-The redo does the exact opposite (pops from `redoStack`, push to `undoStack`, and restores the movie planner to the state after the command is executed).
+The redo does the exact opposite (pops from `redoStack`, push to `undoStack`, and restores MVP to the state after the command is executed).
 
 [NOTE]
 If the `redoStack` is empty, then there are no other commands left to be redone, and an `Exception` will be thrown when popping the `redoStack`.
 
-The user now decides to execute a new command, `clear`. As before, `clear` will be pushed into the `undoStack`. This time the `redoStack` is no longer empty. It will be purged as it no longer make sense to redo the `add n/David` command (this is the behavior that most modern desktop applications follow).
+The user now decides to execute a new command, `clear`. As before, `clear` will be pushed into the `undoStack`. This time the `redoStack` is no longer empty. It will be purged as it no longer make sense to redo the `add n/Cathay` command (this is the behavior that most modern desktop applications follow).
 
+.Diagram of UndoRedoStack before and after clear command
 image::UndoRedoNewCommand2StackDiagram.png[width="800"]
 
 Commands that are not undoable are not added into the `undoStack`. For example, `list`, which inherits from `Command` rather than `UndoableCommand`, will not be added after execution:
 
+.Diagram of UndoRedoStack before and after list command
 image::UndoRedoNewCommand3StackDiagram.png[width="800"]
 
-The following activity diagram summarize what happens inside the `UndoRedoStack` when a user executes a new command:
+Figure 18 summarize what happens inside the `UndoRedoStack` when a user executes a new command:
 
+.Activity Diagram of UndoRedoStack
 image::UndoRedoActivityDiagram.png[width="650"]
 
 ==== Design Considerations
@@ -322,9 +377,9 @@ image::UndoRedoActivityDiagram.png[width="650"]
 
 * **Alternative 1 (current choice):** Add a new abstract method `executeUndoableCommand()`
 ** Pros: We will not lose any undone/redone functionality as it is now part of the default behaviour. Classes that deal with `Command` do not have to know that `executeUndoableCommand()` exist.
-** Cons: Hard for new developers to understand the template pattern.
+** Cons: It will be hard for new developers to understand the template pattern.
 * **Alternative 2:** Just override `execute()`
-** Pros: Does not involve the template pattern, easier for new developers to understand.
+** Pros: It does not involve the template pattern, easier for new developers to understand.
 ** Cons: Classes that inherit from `UndoableCommand` must remember to call `super.execute()`, or lose the ability to undo/redo.
 
 ===== Aspect: How undo & redo executes
@@ -375,19 +430,21 @@ We are using `java.util.logging` package for logging. The `LogsCenter` class is 
 
 *Logging Levels*
 
-* `SEVERE` : Critical problem detected which may possibly cause the termination of the application
-* `WARNING` : Can continue, but with caution
-* `INFO` : Information showing the noteworthy actions by the App
-* `FINE` : Details that is not usually noteworthy but may be useful in debugging e.g. print the actual list instead of just its size
+* `SEVERE` : Critical problem detected which may possibly cause the termination of MVP.
+* `WARNING` : Can continue, but with caution.
+* `INFO` : Information showing the noteworthy actions by the MVP.
+* `FINE` : Details that is not usually noteworthy but may be useful in debugging e.g. print the actual list instead of just its size.
 
 [[Implementation-Configuration]]
 === Configuration
 
 Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: `config.json`).
 
+<<DeveloperGuide.adoc#, Back to top>>
+
 == Documentation
 
-We use asciidoc for writing documentation.
+Documentation for MVP are done in acsiidoc.
 
 [NOTE]
 We chose asciidoc over Markdown because asciidoc, although a bit more complex than Markdown, provides more flexibility in formatting.
@@ -415,8 +472,13 @@ Here are the steps to convert the project documentation files to PDF format.
 .Saving documentation as PDF files in Chrome
 image::chrome_save_as_pdf.png[width="300"]
 
+<<DeveloperGuide.adoc#, Back to top>>
+
 [[Testing]]
 == Testing
+
+Tests play a vital role in the development of MVP as they guarantee that features are working as
+intended. They also ensure that the newly added features do not conflict with existing ones.
 
 === Running Tests
 
@@ -432,7 +494,10 @@ The most reliable way to run tests is the 3rd one. The first two methods might f
 
 *Method 2: Using Gradle*
 
-* Open a console and run the command `gradlew clean allTests` (Mac/Linux: `./gradlew clean allTests`)
+Open a console and run the command:
+
+* Windows: `gradlew clean allTests`
+* Mac/Linux: `./gradlew clean allTests`
 
 [NOTE]
 See <<UsingGradle#, UsingGradle.adoc>> for more info on how to run tests using Gradle.
@@ -441,22 +506,25 @@ See <<UsingGradle#, UsingGradle.adoc>> for more info on how to run tests using G
 
 Thanks to the https://github.com/TestFX/TestFX[TestFX] library we use, our GUI tests can be run in the _headless_ mode. In the headless mode, GUI tests do not show up on the screen. That means the developer can do other things on the Computer while the tests are running.
 
-To run tests in headless mode, open a console and run the command `gradlew clean headless allTests` (Mac/Linux: `./gradlew clean headless allTests`)
+To run tests in headless mode, open a console and run the command:
+
+* Windows: `gradlew clean headless allTests`
+* Mac/Linux: `./gradlew clean headless allTests`
 
 === Types of tests
 
 We have two types of tests:
 
 .  *GUI Tests* - These are tests involving the GUI. They include,
-.. _System Tests_ that test the entire App by simulating user actions on the GUI. These are in the `systemtests` package.
-.. _Unit tests_ that test the individual components. These are in `seedu.address.ui` package.
+.. _System Tests_ that test MVP by simulating user actions on the GUI. These are in the `systemtests` package.
+.. _Unit tests_ that test the individual components. These are in `seedu\address\ui` package.
 .  *Non-GUI Tests* - These are tests not involving the GUI. They include,
 ..  _Unit tests_ targeting the lowest level methods/classes. +
-e.g. `seedu.address.commons.StringUtilTest`
+e.g. `seedu\address\commons\StringUtilTest`
 ..  _Integration tests_ that are checking the integration of multiple code units (those code units are assumed to be working). +
-e.g. `seedu.address.storage.StorageManagerTest`
+e.g. `seedu\address\storage\StorageManagerTest`
 ..  Hybrids of unit and integration tests. These test are checking multiple code units as well as how the are connected together. +
-e.g. `seedu.address.logic.LogicManagerTest`
+e.g. `seedu\address\logic\LogicManagerTest`
 
 
 === Troubleshooting Testing
@@ -465,7 +533,13 @@ e.g. `seedu.address.logic.LogicManagerTest`
 * Reason: One of its dependencies, `UserGuide.html` in `src/main/resources/docs` is missing.
 * Solution: Execute Gradle task `processResources`.
 
-== Dev Ops
+<<DeveloperGuide.adoc#, Back to top>>
+
+== Development Operations
+
+Automation and CI tools play a vital role in MVP's development process. They help to run tests automatically
+to identify integration problems in MVP's development by ensuring that MVP is not undermined as new
+features are added.
 
 === Build Automation
 
@@ -493,9 +567,12 @@ Here are the steps to create a new release.
 
 === Managing Dependencies
 
-A project often depends on third-party libraries. For example, Movie Planner depends on the http://wiki.fasterxml.com/JacksonHome[Jackson library] for XML parsing. Managing these _dependencies_ can be automated using Gradle. For example, Gradle can download the dependencies automatically, which is better than these alternatives. +
-a. Include those libraries in the repo (this bloats the repo size) +
-b. Require developers to download those libraries manually (this creates extra work for developers)
+MVP depends on the http://wiki.fasterxml.com/JacksonHome[Jackson library] for XML parsing. Managing these _dependencies_ can be automated using Gradle. For example, Gradle can download the dependencies automatically, which is better than the following alternatives:
+
+. Including those libraries in the repo (this bloats the repo size) +
+. Requiring developers to download those libraries manually (this creates extra work for developers)
+
+<<DeveloperGuide.adoc#, Back to top>>
 
 [[GetStartedProgramming]]
 [appendix]
@@ -777,6 +854,8 @@ We now have everything set up... but we still can't modify the remarks. Let's fi
 
 See this https://github.com/se-edu/addressbook-level4/pull/599[PR] for the step-by-step solution.
 
+<<DeveloperGuide.adoc#, Back to top>>
+
 [appendix]
 == Product Scope
 
@@ -790,6 +869,8 @@ See this https://github.com/se-edu/addressbook-level4/pull/599[PR] for the step-
 * is reasonably comfortable using CLI apps
 
 *Value proposition*: manage schedule faster than a typical mouse/GUI scheduling app
+
+<<DeveloperGuide.adoc#, Back to top>>
 
 [appendix]
 == User Stories
@@ -832,6 +913,8 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 |=======================================================================
 
 _{More to be added}_
+
+<<DeveloperGuide.adoc#, Back to top>>
 
 [appendix]
 == Use Cases
@@ -889,6 +972,8 @@ Use case ends.
 
 _{More to be added}_
 
+<<DeveloperGuide.adoc#, Back to top>>
+
 [appendix]
 == Non Functional Requirements
 
@@ -903,6 +988,9 @@ _{More to be added}_
 
 _{More to be added}_
 
+<<DeveloperGuide.adoc#, Back to top>>
+
+[[Glossary]]
 [appendix]
 == Glossary
 
@@ -911,6 +999,12 @@ Windows, Linux, Unix, OS-X
 
 [[private-contact-detail]] Private contact detail::
 A contact detail that is not meant to be shared with others
+
+[[graphical-user-interface]] Graphical User Interface::
+A type of user interface that allows users to interact with electronic devices through graphical icons and
+visual indicators.
+
+<<DeveloperGuide.adoc#, Back to top>>
 
 [appendix]
 == Product Survey
@@ -928,6 +1022,8 @@ Cons:
 
 * ...
 * ...
+
+<<DeveloperGuide.adoc#, Back to top>>
 
 [appendix]
 == Instructions for Manual Testing
@@ -974,3 +1070,5 @@ _{ more test cases ... }_
 .. _{explain how to simulate a missing/corrupted file and the expected behavior}_
 
 _{ more test cases ... }_
+
+<<DeveloperGuide.adoc#, Back to top>>
