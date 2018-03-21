@@ -3,10 +3,10 @@ package seedu.address.logic.commands;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
-import static seedu.address.logic.commands.CommandTestUtil.DESC_AMY;
-import static seedu.address.logic.commands.CommandTestUtil.DESC_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.DESC_GV;
+import static seedu.address.logic.commands.CommandTestUtil.DESC_SHAW;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_SHAW;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_SHAW;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.prepareRedoCommand;
@@ -58,11 +58,11 @@ public class EditCommandTest {
         Cinema lastCinema = model.getFilteredCinemaList().get(indexLastCinema.getZeroBased());
 
         CinemaBuilder cinemaInList = new CinemaBuilder(lastCinema);
-        Cinema editedCinema = cinemaInList.withName(VALID_NAME_BOB).withPhone(VALID_PHONE_BOB)
+        Cinema editedCinema = cinemaInList.withName(VALID_NAME_SHAW).withPhone(VALID_PHONE_SHAW)
                 .build();
 
-        EditCinemaDescriptor descriptor = new EditCinemaDescriptorBuilder().withName(VALID_NAME_BOB)
-                .withPhone(VALID_PHONE_BOB).build();
+        EditCinemaDescriptor descriptor = new EditCinemaDescriptorBuilder().withName(VALID_NAME_SHAW)
+                .withPhone(VALID_PHONE_SHAW).build();
         EditCommand editCommand = prepareCommand(indexLastCinema, descriptor);
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_CINEMA_SUCCESS, editedCinema);
@@ -90,9 +90,9 @@ public class EditCommandTest {
         showCinemaAtIndex(model, INDEX_FIRST_CINEMA);
 
         Cinema cinemaInFilteredList = model.getFilteredCinemaList().get(INDEX_FIRST_CINEMA.getZeroBased());
-        Cinema editedCinema = new CinemaBuilder(cinemaInFilteredList).withName(VALID_NAME_BOB).build();
+        Cinema editedCinema = new CinemaBuilder(cinemaInFilteredList).withName(VALID_NAME_SHAW).build();
         EditCommand editCommand = prepareCommand(INDEX_FIRST_CINEMA,
-                new EditCinemaDescriptorBuilder().withName(VALID_NAME_BOB).build());
+                new EditCinemaDescriptorBuilder().withName(VALID_NAME_SHAW).build());
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_CINEMA_SUCCESS, editedCinema);
 
@@ -126,7 +126,7 @@ public class EditCommandTest {
     @Test
     public void execute_invalidCinemaIndexUnfilteredList_failure() {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredCinemaList().size() + 1);
-        EditCinemaDescriptor descriptor = new EditCinemaDescriptorBuilder().withName(VALID_NAME_BOB).build();
+        EditCinemaDescriptor descriptor = new EditCinemaDescriptorBuilder().withName(VALID_NAME_SHAW).build();
         EditCommand editCommand = prepareCommand(outOfBoundIndex, descriptor);
 
         assertCommandFailure(editCommand, model, Messages.MESSAGE_INVALID_CINEMA_DISPLAYED_INDEX);
@@ -144,7 +144,7 @@ public class EditCommandTest {
         assertTrue(outOfBoundIndex.getZeroBased() < model.getMoviePlanner().getCinemaList().size());
 
         EditCommand editCommand = prepareCommand(outOfBoundIndex,
-                new EditCinemaDescriptorBuilder().withName(VALID_NAME_BOB).build());
+                new EditCinemaDescriptorBuilder().withName(VALID_NAME_SHAW).build());
 
         assertCommandFailure(editCommand, model, Messages.MESSAGE_INVALID_CINEMA_DISPLAYED_INDEX);
     }
@@ -178,7 +178,7 @@ public class EditCommandTest {
         UndoCommand undoCommand = prepareUndoCommand(model, undoRedoStack);
         RedoCommand redoCommand = prepareRedoCommand(model, undoRedoStack);
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredCinemaList().size() + 1);
-        EditCinemaDescriptor descriptor = new EditCinemaDescriptorBuilder().withName(VALID_NAME_BOB).build();
+        EditCinemaDescriptor descriptor = new EditCinemaDescriptorBuilder().withName(VALID_NAME_SHAW).build();
         EditCommand editCommand = prepareCommand(outOfBoundIndex, descriptor);
 
         // execution failed -> editCommand not pushed into undoRedoStack
@@ -223,10 +223,10 @@ public class EditCommandTest {
 
     @Test
     public void equals() throws Exception {
-        final EditCommand standardCommand = prepareCommand(INDEX_FIRST_CINEMA, DESC_AMY);
+        final EditCommand standardCommand = prepareCommand(INDEX_FIRST_CINEMA, DESC_GV);
 
         // same values -> returns true
-        EditCinemaDescriptor copyDescriptor = new EditCinemaDescriptor(DESC_AMY);
+        EditCinemaDescriptor copyDescriptor = new EditCinemaDescriptor(DESC_GV);
         EditCommand commandWithSameValues = prepareCommand(INDEX_FIRST_CINEMA, copyDescriptor);
         assertTrue(standardCommand.equals(commandWithSameValues));
 
@@ -244,10 +244,10 @@ public class EditCommandTest {
         assertFalse(standardCommand.equals(new ClearCommand()));
 
         // different index -> returns false
-        assertFalse(standardCommand.equals(new EditCommand(INDEX_SECOND_CINEMA, DESC_AMY)));
+        assertFalse(standardCommand.equals(new EditCommand(INDEX_SECOND_CINEMA, DESC_GV)));
 
         // different descriptor -> returns false
-        assertFalse(standardCommand.equals(new EditCommand(INDEX_FIRST_CINEMA, DESC_BOB)));
+        assertFalse(standardCommand.equals(new EditCommand(INDEX_FIRST_CINEMA, DESC_SHAW)));
     }
 
     /**

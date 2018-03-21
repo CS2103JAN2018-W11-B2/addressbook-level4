@@ -3,9 +3,9 @@ package systemtests;
 import static org.junit.Assert.assertFalse;
 import static seedu.address.commons.core.Messages.MESSAGE_CINEMAS_LISTED_OVERVIEW;
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
-import static seedu.address.testutil.TypicalCinemas.BENSON;
-import static seedu.address.testutil.TypicalCinemas.CARL;
-import static seedu.address.testutil.TypicalCinemas.DANIEL;
+import static seedu.address.testutil.TypicalCinemas.CATHAY_AMK_HUB;
+import static seedu.address.testutil.TypicalCinemas.CATHAY_CAUSEWAY_POINT;
+import static seedu.address.testutil.TypicalCinemas.GV_TIONG_BAHRU;
 import static seedu.address.testutil.TypicalCinemas.KEYWORD_MATCHING_MEIER;
 
 import org.junit.Test;
@@ -26,7 +26,7 @@ public class FindCommandSystemTest extends MoviePlannerSystemTest {
          */
         String command = "   " + FindCommand.COMMAND_WORD + " " + KEYWORD_MATCHING_MEIER + "   ";
         Model expectedModel = getModel();
-        ModelHelper.setFilteredList(expectedModel, BENSON, DANIEL); // first names of Benson and Daniel are "Meier"
+        ModelHelper.setFilteredList(expectedModel, GV_TIONG_BAHRU, CATHAY_CAUSEWAY_POINT);
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
 
@@ -38,14 +38,14 @@ public class FindCommandSystemTest extends MoviePlannerSystemTest {
         assertSelectedCardUnchanged();
 
         /* Case: find cinema where cinema list is not displaying the cinema we are finding -> 1 cinema found */
-        command = FindCommand.COMMAND_WORD + " Carl";
-        ModelHelper.setFilteredList(expectedModel, CARL);
+        command = FindCommand.COMMAND_WORD + " CATHAY_AMK_HUB";
+        ModelHelper.setFilteredList(expectedModel, CATHAY_AMK_HUB);
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
 
         /* Case: find multiple cinemas in movie planner, 2 keywords -> 2 cinemas found */
         command = FindCommand.COMMAND_WORD + " Benson Daniel";
-        ModelHelper.setFilteredList(expectedModel, BENSON, DANIEL);
+        ModelHelper.setFilteredList(expectedModel, GV_TIONG_BAHRU, CATHAY_CAUSEWAY_POINT);
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
 
@@ -78,10 +78,10 @@ public class FindCommandSystemTest extends MoviePlannerSystemTest {
 
         /* Case: find same cinemas in movie planner after deleting 1 of them -> 1 cinema found */
         executeCommand(DeleteCommand.COMMAND_WORD + " 1");
-        assertFalse(getModel().getMoviePlanner().getCinemaList().contains(BENSON));
+        assertFalse(getModel().getMoviePlanner().getCinemaList().contains(GV_TIONG_BAHRU));
         command = FindCommand.COMMAND_WORD + " " + KEYWORD_MATCHING_MEIER;
         expectedModel = getModel();
-        ModelHelper.setFilteredList(expectedModel, DANIEL);
+        ModelHelper.setFilteredList(expectedModel, CATHAY_CAUSEWAY_POINT);
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
 
@@ -108,26 +108,27 @@ public class FindCommandSystemTest extends MoviePlannerSystemTest {
         assertSelectedCardUnchanged();
 
         /* Case: find phone number of cinema in movie planner -> 0 cinemas found */
-        command = FindCommand.COMMAND_WORD + " " + DANIEL.getPhone().value;
+        command = FindCommand.COMMAND_WORD + " " + CATHAY_CAUSEWAY_POINT.getPhone().value;
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
 
         /* Case: find address of cinema in movie planner -> 0 cinemas found */
-        command = FindCommand.COMMAND_WORD + " " + DANIEL.getAddress().value;
+        command = FindCommand.COMMAND_WORD + " " + CATHAY_CAUSEWAY_POINT.getAddress().value;
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
 
         /* Case: find email of cinema in movie planner -> 0 cinemas found */
-        command = FindCommand.COMMAND_WORD + " " + DANIEL.getEmail().value;
+        command = FindCommand.COMMAND_WORD + " " + CATHAY_CAUSEWAY_POINT.getEmail().value;
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
 
         /* Case: find while a cinema is selected -> selected card deselected */
         showAllCinemas();
         selectCinema(Index.fromOneBased(1));
-        assertFalse(getCinemaListPanel().getHandleToSelectedCard().getName().equals(DANIEL.getName().fullName));
+        assertFalse(getCinemaListPanel().getHandleToSelectedCard().getName()
+                .equals(CATHAY_CAUSEWAY_POINT.getName().fullName));
         command = FindCommand.COMMAND_WORD + " Daniel";
-        ModelHelper.setFilteredList(expectedModel, DANIEL);
+        ModelHelper.setFilteredList(expectedModel, CATHAY_CAUSEWAY_POINT);
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardDeselected();
 
@@ -135,7 +136,7 @@ public class FindCommandSystemTest extends MoviePlannerSystemTest {
         deleteAllCinemas();
         command = FindCommand.COMMAND_WORD + " " + KEYWORD_MATCHING_MEIER;
         expectedModel = getModel();
-        ModelHelper.setFilteredList(expectedModel, DANIEL);
+        ModelHelper.setFilteredList(expectedModel, CATHAY_CAUSEWAY_POINT);
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
 

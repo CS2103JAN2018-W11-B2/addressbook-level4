@@ -4,9 +4,9 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static seedu.address.commons.core.Messages.MESSAGE_CINEMAS_LISTED_OVERVIEW;
-import static seedu.address.testutil.TypicalCinemas.CARL;
-import static seedu.address.testutil.TypicalCinemas.ELLE;
-import static seedu.address.testutil.TypicalCinemas.FIONA;
+import static seedu.address.testutil.TypicalCinemas.CATHAY_AMK_HUB;
+import static seedu.address.testutil.TypicalCinemas.CATHAY_CINELEISURE_ORCHARD;
+import static seedu.address.testutil.TypicalCinemas.SHAW_LIDO;
 import static seedu.address.testutil.TypicalCinemas.getTypicalMoviePlanner;
 
 import java.util.Arrays;
@@ -68,7 +68,8 @@ public class FindCommandTest {
     public void execute_multipleKeywords_multipleCinemasFound() {
         String expectedMessage = String.format(MESSAGE_CINEMAS_LISTED_OVERVIEW, 3);
         FindCommand command = prepareCommand("Kurz Elle Kunz");
-        assertCommandSuccess(command, expectedMessage, Arrays.asList(CARL, ELLE, FIONA));
+        assertCommandSuccess(command, expectedMessage,
+                Arrays.asList(CATHAY_AMK_HUB, CATHAY_CINELEISURE_ORCHARD, SHAW_LIDO));
     }
 
     /**

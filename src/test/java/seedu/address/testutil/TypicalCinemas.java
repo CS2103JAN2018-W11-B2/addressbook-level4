@@ -1,14 +1,14 @@
 package seedu.address.testutil;
 
-import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_AMY;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_AMY;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_AMY;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_GV;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_SHAW;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_GV;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_SHAW;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_GV;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_SHAW;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NUMOFTHEATERS;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_AMY;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_GV;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_SHAW;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -23,35 +23,43 @@ import seedu.address.model.cinema.exceptions.DuplicateCinemaException;
  */
 public class TypicalCinemas {
 
-    public static final Cinema ALICE = new CinemaBuilder().withName("Alice Pauline")
-            .withAddress("123, Jurong West Ave 6, #08-111").withEmail("alice@example.com")
-            .withPhone("85355255").withTheater(3).build();
-    public static final Cinema BENSON = new CinemaBuilder().withName("Benson Meier")
-            .withAddress("311, Clementi Ave 2, #02-25")
-            .withEmail("johnd@example.com").withPhone("98765432")
-            .withTheater(3).build();
-    public static final Cinema CARL = new CinemaBuilder().withName("Carl Kurz").withPhone("95352563")
-            .withEmail("heinz@example.com").withAddress("wall street").withTheater(3).build();
-    public static final Cinema DANIEL = new CinemaBuilder().withName("Daniel Meier").withPhone("87652533")
-            .withEmail("cornelia@example.com").withAddress("10th street").withTheater(3).build();
-    public static final Cinema ELLE = new CinemaBuilder().withName("Elle Meyer").withPhone("9482224")
-            .withEmail("werner@example.com").withAddress("michegan ave").withTheater(3).build();
-    public static final Cinema FIONA = new CinemaBuilder().withName("Fiona Kunz").withPhone("9482427")
-            .withEmail("lydia@example.com").withAddress("little tokyo").withTheater(3).build();
-    public static final Cinema GEORGE = new CinemaBuilder().withName("George Best").withPhone("9482442")
-            .withEmail("anna@example.com").withAddress("4th street").withTheater(3).build();
+    public static final Cinema GV_PAYA_LEBAR = new CinemaBuilder().withName("GV Paya Lebar")
+            .withAddress("SingPost Centre, 10 Eunos Road 8, #03-107, Singapore 408600")
+            .withEmail("customersvc@goldenvillage.com.sg").withPhone("66538100").withTheater(8).build();
+    public static final Cinema GV_TIONG_BAHRU = new CinemaBuilder().withName("GV Tiong Bahru")
+            .withAddress("302 Tiong Bahru Road, #04-105, Tiong Bahru Plaza, Singapore 168732")
+            .withEmail("customersvc@goldenvillage.com.sg").withPhone("66538100").withTheater(5).build();
+    public static final Cinema CATHAY_AMK_HUB = new CinemaBuilder().withName("Cathay Cineplex AMK Hub")
+            .withPhone("67367355").withEmail("corporate_services@cathaycineplexes.com.sg")
+            .withAddress("53 Ang Mo Kio Ave 3 Level 4, AMK Hub Singapore 569933").withTheater(8).build();
+    public static final Cinema CATHAY_CAUSEWAY_POINT = new CinemaBuilder().withName("Cathay Cineplex Causeway Point")
+            .withPhone("67367355").withEmail("corporate_services@cathaycineplexes.com.sg")
+            .withAddress("1 Woodlands Square Level 7, Causeway Point Singapore 738099").withTheater(7).build();
+    public static final Cinema CATHAY_CINELEISURE_ORCHARD = new CinemaBuilder()
+            .withName("Cathay Cineplex Cineleisure Orchard").withPhone("67367355")
+            .withEmail("corporate_services@cathaycineplexes.com.sg")
+            .withAddress("8 Grange Road Levels 4, 5 & 6, Cathay Cineleisure Orchard Singapore 239695")
+            .withTheater(12).build();
+    public static final Cinema SHAW_LIDO = new CinemaBuilder().withName("Shaw Theatres Lido").withPhone("62352077")
+            .withEmail("info@shaw.sg").withAddress("350, Orchard Road, 5th/6th Floor, Shaw House, Singapore 238868")
+            .withTheater(11).build();
+    public static final Cinema SHAW_JCUBE = new CinemaBuilder().withName("Shaw Theatres JCube").withPhone("62352077")
+            .withEmail("info@shaw.sg").withAddress("2, Jurong East Central 1, JCube, #04-11, Singapore 609731")
+            .withTheater(7).build();
 
     // Manually added
-    public static final Cinema HOON = new CinemaBuilder().withName("Hoon Meier").withPhone("8482424")
-            .withEmail("stefan@example.com").withAddress("little india").withTheater(3).build();
-    public static final Cinema IDA = new CinemaBuilder().withName("Ida Mueller").withPhone("8482131")
-            .withEmail("hans@example.com").withAddress("chicago ave").withTheater(3).build();
+    public static final Cinema GV_VIVOCITY = new CinemaBuilder().withName("GV Vivocity").withPhone("66538100")
+            .withEmail("customersvc@goldenvillage.com.sg")
+            .withAddress("1 HarbourFront Walk, #02-30, VivoCity, Singapore 098585").withTheater(15).build();
+    public static final Cinema CATHAY_JEM = new CinemaBuilder().withName("Cathay Cineplex Jem").withPhone("67367355")
+            .withEmail("corporate_services@cathaycineplexes.com.sg")
+            .withAddress("50 Jurong Gateway Road, Level 5, Jem Singapore 608549").withTheater(10).build();
 
     // Manually added - Cinema's details found in {@code CommandTestUtil}
-    public static final Cinema AMY = new CinemaBuilder().withName(VALID_NAME_AMY).withPhone(VALID_PHONE_AMY)
-            .withEmail(VALID_EMAIL_AMY).withAddress(VALID_ADDRESS_AMY).withTheater(VALID_NUMOFTHEATERS).build();
-    public static final Cinema BOB = new CinemaBuilder().withName(VALID_NAME_BOB).withPhone(VALID_PHONE_BOB)
-            .withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB).withTheater(VALID_NUMOFTHEATERS).build();
+    public static final Cinema GV = new CinemaBuilder().withName(VALID_NAME_GV).withPhone(VALID_PHONE_GV)
+            .withEmail(VALID_EMAIL_GV).withAddress(VALID_ADDRESS_GV).withTheater(VALID_NUMOFTHEATERS).build();
+    public static final Cinema SHAW = new CinemaBuilder().withName(VALID_NAME_SHAW).withPhone(VALID_PHONE_SHAW)
+            .withEmail(VALID_EMAIL_SHAW).withAddress(VALID_ADDRESS_SHAW).withTheater(VALID_NUMOFTHEATERS).build();
 
     public static final String KEYWORD_MATCHING_MEIER = "Meier"; // A keyword that matches MEIER
 
@@ -73,6 +81,7 @@ public class TypicalCinemas {
     }
 
     public static List<Cinema> getTypicalCinemas() {
-        return new ArrayList<>(Arrays.asList(ALICE, BENSON, CARL, DANIEL, ELLE, FIONA, GEORGE));
+        return new ArrayList<>(Arrays.asList(GV_PAYA_LEBAR, GV_TIONG_BAHRU, CATHAY_AMK_HUB,
+                CATHAY_CAUSEWAY_POINT, CATHAY_CINELEISURE_ORCHARD, SHAW_LIDO, SHAW_JCUBE));
     }
 }

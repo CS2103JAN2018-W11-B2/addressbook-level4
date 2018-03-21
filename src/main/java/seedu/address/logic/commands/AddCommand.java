@@ -6,7 +6,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NUMOFTHEATERS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
 import seedu.address.logic.commands.exceptions.CommandException;
 
@@ -27,14 +26,13 @@ public class AddCommand extends UndoableCommand {
             + PREFIX_PHONE + "PHONE "
             + PREFIX_EMAIL + "EMAIL "
             + PREFIX_ADDRESS + "ADDRESS "
-            + "[" + PREFIX_TAG + "TAG]... "
             + PREFIX_NUMOFTHEATERS + "THEATER\n"
             + "Example: " + COMMAND_WORD + " "
-            + PREFIX_NAME + "John Doe "
-            + PREFIX_PHONE + "98765432 "
-            + PREFIX_EMAIL + "johnd@example.com "
-            + PREFIX_ADDRESS + "311, Clementi Ave 2, #02-25 "
-            + PREFIX_NUMOFTHEATERS + "3";
+            + PREFIX_NAME + "GV Yishun "
+            + PREFIX_PHONE + "66538100 "
+            + PREFIX_EMAIL + "customersvc@goldenvillage.com.sg "
+            + PREFIX_ADDRESS + "51 Yishun Central 1, Singapore 768794 "
+            + PREFIX_NUMOFTHEATERS + "10";
 
     public static final String MESSAGE_SUCCESS = "New cinema added: %1$s";
     public static final String MESSAGE_DUPLICATE_CINEMA = "This cinema already exists in the movie planner";

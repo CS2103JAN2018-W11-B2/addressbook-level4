@@ -41,14 +41,14 @@ public class CommandTestUtil {
     public static final String VALID_RATING_MARVEL = "NC16";
     public static final String VALID_STARTDATE_INCREDIBLES = "03/03/2000";
     public static final String VALID_STARTDATE_MARVEL = "08/09/2016";
-    public static final String VALID_NAME_AMY = "Amy Bee";
-    public static final String VALID_NAME_BOB = "Bob Choo";
-    public static final String VALID_PHONE_AMY = "11111111";
-    public static final String VALID_PHONE_BOB = "22222222";
-    public static final String VALID_EMAIL_AMY = "amy@example.com";
-    public static final String VALID_EMAIL_BOB = "bob@example.com";
-    public static final String VALID_ADDRESS_AMY = "Block 312, Amy Street 1";
-    public static final String VALID_ADDRESS_BOB = "Block 123, Bobby Street 3";
+    public static final String VALID_NAME_GV = "GV Yishun";
+    public static final String VALID_NAME_SHAW = "Shaw Theaters Nex";
+    public static final String VALID_PHONE_GV = "66538100";
+    public static final String VALID_PHONE_SHAW = "62352077";
+    public static final String VALID_EMAIL_GV = "customersvc@goldenvillage.com.sg";
+    public static final String VALID_EMAIL_SHAW = "info@shaw.sg";
+    public static final String VALID_ADDRESS_GV = "51 Yishun Central 1, Singapore 768794";
+    public static final String VALID_ADDRESS_SHAW = "23, Serangoon Central, #04-64, Nex, Singapore 556083";
     public static final String VALID_TAG_SUPERHERO = "superhero";
     public static final String VALID_TAG_COMEDY = "comedy";
     public static final String VALID_TAG_UNUSED = "unused"; // not to assign to any movie
@@ -63,14 +63,14 @@ public class CommandTestUtil {
     public static final String RATING_DESC_MARVEL = " " + PREFIX_RATING + VALID_RATING_MARVEL;
     public static final String STARTDATE_DESC_INCREDIBLES = " " + PREFIX_STARTDATE + VALID_STARTDATE_INCREDIBLES;
     public static final String STARTDATE_DESC_MARVEL = " " + PREFIX_STARTDATE + VALID_STARTDATE_MARVEL;
-    public static final String NAME_DESC_AMY = " " + PREFIX_NAME + VALID_NAME_AMY;
-    public static final String NAME_DESC_BOB = " " + PREFIX_NAME + VALID_NAME_BOB;
-    public static final String PHONE_DESC_AMY = " " + PREFIX_PHONE + VALID_PHONE_AMY;
-    public static final String PHONE_DESC_BOB = " " + PREFIX_PHONE + VALID_PHONE_BOB;
-    public static final String EMAIL_DESC_AMY = " " + PREFIX_EMAIL + VALID_EMAIL_AMY;
-    public static final String EMAIL_DESC_BOB = " " + PREFIX_EMAIL + VALID_EMAIL_BOB;
-    public static final String ADDRESS_DESC_AMY = " " + PREFIX_ADDRESS + VALID_ADDRESS_AMY;
-    public static final String ADDRESS_DESC_BOB = " " + PREFIX_ADDRESS + VALID_ADDRESS_BOB;
+    public static final String NAME_DESC_GV = " " + PREFIX_NAME + VALID_NAME_GV;
+    public static final String NAME_DESC_SHAW = " " + PREFIX_NAME + VALID_NAME_SHAW;
+    public static final String PHONE_DESC_GV = " " + PREFIX_PHONE + VALID_PHONE_GV;
+    public static final String PHONE_DESC_SHAW = " " + PREFIX_PHONE + VALID_PHONE_SHAW;
+    public static final String EMAIL_DESC_GV = " " + PREFIX_EMAIL + VALID_EMAIL_GV;
+    public static final String EMAIL_DESC_SHAW = " " + PREFIX_EMAIL + VALID_EMAIL_SHAW;
+    public static final String ADDRESS_DESC_GV = " " + PREFIX_ADDRESS + VALID_ADDRESS_GV;
+    public static final String ADDRESS_DESC_SHAW = " " + PREFIX_ADDRESS + VALID_ADDRESS_SHAW;
     public static final String TAG_DESC_COMEDY = " " + PREFIX_TAG + VALID_TAG_COMEDY;
     public static final String TAG_DESC_SUPERHERO = " " + PREFIX_TAG + VALID_TAG_SUPERHERO;
     public static final String THEATER_DESC_THREE = " " + PREFIX_NUMOFTHEATERS + VALID_NUMOFTHEATERS;
@@ -82,7 +82,7 @@ public class CommandTestUtil {
     public static final String INVALID_STARTDATE_DESC = " " + PREFIX_STARTDATE + "ab/ac/abcd"; // invalid date format
     public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "James&"; // '&' not allowed in names
     public static final String INVALID_PHONE_DESC = " " + PREFIX_PHONE + "911a"; // 'a' not allowed in phones
-    public static final String INVALID_EMAIL_DESC = " " + PREFIX_EMAIL + "bob!yahoo"; // missing '@' symbol
+    public static final String INVALID_EMAIL_DESC = " " + PREFIX_EMAIL + "shaw!yahoo"; // missing '@' symbol
     public static final String INVALID_ADDRESS_DESC = " " + PREFIX_ADDRESS; // empty string not allowed for addresses
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "hubby*"; // '*' not allowed in tags
     public static final String INVALID_THEATER_DESC = " "
@@ -91,15 +91,15 @@ public class CommandTestUtil {
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
 
-    public static final EditCommand.EditCinemaDescriptor DESC_AMY;
-    public static final EditCommand.EditCinemaDescriptor DESC_BOB;
+    public static final EditCommand.EditCinemaDescriptor DESC_GV;
+    public static final EditCommand.EditCinemaDescriptor DESC_SHAW;
 
     static {
-        DESC_AMY = new EditCinemaDescriptorBuilder().withName(VALID_NAME_AMY)
-                .withPhone(VALID_PHONE_AMY).withEmail(VALID_EMAIL_AMY).withAddress(VALID_ADDRESS_AMY)
+        DESC_GV = new EditCinemaDescriptorBuilder().withName(VALID_NAME_GV)
+                .withPhone(VALID_PHONE_GV).withEmail(VALID_EMAIL_GV).withAddress(VALID_ADDRESS_GV)
                 .withTheaters(VALID_NUMOFTHEATERS).build();
-        DESC_BOB = new EditCinemaDescriptorBuilder().withName(VALID_NAME_BOB)
-                .withPhone(VALID_PHONE_BOB).withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB)
+        DESC_SHAW = new EditCinemaDescriptorBuilder().withName(VALID_NAME_SHAW)
+                .withPhone(VALID_PHONE_SHAW).withEmail(VALID_EMAIL_SHAW).withAddress(VALID_ADDRESS_SHAW)
                 .withTheaters(VALID_NUMOFTHEATERS).build();
     }
 

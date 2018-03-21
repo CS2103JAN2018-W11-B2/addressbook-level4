@@ -18,7 +18,7 @@ public class CommandHistoryTest {
     @Test
     public void add() {
         final String validCommand = "clear";
-        final String invalidCommand = "adds Bob";
+        final String invalidCommand = "adds Shaw";
 
         history.add(validCommand);
         history.add(invalidCommand);

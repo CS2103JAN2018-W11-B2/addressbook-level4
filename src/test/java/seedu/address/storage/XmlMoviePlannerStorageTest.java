@@ -2,9 +2,9 @@ package seedu.address.storage;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-import static seedu.address.testutil.TypicalCinemas.ALICE;
-import static seedu.address.testutil.TypicalCinemas.HOON;
-import static seedu.address.testutil.TypicalCinemas.IDA;
+import static seedu.address.testutil.TypicalCinemas.CATHAY_JEM;
+import static seedu.address.testutil.TypicalCinemas.GV_PAYA_LEBAR;
+import static seedu.address.testutil.TypicalCinemas.GV_VIVOCITY;
 import static seedu.address.testutil.TypicalCinemas.getTypicalMoviePlanner;
 
 import java.io.IOException;
@@ -84,14 +84,14 @@ public class XmlMoviePlannerStorageTest {
         assertEquals(original, new MoviePlanner(readBack));
 
         //Modify data, overwrite exiting file, and read back
-        original.addCinema(HOON);
-        original.removeCinema(ALICE);
+        original.addCinema(GV_VIVOCITY);
+        original.removeCinema(GV_PAYA_LEBAR);
         xmlMoviePlannerStorage.saveMoviePlanner(original, filePath);
         readBack = xmlMoviePlannerStorage.readMoviePlanner(filePath).get();
         assertEquals(original, new MoviePlanner(readBack));
 
         //Save and read without specifying file path
-        original.addCinema(IDA);
+        original.addCinema(CATHAY_JEM);
         xmlMoviePlannerStorage.saveMoviePlanner(original); //file path not specified
         readBack = xmlMoviePlannerStorage.readMoviePlanner().get(); //file path not specified
         assertEquals(original, new MoviePlanner(readBack));

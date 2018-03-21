@@ -2,12 +2,12 @@ package seedu.address.logic.commands;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static seedu.address.logic.commands.CommandTestUtil.DESC_AMY;
-import static seedu.address.logic.commands.CommandTestUtil.DESC_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.DESC_GV;
+import static seedu.address.logic.commands.CommandTestUtil.DESC_SHAW;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_SHAW;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_SHAW;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_SHAW;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_SHAW;
 
 import org.junit.Test;
 
@@ -19,36 +19,36 @@ public class EditCinemaDescriptorTest {
     @Test
     public void equals() {
         // same values -> returns true
-        EditCinemaDescriptor descriptorWithSameValues = new EditCinemaDescriptor(DESC_AMY);
-        assertTrue(DESC_AMY.equals(descriptorWithSameValues));
+        EditCinemaDescriptor descriptorWithSameValues = new EditCinemaDescriptor(DESC_GV);
+        assertTrue(DESC_GV.equals(descriptorWithSameValues));
 
         // same object -> returns true
-        assertTrue(DESC_AMY.equals(DESC_AMY));
+        assertTrue(DESC_GV.equals(DESC_GV));
 
         // null -> returns false
-        assertFalse(DESC_AMY.equals(null));
+        assertFalse(DESC_GV.equals(null));
 
         // different types -> returns false
-        assertFalse(DESC_AMY.equals(5));
+        assertFalse(DESC_GV.equals(5));
 
         // different values -> returns false
-        assertFalse(DESC_AMY.equals(DESC_BOB));
+        assertFalse(DESC_GV.equals(DESC_SHAW));
 
         // different name -> returns false
-        EditCinemaDescriptor editedAmy = new EditCinemaDescriptorBuilder(DESC_AMY).withName(VALID_NAME_BOB).build();
-        assertFalse(DESC_AMY.equals(editedAmy));
+        EditCinemaDescriptor editedGv = new EditCinemaDescriptorBuilder(DESC_GV).withName(VALID_NAME_SHAW).build();
+        assertFalse(DESC_GV.equals(editedGv));
 
         // different phone -> returns false
-        editedAmy = new EditCinemaDescriptorBuilder(DESC_AMY).withPhone(VALID_PHONE_BOB).build();
-        assertFalse(DESC_AMY.equals(editedAmy));
+        editedGv = new EditCinemaDescriptorBuilder(DESC_GV).withPhone(VALID_PHONE_SHAW).build();
+        assertFalse(DESC_GV.equals(editedGv));
 
         // different email -> returns false
-        editedAmy = new EditCinemaDescriptorBuilder(DESC_AMY).withEmail(VALID_EMAIL_BOB).build();
-        assertFalse(DESC_AMY.equals(editedAmy));
+        editedGv = new EditCinemaDescriptorBuilder(DESC_GV).withEmail(VALID_EMAIL_SHAW).build();
+        assertFalse(DESC_GV.equals(editedGv));
 
         // different address -> returns false
-        editedAmy = new EditCinemaDescriptorBuilder(DESC_AMY).withAddress(VALID_ADDRESS_BOB).build();
-        assertFalse(DESC_AMY.equals(editedAmy));
+        editedGv = new EditCinemaDescriptorBuilder(DESC_GV).withAddress(VALID_ADDRESS_SHAW).build();
+        assertFalse(DESC_GV.equals(editedGv));
 
     }
 }

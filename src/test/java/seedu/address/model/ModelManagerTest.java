@@ -7,9 +7,9 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_COMEDY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_SUPERHERO;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_UNUSED;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_CINEMAS;
-import static seedu.address.testutil.TypicalCinemas.ALICE;
-import static seedu.address.testutil.TypicalCinemas.AMY;
-import static seedu.address.testutil.TypicalCinemas.BENSON;
+import static seedu.address.testutil.TypicalCinemas.GV;
+import static seedu.address.testutil.TypicalCinemas.GV_PAYA_LEBAR;
+import static seedu.address.testutil.TypicalCinemas.GV_TIONG_BAHRU;
 import static seedu.address.testutil.TypicalMovies.ABTM4;
 import static seedu.address.testutil.TypicalMovies.BLACK_PANTHER;
 
@@ -39,7 +39,8 @@ public class ModelManagerTest {
 
     @Test
     public void equals() {
-        MoviePlanner moviePlanner = new MoviePlannerBuilder().withCinema(ALICE).withCinema(BENSON).build();
+        MoviePlanner moviePlanner = new MoviePlannerBuilder().withCinema(GV_PAYA_LEBAR)
+                .withCinema(GV_TIONG_BAHRU).build();
         MoviePlanner differentMoviePlanner = new MoviePlanner();
         UserPrefs userPrefs = new UserPrefs();
 
@@ -61,7 +62,7 @@ public class ModelManagerTest {
         assertFalse(modelManager.equals(new ModelManager(differentMoviePlanner, userPrefs)));
 
         // different filteredList -> returns false
-        String[] keywords = ALICE.getName().fullName.split("\\s+");
+        String[] keywords = GV_PAYA_LEBAR.getName().fullName.split("\\s+");
         modelManager.updateFilteredCinemaList(new NameContainsKeywordsPredicate(Arrays.asList(keywords)));
         assertFalse(modelManager.equals(new ModelManager(moviePlanner, userPrefs)));
 
@@ -76,23 +77,23 @@ public class ModelManagerTest {
 
     @Test
     public void deleteTag_tagNotInUse_modelNotChanged() throws Exception {
-        MoviePlanner moviePlannerWithAmy = new MoviePlannerBuilder().withCinema(AMY).build();
+        MoviePlanner moviePlannerWithGv = new MoviePlannerBuilder().withCinema(GV).build();
         UserPrefs userPrefs = new UserPrefs();
 
-        ModelManager modelManager = new ModelManager(moviePlannerWithAmy, userPrefs);
+        ModelManager modelManager = new ModelManager(moviePlannerWithGv, userPrefs);
         thrown.expect(TagNotFoundException.class);
         modelManager.deleteTag(new Tag(VALID_TAG_UNUSED));
 
-        assertEquals(new ModelManager(moviePlannerWithAmy, userPrefs), modelManager);
+        assertEquals(new ModelManager(moviePlannerWithGv, userPrefs), modelManager);
     }
 
     @Test
     public void deleteTag_tagInUseByOneCinema_tagRemoved() throws Exception {
-        MoviePlanner moviePlannerWithAmyAndBob = new MoviePlannerBuilder().withMovie(ABTM4).withMovie(BLACK_PANTHER)
+        MoviePlanner moviePlannerWithGvAndShaw = new MoviePlannerBuilder().withMovie(ABTM4).withMovie(BLACK_PANTHER)
                 .build();
         UserPrefs userPrefs = new UserPrefs();
 
-        ModelManager modelManager = new ModelManager(moviePlannerWithAmyAndBob, userPrefs);
+        ModelManager modelManager = new ModelManager(moviePlannerWithGvAndShaw, userPrefs);
         modelManager.deleteTag(new Tag(VALID_TAG_SUPERHERO));
 
         Movie bpSuperheroTagRemoved = new MovieBuilder(BLACK_PANTHER).withTags(VALID_TAG_COMEDY).build();

@@ -42,19 +42,19 @@ public class NameContainsKeywordsPredicateTest {
     public void test_nameContainsKeywords_returnsTrue() {
         // One keyword
         NameContainsKeywordsPredicate predicate = new NameContainsKeywordsPredicate(Collections.singletonList("Alice"));
-        assertTrue(predicate.test(new CinemaBuilder().withName("Alice Bob").build()));
+        assertTrue(predicate.test(new CinemaBuilder().withName("Alice Shaw").build()));
 
         // Multiple keywords
-        predicate = new NameContainsKeywordsPredicate(Arrays.asList("Alice", "Bob"));
-        assertTrue(predicate.test(new CinemaBuilder().withName("Alice Bob").build()));
+        predicate = new NameContainsKeywordsPredicate(Arrays.asList("Alice", "Shaw"));
+        assertTrue(predicate.test(new CinemaBuilder().withName("Alice Shaw").build()));
 
         // Only one matching keyword
-        predicate = new NameContainsKeywordsPredicate(Arrays.asList("Bob", "Carol"));
+        predicate = new NameContainsKeywordsPredicate(Arrays.asList("Shaw", "Carol"));
         assertTrue(predicate.test(new CinemaBuilder().withName("Alice Carol").build()));
 
         // Mixed-case keywords
-        predicate = new NameContainsKeywordsPredicate(Arrays.asList("aLIce", "bOB"));
-        assertTrue(predicate.test(new CinemaBuilder().withName("Alice Bob").build()));
+        predicate = new NameContainsKeywordsPredicate(Arrays.asList("aLIce", "shAW"));
+        assertTrue(predicate.test(new CinemaBuilder().withName("Alice Shaw").build()));
     }
 
     @Test
@@ -65,7 +65,7 @@ public class NameContainsKeywordsPredicateTest {
 
         // Non-matching keyword
         predicate = new NameContainsKeywordsPredicate(Arrays.asList("Carol"));
-        assertFalse(predicate.test(new CinemaBuilder().withName("Alice Bob").build()));
+        assertFalse(predicate.test(new CinemaBuilder().withName("Alice Shaw").build()));
 
         // Keywords match phone, email and address, but does not match name
         predicate = new NameContainsKeywordsPredicate(Arrays.asList("12345", "alice@email.com", "Main", "Street"));

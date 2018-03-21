@@ -1,6 +1,6 @@
 package systemtests;
 
-import static seedu.address.testutil.TypicalCinemas.AMY;
+import static seedu.address.testutil.TypicalCinemas.GV;
 
 import org.junit.Test;
 
@@ -28,7 +28,7 @@ public class KeyShortcutSystemTest extends MoviePlannerSystemTest {
         deleteAllCinemas();
 
         /* Case: add a cinema without tags to an empty movie planner -> added */
-        assertAddCommandSuccess(AMY);
+        assertAddCommandSuccess(GV);
         guiRobot.pauseForHuman();
 
         /* Case: undo adding Amy to the list -> Amy deleted */
@@ -46,7 +46,7 @@ public class KeyShortcutSystemTest extends MoviePlannerSystemTest {
         deleteAllCinemas();
 
         /* Case: add a cinema without tags to an empty movie planner -> added */
-        assertAddCommandSuccess(AMY);
+        assertAddCommandSuccess(GV);
         guiRobot.pauseForHuman();
 
         /* Case: undo adding Amy to the list -> Amy deleted */
@@ -68,7 +68,7 @@ public class KeyShortcutSystemTest extends MoviePlannerSystemTest {
         deleteAllCinemas();
 
         /* Case: add a cinema without tags to an empty movie planner -> added */
-        assertAddCommandSuccess(AMY);
+        assertAddCommandSuccess(GV);
         guiRobot.pauseForHuman();
 
         /* Case: clear list through shortcut key -> list of contacts deleted */
@@ -86,7 +86,7 @@ public class KeyShortcutSystemTest extends MoviePlannerSystemTest {
         deleteAllCinemas();
 
         /* Case: add a cinema without tags to an empty movie planner -> added */
-        assertAddCommandSuccess(AMY);
+        assertAddCommandSuccess(GV);
         guiRobot.pauseForHuman();
 
         /* Case: clear list through shortcut key -> list of contacts deleted */
