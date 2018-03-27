@@ -6,12 +6,21 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
+import javax.mail.AuthenticationFailedException;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.ComponentManager;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.events.model.MoviePlannerChangedEvent;
+import seedu.address.commons.events.ui.EmailDraftChangedEvent;
+import seedu.address.email.Email;
+import seedu.address.email.EmailManager;
+import seedu.address.email.exceptions.EmailLoginInvalidException;
+import seedu.address.email.exceptions.EmailMessageEmptyException;
+import seedu.address.email.exceptions.EmailRecipientsEmptyException;
+import seedu.address.email.message.MessageDraft;
 import seedu.address.model.cinema.Cinema;
 import seedu.address.model.cinema.Theater;
 import seedu.address.model.cinema.exceptions.CinemaNotFoundException;
@@ -30,6 +39,7 @@ import seedu.address.model.tag.exceptions.TagNotFoundException;
 public class ModelManager extends ComponentManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
+    private final Email email;
     private final MoviePlanner moviePlanner;
     private final FilteredList<Cinema> filteredCinemas;
     private final FilteredList<Movie> filteredMovies;
@@ -37,19 +47,20 @@ public class ModelManager extends ComponentManager implements Model {
     /**
      * Initializes a ModelManager with the given moviePlanner and userPrefs.
      */
-    public ModelManager(ReadOnlyMoviePlanner moviePlanner, UserPrefs userPrefs) {
+    public ModelManager(ReadOnlyMoviePlanner moviePlanner, UserPrefs userPrefs, Email email) {
         super();
         requireAllNonNull(moviePlanner, userPrefs);
 
         logger.fine("Initializing with movie planner: " + moviePlanner + " and user prefs " + userPrefs);
 
         this.moviePlanner = new MoviePlanner(moviePlanner);
+        this.email = email;
         filteredCinemas = new FilteredList<>(this.moviePlanner.getCinemaList());
         filteredMovies = new FilteredList<>(this.moviePlanner.getMovieList());
     }
 
     public ModelManager() {
-        this(new MoviePlanner(), new UserPrefs());
+        this(new MoviePlanner(), new UserPrefs(), new EmailManager());
     }
 
     @Override
@@ -63,9 +74,47 @@ public class ModelManager extends ComponentManager implements Model {
         return moviePlanner;
     }
 
+    @Override
+    public Email getEmailManager() {
+        return email;
+    }
+
     /** Raises an event to indicate the model has changed */
     private void indicateMoviePlannerChanged() {
         raise(new MoviePlannerChangedEvent(moviePlanner));
+    }
+
+    @Override
+    public void loginEmailAccount(String [] emailLoginDetails) throws EmailLoginInvalidException {
+        email.loginEmailAccount(emailLoginDetails);
+    }
+
+    @Override
+    public void sendEmail(MessageDraft messageDraft) throws EmailLoginInvalidException, EmailMessageEmptyException,
+            EmailRecipientsEmptyException, AuthenticationFailedException {
+        email.composeEmail(messageDraft);
+        email.sendEmail();
+
+        raise(new EmailDraftChangedEvent(email.getEmailDraft()));
+    }
+
+    @Override
+    public String getEmailStatus() {
+        return email.getEmailStatus();
+    }
+
+    @Override
+    public void clearEmailDraft() {
+        email.clearEmailDraft();
+
+        raise(new EmailDraftChangedEvent(email.getEmailDraft()));
+    }
+
+    @Override
+    public void draftEmail(MessageDraft message) {
+        email.composeEmail(message);
+
+        raise(new EmailDraftChangedEvent(email.getEmailDraft()));
     }
 
     @Override

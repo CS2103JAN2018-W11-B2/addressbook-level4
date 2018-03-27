@@ -5,6 +5,7 @@ import static seedu.address.testutil.TypicalCinemas.getTypicalMoviePlanner;
 
 import org.junit.Test;
 
+import seedu.address.email.EmailManager;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.UndoRedoStack;
 import seedu.address.model.Model;
@@ -21,7 +22,7 @@ public class ClearCommandTest {
 
     @Test
     public void execute_nonEmptyMoviePlanner_success() {
-        Model model = new ModelManager(getTypicalMoviePlanner(), new UserPrefs());
+        Model model = new ModelManager(getTypicalMoviePlanner(), new UserPrefs(), new EmailManager());
         assertCommandSuccess(prepareCommand(model), model, ClearCommand.MESSAGE_SUCCESS, model);
     }
 

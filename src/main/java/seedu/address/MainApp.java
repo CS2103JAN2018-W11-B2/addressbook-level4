@@ -18,6 +18,8 @@ import seedu.address.commons.events.ui.ExitAppRequestEvent;
 import seedu.address.commons.exceptions.DataConversionException;
 import seedu.address.commons.util.ConfigUtil;
 import seedu.address.commons.util.StringUtil;
+import seedu.address.email.Email;
+import seedu.address.email.EmailManager;
 import seedu.address.logic.Logic;
 import seedu.address.logic.LogicManager;
 import seedu.address.model.Model;
@@ -50,6 +52,7 @@ public class MainApp extends Application {
     protected Model model;
     protected Config config;
     protected UserPrefs userPrefs;
+    protected Email email;
 
 
     @Override
@@ -66,7 +69,9 @@ public class MainApp extends Application {
 
         initLogging(config);
 
-        model = initModelManager(storage, userPrefs);
+        email = new EmailManager();
+
+        model = initModelManager(storage, userPrefs, email);
 
         logic = new LogicManager(model);
 
@@ -85,7 +90,7 @@ public class MainApp extends Application {
      * The data from the sample movie planner will be used instead if {@code storage}'s movie planner is not found,
      * or an empty movie planner will be used instead if errors occur when reading {@code storage}'s movie planner.
      */
-    private Model initModelManager(Storage storage, UserPrefs userPrefs) {
+    private Model initModelManager(Storage storage, UserPrefs userPrefs, Email email) {
         Optional<ReadOnlyMoviePlanner> moviePlannerOptional;
         ReadOnlyMoviePlanner initialData;
         try {
@@ -102,7 +107,7 @@ public class MainApp extends Application {
             initialData = new MoviePlanner();
         }
 
-        return new ModelManager(initialData, userPrefs);
+        return new ModelManager(initialData, userPrefs, email);
     }
 
     private void initLogging(Config config) {

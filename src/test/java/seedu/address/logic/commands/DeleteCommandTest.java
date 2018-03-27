@@ -3,6 +3,7 @@ package seedu.address.logic.commands;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
+
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.prepareRedoCommand;
@@ -16,6 +17,7 @@ import org.junit.Test;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
+import seedu.address.email.EmailManager;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.UndoRedoStack;
 import seedu.address.model.Model;
@@ -29,7 +31,7 @@ import seedu.address.model.cinema.Cinema;
  */
 public class DeleteCommandTest {
 
-    private Model model = new ModelManager(getTypicalMoviePlanner(), new UserPrefs());
+    private Model model = new ModelManager(getTypicalMoviePlanner(), new UserPrefs(), new EmailManager());
 
     @Test
     public void execute_validIndexUnfilteredList_success() throws Exception {
@@ -38,7 +40,7 @@ public class DeleteCommandTest {
 
         String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_CINEMA_SUCCESS, cinemaToDelete);
 
-        ModelManager expectedModel = new ModelManager(model.getMoviePlanner(), new UserPrefs());
+        ModelManager expectedModel = new ModelManager(model.getMoviePlanner(), new UserPrefs(), new EmailManager());
         expectedModel.deleteCinema(cinemaToDelete);
 
         assertCommandSuccess(deleteCommand, model, expectedMessage, expectedModel);
@@ -61,7 +63,7 @@ public class DeleteCommandTest {
 
         String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_CINEMA_SUCCESS, cinemaToDelete);
 
-        Model expectedModel = new ModelManager(model.getMoviePlanner(), new UserPrefs());
+        Model expectedModel = new ModelManager(model.getMoviePlanner(), new UserPrefs(), new EmailManager());
         expectedModel.deleteCinema(cinemaToDelete);
         showNoCinema(expectedModel);
 
@@ -88,7 +90,7 @@ public class DeleteCommandTest {
         RedoCommand redoCommand = prepareRedoCommand(model, undoRedoStack);
         Cinema cinemaToDelete = model.getFilteredCinemaList().get(INDEX_FIRST_CINEMA.getZeroBased());
         DeleteCommand deleteCommand = prepareCommand(INDEX_FIRST_CINEMA);
-        Model expectedModel = new ModelManager(model.getMoviePlanner(), new UserPrefs());
+        Model expectedModel = new ModelManager(model.getMoviePlanner(), new UserPrefs(), new EmailManager());
 
         // delete -> first cinema deleted
         deleteCommand.execute();
@@ -131,7 +133,7 @@ public class DeleteCommandTest {
         UndoCommand undoCommand = prepareUndoCommand(model, undoRedoStack);
         RedoCommand redoCommand = prepareRedoCommand(model, undoRedoStack);
         DeleteCommand deleteCommand = prepareCommand(INDEX_FIRST_CINEMA);
-        Model expectedModel = new ModelManager(model.getMoviePlanner(), new UserPrefs());
+        Model expectedModel = new ModelManager(model.getMoviePlanner(), new UserPrefs(), new EmailManager());
 
         showCinemaAtIndex(model, INDEX_SECOND_CINEMA);
         Cinema cinemaToDelete = model.getFilteredCinemaList().get(INDEX_FIRST_CINEMA.getZeroBased());

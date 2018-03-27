@@ -6,6 +6,10 @@ import static org.junit.Assert.fail;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DURATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL_LOGIN;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL_MESSAGE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL_RECIPIENT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL_SUBJECT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NUMOFTHEATERS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
@@ -52,6 +56,13 @@ public class CommandTestUtil {
     public static final String VALID_TAG_SUPERHERO = "superhero";
     public static final String VALID_TAG_COMEDY = "comedy";
     public static final String VALID_TAG_UNUSED = "unused"; // not to assign to any movie
+    public static final String VALID_EMAIL_MESSAGE = "Hello Chief Manager, attached is my email.";
+    public static final String VALID_EMAIL_SUBJECT = "Schedule for next month";
+    public static final String VALID_EMAIL_RECIPIENT = "chiefCineManager@gmail.com";
+    public static final String VALID_EMAIL_LOGIN_ACCOUNT = "cineManager@gmail.com:somePassWord";
+    public static final String VALID_ANOTHER_MESSAGE = "Hi Mr. Matthews, This is a new email.";
+    public static final String VALID_ANOTHER_SUBJECT = "Scheduled Meeting";
+    public static final String VALID_ANOTHER_RECIPIENT = "anotherPerson@gmail.com";
     public static final int VALID_NUMOFTHEATERS = 3;
     public static final int VALID_NUMOFNEWTHEATERS = 5;
 
@@ -75,6 +86,13 @@ public class CommandTestUtil {
     public static final String TAG_DESC_SUPERHERO = " " + PREFIX_TAG + VALID_TAG_SUPERHERO;
     public static final String THEATER_DESC_THREE = " " + PREFIX_NUMOFTHEATERS + VALID_NUMOFTHEATERS;
     public static final String THEATER_DESC_FIVE = " " + PREFIX_NUMOFTHEATERS + VALID_NUMOFNEWTHEATERS;
+    public static final String EMAIL_DESC_MESSAGE = " " + PREFIX_EMAIL_MESSAGE + VALID_EMAIL_MESSAGE;
+    public static final String EMAIL_DESC_SUBJECT = " " + PREFIX_EMAIL_SUBJECT + VALID_EMAIL_SUBJECT;
+    public static final String EMAIL_DESC_RECIPIENT = " " + PREFIX_EMAIL_RECIPIENT + VALID_EMAIL_RECIPIENT;
+    public static final String EMAIL_DESC_LOGIN_ACCOUNT = " " + PREFIX_EMAIL_LOGIN + VALID_EMAIL_LOGIN_ACCOUNT;
+    public static final String EMAIL_DESC_ANOTHER_MESSAGE = " " + PREFIX_EMAIL_MESSAGE + VALID_ANOTHER_MESSAGE;
+    public static final String EMAIL_DESC_ANOTHER_SUBJECT = " " + PREFIX_EMAIL_SUBJECT + VALID_ANOTHER_SUBJECT;
+    public static final String EMAIL_DESC_ANOTHER_RECIPIENT = " " + PREFIX_EMAIL_RECIPIENT + VALID_ANOTHER_RECIPIENT;
 
     public static final String INVALID_MOVIENAME_DESC = " " + PREFIX_NAME + "Ghost&"; // '&' not allowed in movieNames
     public static final String INVALID_DURATION_DESC = " " + PREFIX_DURATION + "12a"; // 'a' not allowed in durations

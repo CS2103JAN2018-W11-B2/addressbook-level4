@@ -34,6 +34,9 @@
             <MenuItem fx:id="clearMenuItem" mnemonicParsing="false" onAction="#handleClear" text="Clear All" />
             <MenuItem fx:id="listMenuItem" mnemonicParsing="false" onAction="#handleList" text="List" />
           </Menu>
+          <Menu mnemonicParsing="false" text="Tabs">
+            <MenuItem fx:id="toggleTabMenuItem" mnemonicParsing="false" onAction="#handleToggleNextTab" text="Toggle Tab" />
+          </Menu>
           <Menu mnemonicParsing="false" text="Help">
             <MenuItem fx:id="helpMenuItem" mnemonicParsing="false" onAction="#handleHelp" text="Help" />
           </Menu>
@@ -53,11 +56,11 @@
         </StackPane>
 
         <SplitPane id="splitPane" fx:id="splitPane" dividerPositions="0.4" VBox.vgrow="ALWAYS">
-          <VBox fx:id="cinemaList" minWidth="340" prefWidth="340" SplitPane.resizableWithParent="false">
+          <VBox fx:id="tabsPanel" minWidth="340" prefWidth="340" SplitPane.resizableWithParent="false">
             <padding>
               <Insets top="10" right="10" bottom="10" left="10" />
             </padding>
-            <StackPane fx:id="cinemaListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
+            <StackPane fx:id="tabsPanelPlaceholder" VBox.vgrow="ALWAYS"/>
           </VBox>
 
           <VBox fx:id="movieList" minWidth="340" prefWidth="340" SplitPane.resizableWithParent="false">

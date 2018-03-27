@@ -13,6 +13,7 @@ import java.util.Collections;
 import org.junit.Before;
 import org.junit.Test;
 
+import seedu.address.email.EmailManager;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.UndoRedoStack;
 import seedu.address.model.Model;
@@ -23,7 +24,7 @@ public class UndoCommandTest {
     private static final CommandHistory EMPTY_COMMAND_HISTORY = new CommandHistory();
     private static final UndoRedoStack EMPTY_STACK = new UndoRedoStack();
 
-    private final Model model = new ModelManager(getTypicalMoviePlanner(), new UserPrefs());
+    private final Model model = new ModelManager(getTypicalMoviePlanner(), new UserPrefs(), new EmailManager());
     private final DeleteCommand deleteCommandOne = new DeleteCommand(INDEX_FIRST_CINEMA);
     private final DeleteCommand deleteCommandTwo = new DeleteCommand(INDEX_FIRST_CINEMA);
 
@@ -43,12 +44,12 @@ public class UndoCommandTest {
         deleteCommandTwo.execute();
 
         // multiple commands in undoStack
-        Model expectedModel = new ModelManager(getTypicalMoviePlanner(), new UserPrefs());
+        Model expectedModel = new ModelManager(getTypicalMoviePlanner(), new UserPrefs(), new EmailManager());
         deleteFirstCinema(expectedModel);
         assertCommandSuccess(undoCommand, model, UndoCommand.MESSAGE_SUCCESS, expectedModel);
 
         // single command in undoStack
-        expectedModel = new ModelManager(getTypicalMoviePlanner(), new UserPrefs());
+        expectedModel = new ModelManager(getTypicalMoviePlanner(), new UserPrefs(), new EmailManager());
         assertCommandSuccess(undoCommand, model, UndoCommand.MESSAGE_SUCCESS, expectedModel);
 
         // no command in undoStack

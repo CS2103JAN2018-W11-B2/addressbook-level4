@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<TabPane fx:id="tabsPane" minWidth="400" prefWidth="400" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+  <tabs>
+    <Tab fx:id="cinemaListTab" text="Cinema List">
+      <content>
+        <VBox fx:id="cinemaList" minWidth="400" prefWidth="400">
+          <children>
+            <StackPane fx:id="cinemaListPanelPlaceholder" prefHeight="150.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+          </children>
+        </VBox>
+      </content>
+    </Tab>
+    <Tab fx:id="emailDraftTab" text="Email Draft">
+      <content>
+        <StackPane fx:id="messageDraftPanelPlaceholder" prefHeight="150.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+      </content>
+    </Tab>
+  </tabs>
+</TabPane>

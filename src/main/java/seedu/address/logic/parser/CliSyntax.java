@@ -18,4 +18,9 @@ public class CliSyntax {
     public static final Prefix PREFIX_CINEMA_INDEX = new Prefix("c/");
     public static final Prefix PREFIX_MOVIE_INDEX = new Prefix("m/");
     public static final Prefix PREFIX_SCREENING_DATE_TIME = new Prefix("h/");
+    public static final Prefix PREFIX_EMAIL_MESSAGE = new Prefix("msg/");
+    public static final Prefix PREFIX_EMAIL_SUBJECT = new Prefix("subj/");
+    public static final Prefix PREFIX_EMAIL_LOGIN = new Prefix("lgn/");
+    public static final Prefix PREFIX_EMAIL_FUNCTION = new Prefix("func/");
+    public static final Prefix PREFIX_EMAIL_RECIPIENT = new Prefix("recp/");
 }

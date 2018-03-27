@@ -2,6 +2,7 @@ package seedu.address.logic.commands;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
+
 import static seedu.address.logic.commands.CommandTestUtil.deleteFirstCinema;
 import static seedu.address.logic.commands.CommandTestUtil.showCinemaAtIndex;
 import static seedu.address.testutil.TypicalCinemas.getTypicalMoviePlanner;
@@ -9,6 +10,7 @@ import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_CINEMA;
 
 import org.junit.Test;
 
+import seedu.address.email.EmailManager;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
@@ -17,10 +19,10 @@ import seedu.address.model.cinema.Cinema;
 import seedu.address.model.cinema.exceptions.CinemaNotFoundException;
 
 public class UndoableCommandTest {
-    private final Model model = new ModelManager(getTypicalMoviePlanner(), new UserPrefs());
+    private final Model model = new ModelManager(getTypicalMoviePlanner(), new UserPrefs(), new EmailManager());
     private final DummyCommand dummyCommand = new DummyCommand(model);
 
-    private Model expectedModel = new ModelManager(getTypicalMoviePlanner(), new UserPrefs());
+    private Model expectedModel = new ModelManager(getTypicalMoviePlanner(), new UserPrefs(), new EmailManager());
 
     @Test
     public void executeUndo() throws Exception {
@@ -32,7 +34,7 @@ public class UndoableCommandTest {
 
         // undo() should cause the model's filtered list to show all cinemas
         dummyCommand.undo();
-        expectedModel = new ModelManager(getTypicalMoviePlanner(), new UserPrefs());
+        expectedModel = new ModelManager(getTypicalMoviePlanner(), new UserPrefs(), new EmailManager());
         assertEquals(expectedModel, model);
     }
 

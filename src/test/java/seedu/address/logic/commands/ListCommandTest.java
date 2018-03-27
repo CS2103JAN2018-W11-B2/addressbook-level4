@@ -8,6 +8,7 @@ import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_CINEMA;
 import org.junit.Before;
 import org.junit.Test;
 
+import seedu.address.email.EmailManager;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.UndoRedoStack;
 import seedu.address.model.Model;
@@ -25,8 +26,8 @@ public class ListCommandTest {
 
     @Before
     public void setUp() {
-        model = new ModelManager(getTypicalMoviePlanner(), new UserPrefs());
-        expectedModel = new ModelManager(model.getMoviePlanner(), new UserPrefs());
+        model = new ModelManager(getTypicalMoviePlanner(), new UserPrefs(), new EmailManager());
+        expectedModel = new ModelManager(model.getMoviePlanner(), new UserPrefs(), new EmailManager());
 
         listCommand = new ListCommand();
         listCommand.setData(model, new CommandHistory(), new UndoRedoStack());
