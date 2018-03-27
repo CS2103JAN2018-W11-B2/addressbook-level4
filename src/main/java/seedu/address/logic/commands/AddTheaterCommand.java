@@ -42,7 +42,7 @@ public class AddTheaterCommand extends UndoableCommand {
     private Cinema resizedCinema;
 
     /**
-     * @param index of the cinema in the filtered cinema list to edit
+     * @param index of the cinema in the filtered cinema list to resize
      * @param newTheaters to resize the cinema with
      */
     public AddTheaterCommand(Index index, int newTheaters) {
@@ -77,7 +77,7 @@ public class AddTheaterCommand extends UndoableCommand {
     }
 
     /**
-     * Creates and returns a {@code Cinema} with the details of {@code newTheaters}
+     * Creates and returns a {@code Cinema} with the details of existing cinema and user input
      */
     private Cinema createResizedCinema(Cinema cinemaToResize, int newTheaters) {
         assert cinemaToResize != null;

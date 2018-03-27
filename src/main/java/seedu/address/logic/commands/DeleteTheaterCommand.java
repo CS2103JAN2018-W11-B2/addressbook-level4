@@ -26,7 +26,8 @@ public class DeleteTheaterCommand extends UndoableCommand {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": delete theaters from cinema "
             + "by the index number used in the last cinema listing. "
-            + "Existing number of theaters will be added with input value.\n"
+            + "Existing number of theaters will be deducted by the input value.\n"
+            + "Value provided must be less than current number of theaters.\n"
             + "Parameters: INDEX (must be a positive integer) "
             + PREFIX_NUMOFTHEATERS + "THEATERS\n"
             + "Example: " + COMMAND_WORD + " 1 "
@@ -34,6 +35,7 @@ public class DeleteTheaterCommand extends UndoableCommand {
 
     public static final String MESSAGE_RESIZE_CINEMA_SUCCESS = "Resized Cinema: %1$s";
     public static final String MESSAGE_DUPLICATE_CINEMA = "This cinema already exists in the movie planner.";
+    public static final String MESSAGE_RESIZE_CINEMA_FAIL = "Cinema cannot have 0 or negative number of theaters";
 
     private final Index index;
     private final int newTheaters;
@@ -42,7 +44,7 @@ public class DeleteTheaterCommand extends UndoableCommand {
     private Cinema resizedCinema;
 
     /**
-     * @param index       of the cinema in the filtered cinema list to edit
+     * @param index       of the cinema in the filtered cinema list to resize
      * @param newTheaters to resize the cinema with
      */
     public DeleteTheaterCommand(Index index, int newTheaters) {
@@ -60,6 +62,7 @@ public class DeleteTheaterCommand extends UndoableCommand {
         } catch (CinemaNotFoundException cnfe) {
             throw new AssertionError("The target cinema cannot be missing");
         }
+
         model.updateFilteredCinemaList(PREDICATE_SHOW_ALL_CINEMAS);
         return new CommandResult(String.format(MESSAGE_RESIZE_CINEMA_SUCCESS, resizedCinema));
     }
@@ -77,12 +80,18 @@ public class DeleteTheaterCommand extends UndoableCommand {
     }
 
     /**
-     * Creates and returns a {@code Cinema} with the details of {@code newTheaters}
+     * Creates and returns a {@code Cinema} with the details of existing cinema and user input
      */
-    private Cinema createResizedCinema(Cinema cinemaToResize, int newTheaters) {
+    private Cinema createResizedCinema(Cinema cinemaToResize, int newTheaters) throws CommandException {
         assert cinemaToResize != null;
         int oldTheaterSize = cinemaToResize.getTheaters().size();
+
+        if (newTheaters >= oldTheaterSize) {
+            throw new CommandException(String.format(MESSAGE_RESIZE_CINEMA_FAIL, resizedCinema));
+        }
+
         ArrayList<Theater> updatedTheaterList = new ArrayList<>();
+
         for (Theater theaters : cinemaToResize.getTheaters()) {
             updatedTheaterList.add(theaters);
         }
