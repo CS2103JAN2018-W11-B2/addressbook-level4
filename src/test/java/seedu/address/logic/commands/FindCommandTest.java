@@ -15,6 +15,7 @@ import java.util.List;
 
 import org.junit.Test;
 
+import seedu.address.email.EmailManager;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.UndoRedoStack;
 import seedu.address.model.Model;
@@ -28,7 +29,7 @@ import seedu.address.model.cinema.NameContainsKeywordsPredicate;
  * Contains integration tests (interaction with the Model) for {@code FindCommand}.
  */
 public class FindCommandTest {
-    private Model model = new ModelManager(getTypicalMoviePlanner(), new UserPrefs());
+    private Model model = new ModelManager(getTypicalMoviePlanner(), new UserPrefs(), new EmailManager());
 
     @Test
     public void equals() {

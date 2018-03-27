@@ -11,6 +11,7 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.exceptions.DataConversionException;
 import seedu.address.commons.util.FileUtil;
 import seedu.address.commons.util.XmlUtil;
+import seedu.address.email.EmailManager;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.MoviePlanner;
@@ -94,7 +95,7 @@ public class TestApp extends MainApp {
      * Returns a defensive copy of the model.
      */
     public Model getModel() {
-        Model copy = new ModelManager((model.getMoviePlanner()), new UserPrefs());
+        Model copy = new ModelManager((model.getMoviePlanner()), new UserPrefs(), new EmailManager());
         ModelHelper.setFilteredList(copy, model.getFilteredCinemaList());
         return copy;
     }

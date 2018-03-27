@@ -280,7 +280,7 @@ Number of theater must be positive
 
 Keyword appearance on Command Line: [black-background red]`deletetheater`
 
-=== Editing a cinema : `edit` | `e`
+=== Editing a cinema: `edit` | `e`
 
 Alias: `e`
 
@@ -326,6 +326,37 @@ Edits the duration and rating of the 1st movie to be `90` and `M18` respectively
 Edits the name of the 2nd movie to be `Spiderman 2`.
 
 Keyword appearance on Command Line: [black-background]`editmovie`
+
+=== Email schedule: `email` | `eml`
+
+Alias: `eml`
+
+Sends an email to target recipient. +
+Format: `email [msg/MESSAGE] [subj/SUBJECT] [recp/RECIPIENT] [func/<send|clear>] [lgn/user@gmail.com:PASSWORD]`
+
+[NOTE]
+====
+* Ensure that the message `msg`, subject `subj`, and recipient `recp` fields are filled before sending out email.
+* Ensure that in the `lgn` parameter, you provide the actual Gmail account that you use.
+* Individual parameters (e.g. `msg`) can be edited indepedent of other parameters.
+* Ensure that *"Allow less secure apps"* setting is enabled for the Gmail account.
+** Navigate to your Gmail account -> My Account -> Sign-in & Security -> Allow less secure apps: OFF
+** Toggle it to active "Allow less secure apps: ON"
+====
+
+Examples:
+
+* `email msg/Hi Bob, Here is the schedule. subj/Schedule lgn/cmanager@gmail.com:1I2h@la recp/gv.manager@gmail.com func/send` +
+Sends out an email to `gv.manager@gmail.com` with a message of the following details:
+
+** Recipient: `gv.manager@gmail.com`
+** Subject: `Schedule`
+** Message: `Hi Bob, Here is the schedule.`
+
+* `eml msg/This will be a very long message, so I hope that you are attentive when you read this.` +
+Edits the email message with `This will be a very long message, so I hope that you are attentive when you read this.`
+
+Keyword appearance on Command Line: [black-background]`email`
 
 === Finding cinemas by name: `find` | `f`
 

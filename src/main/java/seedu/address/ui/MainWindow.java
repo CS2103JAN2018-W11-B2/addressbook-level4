@@ -37,6 +37,8 @@ public class MainWindow extends UiPart<Stage> {
 
     private static final String FXML = "MainWindow.fxml";
 
+    private static final int TOGGLE_TO_NEXT_TAB = -1;
+
     private final Logger logger = LogsCenter.getLogger(this.getClass());
 
     private Stage primaryStage;
@@ -45,8 +47,8 @@ public class MainWindow extends UiPart<Stage> {
 
     // Independent Ui parts residing in this Ui container
     private BrowserPanel browserPanel;
-    private CinemaListPanel cinemaListPanel;
     private MovieListPanel movieListPanel;
+    private TabsPanel tabsPanel;
     private Config config;
     private UserPrefs prefs;
 
@@ -70,6 +72,12 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private MenuItem listMenuItem;
+
+    @FXML
+    private MenuItem toggleTabMenuItem;
+
+    @FXML
+    private StackPane tabsPanelPlaceholder;
 
     @FXML
     private StackPane cinemaListPanelPlaceholder;
@@ -110,6 +118,7 @@ public class MainWindow extends UiPart<Stage> {
         setAccelerator(redoMenuItem, KeyCombination.valueOf("Shortcut + Y"));
         setAccelerator(clearMenuItem, KeyCombination.valueOf("Alt + Shift + C"));
         setAccelerator(listMenuItem, KeyCombination.valueOf("Shortcut + L"));
+        setAccelerator(toggleTabMenuItem, KeyCombination.valueOf("Shift + Tab"));
     }
 
     /**
@@ -149,8 +158,8 @@ public class MainWindow extends UiPart<Stage> {
         browserPanel = new BrowserPanel();
         browserPlaceholder.getChildren().add(browserPanel.getRoot());
 
-        cinemaListPanel = new CinemaListPanel(logic.getFilteredCinemaList());
-        cinemaListPanelPlaceholder.getChildren().add(cinemaListPanel.getRoot());
+        tabsPanel = new TabsPanel(logic.getFilteredCinemaList());
+        tabsPanelPlaceholder.getChildren().add(tabsPanel.getRoot());
 
         movieListPanel = new MovieListPanel(logic.getFilteredMovieList());
         movieListPanelPlaceholder.getChildren().add(movieListPanel.getRoot());
@@ -284,6 +293,14 @@ public class MainWindow extends UiPart<Stage> {
         }
     }
 
+    /**
+     * Toggle to next tab in Main Window.
+     */
+    @FXML
+    public void handleToggleNextTab() {
+        tabsPanel.toggleTabs(TOGGLE_TO_NEXT_TAB);
+    }
+
     void show() {
         primaryStage.show();
     }
@@ -294,10 +311,6 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     private void handleExit() {
         raise(new ExitAppRequestEvent());
-    }
-
-    public CinemaListPanel getCinemaListPanel() {
-        return this.cinemaListPanel;
     }
 
     void releaseResources() {

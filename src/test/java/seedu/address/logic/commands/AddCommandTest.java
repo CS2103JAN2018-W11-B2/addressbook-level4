@@ -10,11 +10,18 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.function.Predicate;
 
+import javax.mail.AuthenticationFailedException;
+
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import javafx.collections.ObservableList;
+import seedu.address.email.Email;
+import seedu.address.email.exceptions.EmailLoginInvalidException;
+import seedu.address.email.exceptions.EmailMessageEmptyException;
+import seedu.address.email.exceptions.EmailRecipientsEmptyException;
+import seedu.address.email.message.MessageDraft;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.UndoRedoStack;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -175,6 +182,39 @@ public class AddCommandTest {
 
         @Override
         public void addScreening(Screening screening, Theater theater) {
+            fail("This method should not be called.");
+        }
+
+        @Override
+        public Email getEmailManager() {
+            fail("This method should not be called.");
+            return null;
+        }
+
+        @Override
+        public void sendEmail(MessageDraft message) throws EmailLoginInvalidException, EmailMessageEmptyException,
+                EmailRecipientsEmptyException, AuthenticationFailedException {
+            fail("This method should not be called.");
+        }
+
+        @Override
+        public void loginEmailAccount(String [] loginDetails) throws EmailLoginInvalidException {
+            fail("This method should not be called.");
+        }
+
+        @Override
+        public String getEmailStatus() {
+            fail("This method should not be called.");
+            return null;
+        }
+
+        @Override
+        public void clearEmailDraft() {
+            fail("This method should not be called.");
+        }
+
+        @Override
+        public void draftEmail(MessageDraft message) {
             fail("This method should not be called.");
         }
     }

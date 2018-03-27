@@ -7,6 +7,7 @@ import static seedu.address.testutil.TypicalCinemas.getTypicalMoviePlanner;
 import org.junit.Before;
 import org.junit.Test;
 
+import seedu.address.email.EmailManager;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.UndoRedoStack;
 import seedu.address.model.Model;
@@ -24,14 +25,14 @@ public class AddCommandIntegrationTest {
 
     @Before
     public void setUp() {
-        model = new ModelManager(getTypicalMoviePlanner(), new UserPrefs());
+        model = new ModelManager(getTypicalMoviePlanner(), new UserPrefs(), new EmailManager());
     }
 
     @Test
     public void execute_newCinema_success() throws Exception {
         Cinema validCinema = new CinemaBuilder().build();
 
-        Model expectedModel = new ModelManager(model.getMoviePlanner(), new UserPrefs());
+        Model expectedModel = new ModelManager(model.getMoviePlanner(), new UserPrefs(), new EmailManager());
         expectedModel.addCinema(validCinema);
 
         assertCommandSuccess(prepareCommand(validCinema, model), model,

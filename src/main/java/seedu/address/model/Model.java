@@ -2,7 +2,14 @@ package seedu.address.model;
 
 import java.util.function.Predicate;
 
+import javax.mail.AuthenticationFailedException;
+
 import javafx.collections.ObservableList;
+import seedu.address.email.Email;
+import seedu.address.email.exceptions.EmailLoginInvalidException;
+import seedu.address.email.exceptions.EmailMessageEmptyException;
+import seedu.address.email.exceptions.EmailRecipientsEmptyException;
+import seedu.address.email.message.MessageDraft;
 import seedu.address.model.cinema.Cinema;
 import seedu.address.model.cinema.Theater;
 import seedu.address.model.cinema.exceptions.CinemaNotFoundException;
@@ -28,8 +35,11 @@ public interface Model {
     /** Returns the MoviePlanner */
     ReadOnlyMoviePlanner getMoviePlanner();
 
-    /**Cinema Section */
+    /** Returns the email Manager Component */
+    Email getEmailManager();
 
+    /**Cinema Section */
+  
     /** Deletes the given cinema. */
     void deleteCinema(Cinema target) throws CinemaNotFoundException;
 
@@ -89,5 +99,32 @@ public interface Model {
 
     /** Adds the given screening to a theater */
     void addScreening(Screening screening, Theater theater);
+
+    /**
+     * Sends email based on input recipient
+     *
+     * @throws EmailLoginInvalidException if login details is empty
+     * @throws EmailMessageEmptyException if message is empty
+     * @throws EmailRecipientsEmptyException if recipients list is empty
+     * @throws AuthenticationFailedException if gmail account can't be logged in
+     */
+    void sendEmail(MessageDraft message) throws EmailLoginInvalidException, EmailMessageEmptyException,
+            EmailRecipientsEmptyException, AuthenticationFailedException;
+
+    /**
+     * Sets login credentials for sending emails
+     *
+     * @throws EmailLoginInvalidException if login details is invalid
+     */
+    void loginEmailAccount(String [] loginDetails) throws EmailLoginInvalidException;
+
+    /** Returns Email Sent status **/
+    String getEmailStatus();
+
+    /** Clears Email Draft Content **/
+    void clearEmailDraft();
+
+    /** Updates Email draft with given message **/
+    void draftEmail(MessageDraft message);
 
 }

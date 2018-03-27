@@ -14,6 +14,7 @@ import java.util.Collections;
 import org.junit.Before;
 import org.junit.Test;
 
+import seedu.address.email.EmailManager;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.UndoRedoStack;
 import seedu.address.model.Model;
@@ -24,7 +25,7 @@ public class RedoCommandTest {
     private static final CommandHistory EMPTY_COMMAND_HISTORY = new CommandHistory();
     private static final UndoRedoStack EMPTY_STACK = new UndoRedoStack();
 
-    private final Model model = new ModelManager(getTypicalMoviePlanner(), new UserPrefs());
+    private final Model model = new ModelManager(getTypicalMoviePlanner(), new UserPrefs(), new EmailManager());
     private final DeleteCommand deleteCommandOne = new DeleteCommand(INDEX_FIRST_CINEMA);
     private final DeleteCommand deleteCommandTwo = new DeleteCommand(INDEX_SECOND_CINEMA);
 
@@ -42,7 +43,7 @@ public class RedoCommandTest {
                 Collections.emptyList(), Arrays.asList(deleteCommandTwo, deleteCommandOne));
         RedoCommand redoCommand = new RedoCommand();
         redoCommand.setData(model, EMPTY_COMMAND_HISTORY, undoRedoStack);
-        Model expectedModel = new ModelManager(getTypicalMoviePlanner(), new UserPrefs());
+        Model expectedModel = new ModelManager(getTypicalMoviePlanner(), new UserPrefs(), new EmailManager());
 
         // multiple commands in redoStack
         deleteFirstCinema(expectedModel);

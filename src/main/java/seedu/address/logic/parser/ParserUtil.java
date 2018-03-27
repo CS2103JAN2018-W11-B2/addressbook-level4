@@ -327,4 +327,40 @@ public class ParserUtil {
         }
         return screeningDateTime;
     }
+
+    /**
+     * Parses a {@code Optional<String> emailMessage} into an {@code String}
+     * See header comment of this class regarding the use of {@code Optional} parameters.
+     */
+    public static String parseEmailMessage(Optional<String> emailMessage) throws IllegalValueException {
+        requireNonNull(emailMessage);
+        return emailMessage.isPresent() ? emailMessage.get() : "";
+    }
+
+    /**
+     * Parses a {@code Optional<String> emailSubject} into an {@code String}
+     * See header comment of this class regarding the use of {@code Optional} parameters.
+     */
+    public static String parseEmailSubject(Optional<String> emailSubject) throws IllegalValueException {
+        requireNonNull(emailSubject);
+        return emailSubject.isPresent() ? emailSubject.get() : "";
+    }
+
+    /**
+     * Parses a {@code Optional<String> emailLoginDetails} into an {@code String}
+     * See header comment of this class regarding the use of {@code Optional} parameters.
+     */
+    public static String parseEmailLoginDetails(Optional<String> emailLoginDetails) throws IllegalValueException {
+        requireNonNull(emailLoginDetails);
+        return emailLoginDetails.isPresent() ? emailLoginDetails.get() : "";
+    }
+
+    /**
+     * Parses a {@code Optional<String> emailTask} into an {@code String}
+     * See header comment of this class regarding the use of {@code Optional} parameters.
+     */
+    public static String parseEmailTask(Optional<String> emailTask) throws IllegalValueException {
+        requireNonNull(emailTask);
+        return emailTask.isPresent() ? emailTask.get() : "";
+    }
 }

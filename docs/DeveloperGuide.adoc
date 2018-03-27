@@ -440,6 +440,117 @@ We are using `java.util.logging` package for logging. The `LogsCenter` class is 
 
 Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: `config.json`).
 
+=== Email feature
+
+The email feature is facilitated by the `Email` component. It supports the sending of email through an external library `JavaMail`.
+
+*Current Implementation*
+
+MVP uses the email command to send an email. The following activity diagram displays the series of events that occurs when a user enters the email
+command.
+
+.Activity Diagram of Email feature
+image::EmailActivityDiagram.png[width="800"]
+
+The email feature is constructed by 3 classes, `EmailLogin`, `EmailCompose`, `EmailSend`, which is handled by the `EmailManager`. More
+details about the classes are as provided:
+
+* `EmailLogin`: Handles the storage of login information and verifies whether the user is using a Gmail account to access
+the email feature.
+* `EmailCompose`: Handles the email composing and drafting using a `MessageDraft` object to store email information such
+as message, subject and recipient email.
+* `EmailSend`: Handles the sending of email by setting up a SMTP connection through the JavaMail API. The email cannot be sent if
+the following criteria are not met:
+ ** the`MessageDraft` object in `EmailCompose` is empty or,
+ ** the login details in `EmailLogin` is not valid.
+
+The following sequence diagram shows how each component interacts when the email command is entered by the user.
+
+.Sequence Diagram of Email feature
+image::EmailUMLDiagram.png[width="800"]
+
+The following sequence diagram shows how each component within the `EmailManager` interacts when the email command
+is entered by the user.
+
+.Sequence Diagram of Email feature
+image::EmailSendUMLDiagram.png[width="800"]
+
+The following diagram shows how the email draft tab in the MVP UI is updated when the `EventCenter` responds to the
+`EmailDraftChangedEvent`.
+
+.Sequence Diagram of Email feature
+image::EmailEventsDiagram.png[width="800"]
+
+*Implementation of JavaMail API*
+
+The `Email` component uses the external library `JavaMail` to handle sending out of email from MVP. The following
+code snippet below shows the set up (via SMTP) for sending out email.
+
+[source,java]
+----
+/**
+ * Sets up the default email properties
+ */
+private void setUpEmailProperties() {
+    props = new Properties();
+    props.put("mail.smtp.auth", "true");
+    props.put("mail.smtp.host", "smtp.gmail.com");
+    props.put("mail.smtp.socketFactory.port", "465");
+    props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+    props.put("mail.smtp.port", "465");
+}
+
+/**
+ * Sends email out using JavaMail API
+ *
+ * @param login email login account
+ * @param pass email login password
+ * @param message message to send
+ * @throws AuthenticationFailedException if gmail account can't be logged in
+ */
+ private void sendingEmail(String login, String pass, ReadOnlyMessageDraft message)
+        throws AuthenticationFailedException {
+    final String username = login;
+    final String password = pass;
+
+    Session session = Session.getInstance(props, new javax.mail.Authenticator() {
+        @Override
+        protected PasswordAuthentication getPasswordAuthentication() {
+            return new PasswordAuthentication(username, password);
+        }
+    });
+
+    try {
+        Message newMessage = new MimeMessage(session);
+        newMessage.setFrom(new InternetAddress(username));
+        InternetAddress recipientEmail = new InternetAddress(message.getRecipient());
+        newMessage.setRecipient(Message.RecipientType.TO, recipientEmail);
+        newMessage.setSubject(message.getSubject());
+        newMessage.setText(message.getMessage());
+
+        Transport.send(newMessage);
+    } catch (AuthenticationFailedException e) {
+        throw new AuthenticationFailedException();
+    } catch (MessagingException e) {
+        throw new RuntimeException(e);
+    }
+}
+----
+
+*Design Considerations*
+
+*Aspect:* Implementation of email feature
+
+*Alternative 1 (current choice):* Adopt JavaMail API
+
+* *Pros:* The email feature will be integrated within the MVP application.
+* *Cons:* The email is less secured.
+
+*Alternative 2:* Link users to other email platforms
+
+* *Pros:* Users will have more options in editing email information.
+* *Cons:* The email feature will not be integrated within the MVP application.
+
 <<DeveloperGuide.adoc#, Back to top>>
 
 [[Implementation-FindMovie]]
