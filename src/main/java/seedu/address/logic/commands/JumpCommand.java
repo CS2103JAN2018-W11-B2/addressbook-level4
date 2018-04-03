@@ -3,6 +3,7 @@ package seedu.address.logic.commands;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+import seedu.address.commons.core.EventsCenter;
 import seedu.address.commons.events.ui.JumpToDateRequestEvent;
 import seedu.address.logic.parser.JumpCommandParser;
 
@@ -30,8 +31,8 @@ public class JumpCommand extends Command {
 
     @Override
     public CommandResult execute() {
-        raise(new JumpToDateRequestEvent(date));
         String dateToJump = date.format(DateTimeFormatter.ofPattern(JumpCommandParser.DATE_FORMAT));
+        EventsCenter.getInstance().post(new JumpToDateRequestEvent(date));
         return new CommandResult(MESSAGE_JUMP + dateToJump + MESSAGE_WARNING);
     }
 }

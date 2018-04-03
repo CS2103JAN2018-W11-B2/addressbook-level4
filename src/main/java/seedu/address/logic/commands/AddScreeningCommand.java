@@ -13,8 +13,10 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+import seedu.address.commons.core.EventsCenter;
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
+import seedu.address.commons.events.ui.ReloadBrowserPanelEvent;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.cinema.Cinema;
 import seedu.address.model.cinema.Theater;
@@ -87,6 +89,7 @@ public class AddScreeningCommand extends UndoableCommand {
 
         try {
             model.updateCinema(cinema, updatedCinema);
+            EventsCenter.getInstance().post(new ReloadBrowserPanelEvent(updatedCinema, toAddScreeningEndDateTime));
         } catch (DuplicateCinemaException dce) {
             throw new CommandException(AddCommand.MESSAGE_DUPLICATE_CINEMA);
         } catch (CinemaNotFoundException cnfe) {

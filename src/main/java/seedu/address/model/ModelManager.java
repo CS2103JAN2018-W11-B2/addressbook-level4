@@ -15,6 +15,7 @@ import seedu.address.commons.core.ComponentManager;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.events.model.MoviePlannerChangedEvent;
 import seedu.address.commons.events.ui.EmailDraftChangedEvent;
+import seedu.address.commons.events.ui.ReloadBrowserPanelEvent;
 import seedu.address.email.Email;
 import seedu.address.email.EmailManager;
 import seedu.address.email.exceptions.EmailLoginInvalidException;
@@ -65,6 +66,7 @@ public class ModelManager extends ComponentManager implements Model {
     public void resetData(ReadOnlyMoviePlanner newData) {
         moviePlanner.resetData(newData);
         indicateMoviePlannerChanged();
+        raise(new ReloadBrowserPanelEvent(moviePlanner));
     }
 
     @Override

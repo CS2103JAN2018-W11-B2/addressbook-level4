@@ -308,11 +308,15 @@ public class ParserUtil {
     public static int parseTheaterNumber(String theater) throws IllegalValueException {
         requireNonNull(theater);
         String trimmedTheaterNumber = theater.trim();
-        int theaterNumber = Integer.parseInt(trimmedTheaterNumber);
-        if (theaterNumber <= 0) {
+        try {
+            int theaterNumber = Integer.parseInt(trimmedTheaterNumber);
+            if (theaterNumber <= 0) {
+                throw new IllegalValueException(Theater.MESSAGE_THEATER_CONSTRAINTS);
+            }
+            return theaterNumber;
+        } catch (NumberFormatException nfe) {
             throw new IllegalValueException(Theater.MESSAGE_THEATER_CONSTRAINTS);
         }
-        return theaterNumber;
     }
 
     /**

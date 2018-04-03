@@ -12,6 +12,7 @@ import com.calendarfx.view.DateControl;
 import com.calendarfx.view.DetailedDayView;
 import com.google.common.eventbus.Subscribe;
 
+import javafx.collections.ObservableList;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
@@ -24,9 +25,9 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 
 import seedu.address.commons.core.LogsCenter;
-import seedu.address.commons.events.model.MoviePlannerChangedEvent;
 import seedu.address.commons.events.ui.CinemaPanelSelectionChangedEvent;
 import seedu.address.commons.events.ui.JumpToDateRequestEvent;
+import seedu.address.commons.events.ui.ReloadBrowserPanelEvent;
 import seedu.address.model.cinema.Cinema;
 import seedu.address.model.cinema.Theater;
 import seedu.address.model.screening.Screening;
@@ -38,6 +39,8 @@ public class BrowserPanel extends UiPart<Region> {
 
     private static final String FXML = "BrowserPanel.fxml";
     private static final String DATE_FORMAT = "dd/MM/uu";
+    private static final String TIME_FORMAT = "HH:mm";
+    private static final String SCREENING_DISPLAY_FORMAT = "%s\n%s - %s";
 
     private final Logger logger = LogsCenter.getLogger(this.getClass());
 
@@ -46,7 +49,7 @@ public class BrowserPanel extends UiPart<Region> {
     @FXML
     private Label date;
 
-    private CinemaCard currentSelection = null;
+    private Cinema currentCinema = null;
     private LocalDate currentDate = null;
 
     public BrowserPanel() {
@@ -81,7 +84,10 @@ public class BrowserPanel extends UiPart<Region> {
             // add entry
             for (Screening s : screeningList) {
                 Entry<String> movieScreening = new Entry<>(s.getMovieName());
+                String startTime = s.getScreeningDateTime().format(DateTimeFormatter.ofPattern(TIME_FORMAT));
+                String endTime = s.getScreeningEndDateTime().format(DateTimeFormatter.ofPattern(TIME_FORMAT));
                 movieScreening.setInterval(s.getScreeningDateTime(), s.getScreeningEndDateTime());
+                movieScreening.setTitle(String.format(SCREENING_DISPLAY_FORMAT, s.getMovieName(), startTime, endTime));
                 c.addEntry(movieScreening);
             }
             count++;
@@ -91,7 +97,6 @@ public class BrowserPanel extends UiPart<Region> {
         browserPane.getChildren().add(detailedDayView);
         browserPane.getChildren().add(date);
     }
-
 
     /**
      * Sets the color style for the provided calendar
@@ -140,31 +145,64 @@ public class BrowserPanel extends UiPart<Region> {
                 CornerRadii.EMPTY, Insets.EMPTY)));
     }
 
+    /**
+     * Checks if a cinema exist in a given list of cinemas
+     */
+    private boolean hasCinema(ObservableList<Cinema> cinemas) {
+        for (Cinema c : cinemas) {
+            if (c.getName().equals(currentCinema.getName())) {
+                currentCinema = c;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Handles CinemaPanelSelectionChangedEvent
+     * Reloads the schedule of newly selected cinema
+     */
     @Subscribe
     private void handleCinemaPanelSelectionChangedEvent(CinemaPanelSelectionChangedEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
         browserPane.getChildren().clear();
-        currentSelection = event.getNewSelection();
         currentDate = LocalDate.now();
-        loadCinemaSchedule(currentSelection.cinema, currentDate);
+        currentCinema = event.getNewSelection().cinema;
+        loadCinemaSchedule(currentCinema, currentDate);
     }
 
+    /**
+     * Reloads the schedule of the cinema provided
+     */
     @Subscribe
-    private void handleMoviePlannerChangedEvent(MoviePlannerChangedEvent event) {
+    private void handleReloadBrowserPanelEvent(ReloadBrowserPanelEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event, "Local data changed, refreshing browser view"));
         browserPane.getChildren().clear();
-        loadCinemaSchedule(currentSelection.cinema, currentDate);
+
+        if (event.getMoviePlanner() != null) { // handling undo, redo, clear all
+            if (hasCinema(event.getMoviePlanner().getCinemaList())) {
+                loadCinemaSchedule(currentCinema, currentDate);
+            }
+        } else { // handling new screening
+            currentCinema = event.getCinema();
+            currentDate = event.getDate().toLocalDate();
+            loadCinemaSchedule(currentCinema, currentDate);
+        }
     }
 
+    /**
+     * Handles JumpToDateRequestEvent
+     * Jumps to specified date in the scheduler
+     */
     @Subscribe
     private void handleJumpCommandEvent(JumpToDateRequestEvent event) {
         try {
             logger.info(LogsCenter.getEventHandlingLogMessage(event, "Jumping to date: " + event.getDate()));
-            browserPane.getChildren().clear();
             currentDate = event.getDate();
-            loadCinemaSchedule(currentSelection.cinema, currentDate);
+            browserPane.getChildren().clear();
+            loadCinemaSchedule(currentCinema, currentDate);
         } catch (NullPointerException npe) {
-            logger.warning(LogsCenter.getEventHandlingLogMessage(event, "Null cinema card."));
+            logger.severe(LogsCenter.getEventHandlingLogMessage(event, "Null cinema card."));
         }
     }
 }
