@@ -522,19 +522,19 @@ the following criteria are not met:
 The following sequence diagram shows how each component interacts when the email command is entered by the user.
 
 .Sequence Diagram of Email feature
-image::EmailUMLDiagram.png[width="800"]
+image::EmailUMLDiagram.PNG[width="800"]
 
 The following sequence diagram shows how each component within the `EmailManager` interacts when the email command
 is entered by the user.
 
 .Sequence Diagram of Email feature
-image::EmailSendUMLDiagram.png[width="800"]
+image::EmailSendUMLDiagram.PNG[width="800"]
 
 The following diagram shows how the email draft tab in the MVP UI is updated when the `EventCenter` responds to the
 `EmailDraftChangedEvent`.
 
 .Sequence Diagram of Email feature
-image::EmailEventsDiagram.png[width="800"]
+image::EmailEventsDiagram.PNG[width="800"]
 
 *Implementation of JavaMail API*
 
