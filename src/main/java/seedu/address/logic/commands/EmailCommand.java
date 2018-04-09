@@ -3,8 +3,6 @@ package seedu.address.logic.commands;
 import static java.util.Objects.requireNonNull;
 
 import javax.mail.AuthenticationFailedException;
-import javax.mail.internet.AddressException;
-import javax.mail.internet.InternetAddress;
 
 import seedu.address.email.EmailFunction;
 import seedu.address.email.exceptions.EmailLoginInvalidException;
@@ -33,8 +31,8 @@ public class EmailCommand extends Command {
     public static final String MESSAGE_SUCCESS = "Email have been %1$s";
     public static final String MESSAGE_LOGIN_INVALID = "You must be logged in with a Gmail account to send an email.\n"
             + "Command: email lgn/<username@gmail.com>:<password>";
-    public static final String MESSAGE_EMPTY_INVALID = "Your message, subject and recipient fields must not be empty when "
-            + "sending an email.\n"
+    public static final String MESSAGE_EMPTY_INVALID = "Your message, subject and recipient fields must not "
+            + "be empty when sending an email.\n"
             + "Command: email msg/messages subj/subject recp/example@gmail.com";
     public static final String MESSAGE_RECIPIENT_INVALID = "You must have 1 recipient to send the email to.";
     public static final String MESSAGE_AUTHENTICATION_FAIL = "MVP is unable to log in to your gmail account. Please "
@@ -97,22 +95,6 @@ public class EmailCommand extends Command {
         } catch (RuntimeException e) {
             throw new CommandException(MESSAGE_FAIL_UNKNOWN);
         }
-    }
-
-    /**
-     * Extracts Email from input recipient {@code recipient} into an InternetAddresss[] for sending email
-     *
-     * @param: recipient
-     * @return: list of internet email address
-     */
-    public InternetAddress[] extractEmailFromContacts(String recipient) throws AddressException {
-        InternetAddress[] recipientsEmail = new InternetAddress[1];
-        try {
-            recipientsEmail[0] = new InternetAddress(recipient);
-        } catch (AddressException e) {
-            throw new AddressException();
-        }
-        return recipientsEmail;
     }
 
     @Override

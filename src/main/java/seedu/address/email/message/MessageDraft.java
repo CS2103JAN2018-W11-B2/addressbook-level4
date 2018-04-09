@@ -15,7 +15,7 @@ public class MessageDraft implements ReadOnlyMessageDraft {
         message = "";
         subject = "";
         recipient = "";
-        relativeFilePath= "";
+        relativeFilePath = "";
     }
 
     public MessageDraft(String message, String subject, String recipient) {

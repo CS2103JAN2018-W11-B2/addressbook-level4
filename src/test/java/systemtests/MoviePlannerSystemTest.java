@@ -1,6 +1,5 @@
 package systemtests;
 
-import guitests.guihandles.EmailMessagePanelHandle;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -97,8 +96,6 @@ public abstract class MoviePlannerSystemTest {
     public CinemaListPanelHandle getCinemaListPanel() {
         return mainWindowHandle.getCinemaListPanel();
     }
-
-    public EmailMessagePanelHandle getEmailMessagePanel() { return mainWindowHandle.getEmailMessagePanel(); }
 
     public MovieListPanelHandle getMovieListPanel() {
         return mainWindowHandle.getMovieListPanel();

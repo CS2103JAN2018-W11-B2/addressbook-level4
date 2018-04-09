@@ -28,7 +28,7 @@ public class DraftList {
             newMessage.setRecipients(message.getRecipient());
         }
         if (newMessage.getRelativeFilePath().isEmpty()) {
-                newMessage.setRelativeFilePath(message.getRelativeFilePath());
+            newMessage.setRelativeFilePath(message.getRelativeFilePath());
         }
         messages[0] = newMessage;
     }
