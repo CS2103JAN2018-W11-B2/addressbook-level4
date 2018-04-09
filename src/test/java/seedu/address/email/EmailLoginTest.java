@@ -21,7 +21,9 @@ public class EmailLoginTest {
     private EmailLogin emailLogin;
 
     @Before
-    public void setUp() { emailLogin = new EmailLogin(); }
+    public void setUp() {
+        emailLogin = new EmailLogin();
+    }
 
     @Test
     public void validAccountLogin() throws EmailLoginInvalidException {

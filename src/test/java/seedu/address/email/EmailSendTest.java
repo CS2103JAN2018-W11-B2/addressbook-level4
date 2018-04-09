@@ -19,7 +19,9 @@ public class EmailSendTest {
     private EmailSend emailSend;
 
     @Before
-    public void setUp() { emailSend = new EmailSend(); }
+    public void setUp() {
+        emailSend = new EmailSend();
+    }
 
     @Test
     public void sendEmail() throws AuthenticationFailedException {

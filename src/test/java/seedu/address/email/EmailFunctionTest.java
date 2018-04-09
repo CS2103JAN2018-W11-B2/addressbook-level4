@@ -15,7 +15,9 @@ public class EmailFunctionTest {
     private EmailFunction emailFunction;
 
     @Before
-    public void setUp() { emailFunction = new EmailFunction(); }
+    public void setUp() {
+        emailFunction = new EmailFunction();
+    }
 
     @Test
     public void valid() {

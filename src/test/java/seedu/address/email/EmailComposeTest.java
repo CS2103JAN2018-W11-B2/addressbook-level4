@@ -13,7 +13,9 @@ public class EmailComposeTest {
     private EmailCompose emailCompose;
 
     @Before
-    public void setUp() { emailCompose = new EmailCompose(); }
+    public void setUp() {
+        emailCompose = new EmailCompose();
+    }
 
     @Test
     public void composeEmail() {
