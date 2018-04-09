@@ -2,6 +2,8 @@
 ###### \EditMovieCommand.java
 ``` java
 /**
+ * This is not used because editing the duration might mess up the screening timings
+ * for those that are already added to the theaters.
  * Edits the details of an existing movie in the movie planner.
  */
 public class EditMovieCommand extends UndoableCommand {
@@ -216,6 +218,8 @@ public class EditMovieCommand extends UndoableCommand {
 ###### \EditMovieCommandParser.java
 ``` java
 /**
+ * This is not used because editing the duration might mess up the screening timings
+ * for those that are already added to the theaters.
  * Parses input arguments and creates a new EditMovieCommand object
  */
 public class EditMovieCommandParser implements Parser<EditMovieCommand> {
@@ -277,6 +281,9 @@ public class EditMovieCommandParser implements Parser<EditMovieCommand> {
 ```
 ###### \EditMovieCommandParserTest.java
 ``` java
+/**
+ * This is a test for EditMovie
+ */
 public class EditMovieCommandParserTest {
 
     private static final String TAG_EMPTY = " " + PREFIX_TAG;
@@ -445,6 +452,7 @@ public class EditMovieCommandParserTest {
 ###### \EditMovieDescriptorBuilder.java
 ``` java
 /**
+ * This is not used as this is for building the test for EditMovie
  * A utility class to help with building EditMovieDescriptor objects.
  */
 public class EditMovieDescriptorBuilder {

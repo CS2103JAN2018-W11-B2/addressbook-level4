@@ -69,7 +69,6 @@ public class Screening {
 
         Screening otherScreening = (Screening) other;
         return otherScreening.getMovieName().equals(this.getMovieName())
-                && otherScreening.getTheater().equals(this.getTheater())
                 && otherScreening.getScreeningDateTime().equals(this.getScreeningDateTime())
                 && otherScreening.getScreeningEndDateTime().equals(this.getScreeningEndDateTime());
     }

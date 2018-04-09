@@ -30,6 +30,8 @@ import seedu.address.model.movie.exceptions.MovieNotFoundException;
 import seedu.address.model.tag.Tag;
 //@@author slothhy-unused
 /**
+ * This is not used because editing the duration might mess up the screening timings
+ * for those that are already added to the theaters.
  * Edits the details of an existing movie in the movie planner.
  */
 public class EditMovieCommand extends UndoableCommand {

@@ -94,8 +94,7 @@ public class Theater {
         }
 
         Theater otherTheater = (Theater) other;
-        return otherTheater.getTheaterNumber() == this.getTheaterNumber()
-                && otherTheater.getScreeningList().equals(this.getScreeningList());
+        return otherTheater.getTheaterNumber() == this.getTheaterNumber();
     }
 
     @Override

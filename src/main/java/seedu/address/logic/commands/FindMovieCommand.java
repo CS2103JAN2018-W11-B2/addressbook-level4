@@ -31,7 +31,7 @@ public class FindMovieCommand extends Command {
             + "[" + PREFIX_STARTDATE + "STARTDATE] "
             + "[" + PREFIX_TAG + "TAG] "
             + "Example: " + COMMAND_WORD + " "
-            + PREFIX_NAME + " avenger horror nemo "
+            + PREFIX_NAME + "avenger horror nemo "
             + PREFIX_STARTDATE + "20/10/2015 "
             + PREFIX_TAG + "superhero";
 

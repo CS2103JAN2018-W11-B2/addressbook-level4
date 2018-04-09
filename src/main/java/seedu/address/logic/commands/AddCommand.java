@@ -6,7 +6,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NUMOFTHEATERS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
 import seedu.address.logic.commands.exceptions.CommandException;
 
@@ -27,7 +26,6 @@ public class AddCommand extends UndoableCommand {
             + PREFIX_PHONE + "PHONE "
             + PREFIX_EMAIL + "EMAIL "
             + PREFIX_ADDRESS + "ADDRESS "
-            + "[" + PREFIX_TAG + "TAG]... "
             + PREFIX_NUMOFTHEATERS + "THEATER\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_NAME + "Cathay "

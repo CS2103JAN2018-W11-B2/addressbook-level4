@@ -14,6 +14,7 @@ import seedu.address.model.movie.StartDate;
 import seedu.address.model.tag.Tag;
 //@@author slothhy-unused
 /**
+ * This is not used as this is for building the test for EditMovie
  * A utility class to help with building EditMovieDescriptor objects.
  */
 public class EditMovieDescriptorBuilder {

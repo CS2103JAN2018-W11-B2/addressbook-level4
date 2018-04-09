@@ -14,7 +14,7 @@ ifdef::env-github[]
 endif::[]
 :repoURL: https://github.com/CS2103JAN2018-W11-B2
 
-By: `Team W11-B2`      Since: `Jun 2016`      Licence: `MIT`
+By: `Team W11-B2`      Since: `Aug 2018`      Licence: `MIT`
 
 == Introduction
 
@@ -279,7 +279,7 @@ Format: `addmovie n/MOVIE_NAME d/DURATION r/RATING sd/START_DATE t/TAG`
 Examples:
 
 * `addmovie n/The Incredibles d/115 r/PG sd/18/11/2014 t/Animation`
-* `am n/Spiderman 1 d/121 r/PG sd/04/29/2012 t/Superheroes t/Spiderman`
+* `am n/Spiderman 1 d/121 r/PG sd/29/04/2012 t/Superheroes t/Spiderman`
 
 Keyword appearance on Command Line: [purple-background white]`addmovie`
 
@@ -291,7 +291,7 @@ image::deleteMovie.gif[width="800"]
 Alias: `dm`
 
 Deletes the specified movie from MVP. +
-Format: `delete INDEX`
+Format: `deletemovie INDEX`
 
 [NOTE]
 ====
@@ -303,7 +303,7 @@ Format: `delete INDEX`
 Examples:
 
 * `list` +
-`delete 2` +
+`deletemovie 2` +
 Deletes the 2nd movie in MVP.
 * `find Marvel` +
 `dm 1` +
@@ -311,7 +311,7 @@ Deletes the 1st movie in the results of the `find` command.
 
 Keyword appearance on Command Line: [purple-background white]`deletemovie`
 
-==== Finding movies by user input: `findmovie`
+==== Finding movies by user input: `findmovie` | `fm`
 `Available in v1.3`
 
 image::findMovie.gif[width="800"]
@@ -332,13 +332,17 @@ Examples:
 Returns all movies which name contains keyword `zombie` like `Zombie Graveyard` and `attack the zombie`
 * `fm t/horror` +
 Returns all movies which belongs to the tag `horror` like `Insidious` and `Conjuring`
-* `findmovie sd/02/02/2018` +
-Returns all movies with `StartDate = 09/11/2017` like `Ah Boys to Men 4`
+* `findmovie sd/15/03/2017` +
+Returns all movies with `StartDate = 15/03/2017` like `Ah Boys to Men 4`
 * `findmovie n/Spiderman t/superhero` +
 Returns all movies from tag `superhero` with name `Spiderman` like `Spiderman 1`, `Spiderman 2` and `Spiderman 3`
 
 
 Keyword appearance on Command Line: [purple-background white]`findmovie`
+
+`Planned feature in v2.0`
+
+* Enable user to include `and` and `or` keywords to make the search more flexible. (Currently only supports `and` search)
 
 ==== Adding a movie screening: `addscreening` | `as`
 `Available in v1.2`
@@ -623,16 +627,14 @@ There is no need to save manually.
 
 |===
 |Feature|Command|Alias|Example
-|*Add* |`add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]... th/THEATER`|`a`
-|`add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague th/3`
+|*Add* |`add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS th/THEATER`|`a`
+|`add n/Clement We Cinema p/62224444 e/wecinema@wecinema.com a/123, Clementi Rd, 1234665 th/3`
 |*AddMovie* |`addmovie n/MOVIE_NAME d/DURATION r/RATING sd/START_DATE t/TAG`|`am`
-|`addmovie n/The Incredibles d/115 r/PG sd/18/11/2014 cat/Animation`
+|`addmovie n/The Incredibles d/115 r/PG sd/18/11/2014 t/Animation`
 |*AddScreening* |`addscreening m/MOVIE_INDEX c/CINEMA_INDEX th/THEATER h/SCREEN_DATE_TIME` |`as`
 |`addscreening m/1 c/2 th/1 h/05/05/2015 13:30`
 |*AddTheater* | `addtheater CINEMA_INDEX th/NUMBER_OF_THEATER` |`at` |`addtheater 1 th/2`
 |*Clear* |`clear`| `c`| `clear`
-|*Copy* |`copy c/CINEMA th/THEATER sd/SOURCE_DATE tc/TARGET_CINEMA tth/TARGET_THEATER td/TARGET_DATE`
-|`cp` |`copy c/Cathay th/1 sd/14/03/2018 tc/Cathay tth/1 td/15/03/2018`
 |*Delete* |`delete INDEX` |`d`
 |`delete 3`
 |*DeleteMovie* |`delete INDEX` |`dm`
@@ -640,8 +642,8 @@ There is no need to save manually.
  `delete 2`
 |*DeleteScreening* |`deletescreening c/CINEMA_INDEX th/THEATER h/SCREEN_DATE_TIME` |`ds`
 |`deletescreening c/2 th/1 h/05/05/2015 13:30`
-|*DeleteTheater* |`deletetheater n/CINEMA_NAME th/NUMBER_OF_THEATER` |`dt` |`deletetheater n/Cathay th/9`
-|*Edit* |`edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]...` |`e`
+|*DeleteTheater* |`deletetheater CINEMA_INDEX th/NUMBER_OF_THEATER` |`dt` |`deletetheater 1 th/9`
+|*Edit* |`edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS]` |`e`
 |`edit 2 n/GV Jurong Point e/contacts@gv.com`
 |*Find* |`find KEYWORD [MORE_KEYWORDS]` |`f`
 |`find Cathay`

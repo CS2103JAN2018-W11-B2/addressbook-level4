@@ -21,6 +21,8 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.tag.Tag;
 //@@author slothhy-unused
 /**
+ * This is not used because editing the duration might mess up the screening timings
+ * for those that are already added to the theaters.
  * Parses input arguments and creates a new EditMovieCommand object
  */
 public class EditMovieCommandParser implements Parser<EditMovieCommand> {

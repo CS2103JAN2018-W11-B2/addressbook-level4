@@ -148,6 +148,7 @@ public class ModelManager extends ComponentManager implements Model {
     public synchronized void deleteMovie(Movie target) throws MovieNotFoundException {
         moviePlanner.removeMovie(target);
         indicateMoviePlannerChanged();
+        raise(new ReloadBrowserPanelEvent(moviePlanner));
     }
 
     @Override

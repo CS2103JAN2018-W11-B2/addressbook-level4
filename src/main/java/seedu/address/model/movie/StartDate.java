@@ -2,6 +2,11 @@ package seedu.address.model.movie;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.time.format.ResolverStyle;
 //@@author slothhy
 /**
  * Represents a Movie's startDate in the movie planner.
@@ -12,9 +17,10 @@ public class StartDate {
 
     public static final String MESSAGE_STARTDATE_CONSTRAINTS =
             "StartDate must be in this format: DD/MM/YYYY";
-    //This regex does not validate dates such as leap years and such.
-    public static final String STARTDATE_VALIDATION_REGEX =
-            "^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\\d\\d$";
+
+    private static final String DATE_TIME_FORMAT = "dd/MM/uuuu";
+    private static final DateTimeFormatter dtf = DateTimeFormatter.ofPattern(DATE_TIME_FORMAT)
+            .withResolverStyle(ResolverStyle.STRICT);
     public final String startDate;
 
     /**
@@ -32,7 +38,13 @@ public class StartDate {
      * Returns true if a given string is a valid movie startDate.
      */
     public static boolean isValidStartDate(String test) {
-        return test.matches(STARTDATE_VALIDATION_REGEX);
+        try {
+            LocalDate.parse(test, dtf);
+            return true;
+        } catch (DateTimeParseException dtpe) {
+            System.out.println(dtpe);
+        }
+        return false;
     }
 
     @Override

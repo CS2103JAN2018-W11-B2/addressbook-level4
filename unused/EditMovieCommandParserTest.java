@@ -45,6 +45,9 @@ import seedu.address.model.movie.StartDate;
 import seedu.address.model.tag.Tag;
 import seedu.address.testutil.EditMovieDescriptorBuilder;
 //@@author slothhy-unused
+/**
+ * This is a test for EditMovie
+ */
 public class EditMovieCommandParserTest {
 
     private static final String TAG_EMPTY = " " + PREFIX_TAG;
