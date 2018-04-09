@@ -7,10 +7,8 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
-/**
- * Keeps track of called Email Function
- */
 public class EmailFunctionTest {
+
     private static final String EMAIL_VALID_FUNCTION = "send";
     private static final String EMAIL_INVALID_FUNCTION = "do nothing";
 

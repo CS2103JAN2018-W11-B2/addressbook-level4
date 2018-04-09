@@ -4,15 +4,17 @@ package seedu.address.email;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import seedu.address.email.exceptions.EmailLoginInvalidException;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import seedu.address.email.exceptions.EmailLoginInvalidException;
 
 /**
  * Handles how user logs into email
  */
 public class EmailLoginTest {
+
     private static final String EMAIL_VALID_LOGIN_ACCOUNT = "valid@gmail.com:123";
     private static final String EMAIL_INVALID_LOGIN_ACCOUNT = "invalid@yahoo.com:123";
 
@@ -23,8 +25,8 @@ public class EmailLoginTest {
 
     @Test
     public void validAccountLogin() throws EmailLoginInvalidException {
-        String[] EMAIL_VALID_LOGIN_ACCOUNT_PARAMETERS = EMAIL_VALID_LOGIN_ACCOUNT.split(":");
-        emailLogin.loginEmail(EMAIL_VALID_LOGIN_ACCOUNT_PARAMETERS);
+        String[] validEmailLogin = EMAIL_VALID_LOGIN_ACCOUNT.split(":");
+        emailLogin.loginEmail(validEmailLogin);
 
         assertTrue(emailLogin.isUserLoggedIn());
     }
@@ -32,8 +34,8 @@ public class EmailLoginTest {
     @Test
     public void invalidAccountLogin() {
         try {
-            String[] EMAIL_INVALID_LOGIN_ACCOUNT_PARAMETERS = EMAIL_INVALID_LOGIN_ACCOUNT.split(":");
-            emailLogin.loginEmail(EMAIL_INVALID_LOGIN_ACCOUNT_PARAMETERS);
+            String[] invalidEmailLogin = EMAIL_INVALID_LOGIN_ACCOUNT.split(":");
+            emailLogin.loginEmail(invalidEmailLogin);
         } catch (EmailLoginInvalidException e) {
             assertFalse(emailLogin.isUserLoggedIn());
         }
@@ -41,24 +43,24 @@ public class EmailLoginTest {
 
     @Test
     public void retrieveLoginEmail() throws EmailLoginInvalidException {
-        String[] EMAIL_VALID_LOGIN_ACCOUNT_PARAMETERS = EMAIL_VALID_LOGIN_ACCOUNT.split(":");
-        emailLogin.loginEmail(EMAIL_VALID_LOGIN_ACCOUNT_PARAMETERS);
+        String[] validEmailLogin = EMAIL_VALID_LOGIN_ACCOUNT.split(":");
+        emailLogin.loginEmail(validEmailLogin);
 
-        assertEquals(emailLogin.getEmailLogin(), EMAIL_VALID_LOGIN_ACCOUNT_PARAMETERS[0]);
+        assertEquals(emailLogin.getEmailLogin(), validEmailLogin[0]);
     }
 
     @Test
     public void retrievePassword() throws EmailLoginInvalidException {
-        String[] EMAIL_VALID_LOGIN_ACCOUNT_PARAMETERS = EMAIL_VALID_LOGIN_ACCOUNT.split(":");
-        emailLogin.loginEmail(EMAIL_VALID_LOGIN_ACCOUNT_PARAMETERS);
+        String[] validEmailLogin = EMAIL_VALID_LOGIN_ACCOUNT.split(":");
+        emailLogin.loginEmail(validEmailLogin);
 
-        assertEquals(emailLogin.getPassword(), EMAIL_VALID_LOGIN_ACCOUNT_PARAMETERS[1]);
+        assertEquals(emailLogin.getPassword(), validEmailLogin[1]);
     }
 
     @Test
     public void logoutUserEmail() throws EmailLoginInvalidException {
-        String[] EMAIL_VALID_LOGIN_ACCOUNT_PARAMETERS = EMAIL_VALID_LOGIN_ACCOUNT.split(":");
-        emailLogin.loginEmail(EMAIL_VALID_LOGIN_ACCOUNT_PARAMETERS);
+        String[] validEmailLogin = EMAIL_VALID_LOGIN_ACCOUNT.split(":");
+        emailLogin.loginEmail(validEmailLogin);
 
         emailLogin.resetData();
         assertFalse(emailLogin.isUserLoggedIn());

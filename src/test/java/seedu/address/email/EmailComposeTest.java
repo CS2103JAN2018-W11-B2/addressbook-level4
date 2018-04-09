@@ -1,13 +1,15 @@
 package seedu.address.email;
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
 import seedu.address.email.message.MessageDraft;
 
 //@@author chanyikwai
-public class EmailComposeTest{
+public class EmailComposeTest {
+
     private EmailCompose emailCompose;
 
     @Before

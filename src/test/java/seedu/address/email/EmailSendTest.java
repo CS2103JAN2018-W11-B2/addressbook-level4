@@ -15,6 +15,7 @@ import seedu.address.email.message.MessageDraft;
 
 //@@author chanyikwai
 public class EmailSendTest {
+
     private EmailSend emailSend;
 
     @Before
