@@ -11,6 +11,7 @@ import javafx.scene.layout.StackPane;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.cinema.Cinema;
 
+//@@author chanyikwai
 /**
  * Left Tab Panel containing cinemaListPanel and EmailDraftPanel
  */

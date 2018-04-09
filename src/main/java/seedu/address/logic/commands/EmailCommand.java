@@ -31,12 +31,12 @@ public class EmailCommand extends Command {
             + "attc/docs/images/Architecture.png func/send";
 
     public static final String MESSAGE_SUCCESS = "Email have been %1$s";
-    public static final String MESSAGE_LOGIN_INVALID = "You must be logged in with a gmail account to send an email.\n"
+    public static final String MESSAGE_LOGIN_INVALID = "You must be logged in with a Gmail account to send an email.\n"
             + "Command: email lgn/<username@gmail.com>:<password>";
-    public static final String MESSAGE_EMPTY_INVALID = "Your message and subject fields must not be empty when "
+    public static final String MESSAGE_EMPTY_INVALID = "Your message, subject and recipient fields must not be empty when "
             + "sending an email.\n"
-            + "Command: email msg/<messages> sub/<subjects>";
-    public static final String MESSAGE_RECIPIENT_INVALID = "You must have at least 1 recipient to send the email to.";
+            + "Command: email msg/messages subj/subject recp/example@gmail.com";
+    public static final String MESSAGE_RECIPIENT_INVALID = "You must have 1 recipient to send the email to.";
     public static final String MESSAGE_AUTHENTICATION_FAIL = "MVP is unable to log in to your gmail account. Please "
             + "check the following:\n"
             + "1) You have entered the correct email address and password.\n"

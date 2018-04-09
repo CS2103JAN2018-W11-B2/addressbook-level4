@@ -7,6 +7,7 @@ import javafx.stage.Stage;
  */
 public class MainWindowHandle extends StageHandle {
 
+    private final EmailMessagePanelHandle emailMessagePanel;
     private final CinemaListPanelHandle cinemaListPanel;
     private final MovieListPanelHandle movieListPanel;
     private final ResultDisplayHandle resultDisplay;
@@ -17,6 +18,7 @@ public class MainWindowHandle extends StageHandle {
     public MainWindowHandle(Stage stage) {
         super(stage);
 
+        emailMessagePanel = new EmailMessagePanelHandle(getChildNode(EmailMessagePanelHandle.EMAIL_PANE_VIEW_ID));
         cinemaListPanel = new CinemaListPanelHandle(getChildNode(CinemaListPanelHandle.CINEMA_LIST_VIEW_ID));
         movieListPanel = new MovieListPanelHandle(getChildNode(MovieListPanelHandle.MOVIE_LIST_VIEW_ID));
         resultDisplay = new ResultDisplayHandle(getChildNode(ResultDisplayHandle.RESULT_DISPLAY_ID));
@@ -24,6 +26,8 @@ public class MainWindowHandle extends StageHandle {
         statusBarFooter = new StatusBarFooterHandle(getChildNode(StatusBarFooterHandle.STATUS_BAR_PLACEHOLDER));
         mainMenu = new MainMenuHandle(getChildNode(MainMenuHandle.MENU_BAR_ID));
     }
+
+    public EmailMessagePanelHandle getEmailMessagePanel() { return emailMessagePanel; }
 
     public CinemaListPanelHandle getCinemaListPanel() {
         return cinemaListPanel;

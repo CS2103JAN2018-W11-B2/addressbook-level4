@@ -505,7 +505,7 @@ MVP uses the email command to send an email. The following activity diagram disp
 command.
 
 .Activity Diagram of Email feature
-image::EmailActivityDiagram.png[width="800"]
+image::EmailActivityDiagram.PNG[width="800"]
 
 The email feature is constructed by 3 classes, `EmailLogin`, `EmailCompose`, `EmailSend`, which is handled by the `EmailManager`. More
 details about the classes are as provided:
