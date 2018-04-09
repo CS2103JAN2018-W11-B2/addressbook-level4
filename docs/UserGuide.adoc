@@ -478,8 +478,8 @@ You will be able to decrypt the `encryptedmovieplanner.xml` and obtain a `moviep
 
 <<UserGuide.adoc#, Back to top>>
 
-=== Miscellaneous commands
-
+=== Other useful commands
+// tag::miscellaneous[]
 ==== Viewing help : `help` | `h`
 
 Alias: `h`
@@ -541,7 +541,6 @@ The `redo` command fails as there are no `undo` commands executed previously.
 
 Keyword appearance on Command Line: [purple-background white]`redo`
 
-// tag::undoredo[]
 ==== Undoing previous command : `undo` | `u`
 `Available in v1.0`
 
@@ -613,8 +612,9 @@ Keyword appearance on Command Line: [purple-background white]`exit`
 
 ==== Saving the data
 
-Movie planner data are saved in the hard disk automatically after any command that changes the data. +
+Movie planner data are saved in the hard disk automatically after any command that changes the data.
 There is no need to save manually.
+// tag::miscellaneous[]
 
 == FAQ
 

@@ -14,12 +14,15 @@ public class MessageDraft implements ReadOnlyMessageDraft {
     public MessageDraft() {
         message = "";
         subject = "";
+        recipient = "";
+        relativeFilePath = "";
     }
 
     public MessageDraft(String message, String subject, String recipient) {
         this.message = message;
         this.subject = subject;
         this.recipient = recipient;
+        this.relativeFilePath = "";
     }
 
     public MessageDraft(String message, String subject, String recipient, String relativeFilePath) {
@@ -52,8 +55,8 @@ public class MessageDraft implements ReadOnlyMessageDraft {
         return recipient;
     }
 
-    public void setRecipients(String relativeFilePath) {
-        this.relativeFilePath = relativeFilePath;
+    public void setRecipients(String recipient) {
+        this.recipient = recipient;
     }
 
     @Override
