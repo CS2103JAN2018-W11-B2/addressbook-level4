@@ -10,7 +10,6 @@ import seedu.address.email.message.MessageDraft;
 
 //@@author chanyikwai
 public class EmailManagerTest {
-    
     @Test
     public void equals() {
         EmailManager emailManager = new EmailManager();
