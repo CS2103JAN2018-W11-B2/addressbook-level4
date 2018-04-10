@@ -34,6 +34,7 @@ public class AddTheaterCommand extends UndoableCommand {
 
     public static final String MESSAGE_RESIZE_CINEMA_SUCCESS = "Resized Cinema: %1$s";
     public static final String MESSAGE_DUPLICATE_CINEMA = "This cinema already exists in the movie planner.";
+    public static final String MESSAGE_INVALID_THEATERSIZE = "You can only add up to 20 theaters per cinema!";
 
     private final Index index;
     private final int newTheaters;
@@ -54,12 +55,17 @@ public class AddTheaterCommand extends UndoableCommand {
     @Override
     public CommandResult executeUndoableCommand() throws CommandException {
         try {
+            if (resizedCinema.getTheaters().size() > 20) {
+                throw new CommandException(MESSAGE_INVALID_THEATERSIZE);
+            }
             model.updateCinema(cinemaToResize, resizedCinema);
         } catch (DuplicateCinemaException dce) {
             throw new CommandException(MESSAGE_DUPLICATE_CINEMA);
         } catch (CinemaNotFoundException cnfe) {
             throw new AssertionError("The target cinema cannot be missing");
         }
+
+
         model.updateFilteredCinemaList(PREDICATE_SHOW_ALL_CINEMAS);
         return new CommandResult(String.format(MESSAGE_RESIZE_CINEMA_SUCCESS, resizedCinema));
     }
@@ -86,14 +92,16 @@ public class AddTheaterCommand extends UndoableCommand {
         for (Theater theaters : cinemaToResize.getTheaters()) {
             updatedTheaterList.add(theaters);
         }
+        int newSize = newTheaters + oldTheaterSize;
 
-        for (int i = oldTheaterSize + 1; i <= newTheaters + oldTheaterSize; i++) {
+        for (int i = oldTheaterSize + 1; i <= newSize; i++) {
             updatedTheaterList.add(new Theater(i));
         }
 
         return new Cinema(cinemaToResize.getName(), cinemaToResize.getPhone(), cinemaToResize.getEmail(),
                 cinemaToResize.getAddress(), updatedTheaterList);
     }
+
 
     @Override
     public boolean equals(Object other) {

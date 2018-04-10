@@ -35,7 +35,7 @@ public class DeleteTheaterCommand extends UndoableCommand {
 
     public static final String MESSAGE_RESIZE_CINEMA_SUCCESS = "Resized Cinema: %1$s";
     public static final String MESSAGE_DUPLICATE_CINEMA = "This cinema already exists in the movie planner.";
-    public static final String MESSAGE_RESIZE_CINEMA_FAIL = "Cinema cannot have 0 or negative number of theaters";
+    public static final String MESSAGE_RESIZE_CINEMA_FAIL = "Cinema cannot have 0 or negative number of theaters!";
 
     private final Index index;
     private final int newTheaters;

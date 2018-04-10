@@ -293,7 +293,13 @@ public class ParserUtil {
         if (!Theater.isValidTheater(theaters)) {
             throw new IllegalValueException(Theater.MESSAGE_THEATER_CONSTRAINTS);
         }
+
         int numOfTheaters = Integer.parseInt(theaters);
+
+        if (numOfTheaters > 20) {
+            throw new IllegalValueException(Theater.MESSAGE_THEATERSIZE_CONSTRAINTS);
+        }
+
         for (int i = 1; i <= numOfTheaters; i++) {
             theaterList.add(new Theater(i));
         }

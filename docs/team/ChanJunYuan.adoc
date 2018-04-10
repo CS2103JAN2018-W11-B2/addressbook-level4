@@ -1,0 +1,54 @@
+= Chan Jun Yuan - Project Portfolio
+:imagesDir: ../images
+:stylesDir: ../stylesheets
+
+== PROJECT: MoVie Planner (MVP) - V1.5
+
+---
+
+== Overview
+
+MoVie Planner (MVP) - is a desktop application created to help simplify a
+cinema manager's job by allowing them to manage schedules of cinema theaters,
+movies and their screenings. The user interacts with it using a CLI, and
+it has a GUI created with JavaFX. It is written in Java, and has about 15 kLoc.
+
+== Summary of contributions
+
+* *Major enhancement*: added *encryption and decryption function*
+** What it does: allows the user to encrypt and decrypt files using password specified.
+** Justification: This feature allows the user to safeguard/retrieve sensitive information safely regarding the cinema, movie as well as the screening details. With this implementation, users can be reassured that even if unauthorised personnel gets hold of the encrypted data file, they would be unable to recover the details without the correct password to decrypt it.
+** Highlights: The current implementation will create a encrypted file on top of the plaintext file, so users can choose to keep the plaintext file if they want, or they could discard it, leaving the encrypted file solely for security purposes. Users can also make use of the email feature provided by this application and send the encrypted file to others without loss of confidentiality.
+
+* *Minor enhancement*: added theater commands such as `addtheater` and `deletetheater` to allow user to manipulate size of the cinema.
+
+* *Code contributed*: [https://github.com/CS2103JAN2018-W11-B2/main/blob/master/collated/functional/tinyjy94.md[Functional code]] [https://github.com/CS2103JAN2018-W11-B2/main/blob/master/collated/test/tinyjy94.md[Test code]]
+
+* *Other contributions*:
+
+** Project management:
+*** Managed releases `v1.0` - `v1.1` (1 release) on GitHub
+** Enhancements to existing features:
+*** Wrote tests for existing features to increase coverage from 77% to 81% (Pull requests https://github.com/CS2103JAN2018-W11-B2/main/pull/53[#53], https://github.com/CS2103JAN2018-W11-B2/main/pull/91[#91])
+** Documentation:
+*** Updated User Guide for encryption and decryption : https://github.com/CS2103JAN2018-W11-B2/main/pull/118[#118]
+*** Updated User Guide for theater commands : https://github.com/CS2103JAN2018-W11-B2/main/pull/87[#87]
+** Community:
+*** Reported bugs and suggestions for other teams in the class (examples:  https://github.com/CS2103JAN2018-F12-B3/main/issues/110[1], https://github.com/CS2103JAN2018-F12-B3/main/issues/107[2], https://github.com/CS2103JAN2018-F12-B3/main/issues/111[3])
+
+== Contributions to the User Guide
+
+
+|===
+|_Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users._
+|===
+
+include::../UserGuide.adoc[tag=SecurityUtils]
+
+== Contributions to the Developer Guide
+
+|===
+|_Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project._
+|===
+
+include::../DeveloperGuide.adoc[tag=SecurityUtils]

@@ -413,7 +413,7 @@ image::UndoRedoActivityDiagram.png[width="650"]
 ** Cons: Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as `HistoryManager` now needs to do two * different things.
 // end::undoredo[]
 
-// tag::dataencryption[]
+// tag::SecurityUtils[]
 === Data Encryption/Decryption
 MVP provides data encryption as well as decryption to allow for safe storage and transmission of data.
 
@@ -473,7 +473,7 @@ image::SDforEncryptEventHandling.png[width="800"]
 
 ** Cons: Password could be reversed-engineered from the application, which defeats the purpose of encryption.
 
-// end::dataencryption[]
+// end::SecurityUtils[]
 
 === Logging
 
@@ -884,6 +884,8 @@ image::SDForAddScreeningEventHandling.png[width="800"]
 ** Pros: Less commands for the user to learn about.
 ** Cons: User will need to delete existing screening and add the screening with new details to perform an edit equivalent action.
 
+// tag::theaterCommands[]
+
 === Add/Delete Theater
 When creating a new `Cinema`, the initial number of theaters must be stated. This value will be used to create a corresponding number of `Theater`, which is stored as an ArrayList<Theater> in `Cinema`.
 
@@ -921,6 +923,8 @@ Aspect: Implementation of `addTheater` and `deleteTheater`
 * *Alternative 2:* Reusing the existing `editCommand` to add or delete theaters
 ** Pros: A single command is needed to increase and reduce number of theaters in cinema.
 ** Cons: Overwrites current value of `Theater` in cinema, which might cause the user to lose information in theater.
+
+// end::theaterCommands[]
 
 <<DeveloperGuide.adoc#, Back to top>>
 

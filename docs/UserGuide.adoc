@@ -201,6 +201,8 @@ Selects the 1st cinema in the results of the `find` command.
 
 Keyword appearance on Command Line: [purple-background white]`select`
 
+// tag::theaterCommands[]
+
 ==== Adding theaters: `addtheater` | `at`
 `Available in v1.2`
 
@@ -217,7 +219,11 @@ Examples:
 * `at 1 th/5`
 
 [NOTE]
-Number of theater must be positive
+====
+Number of theaters entered must be a *positive* integer
+
+Maximum number of theaters per cinema is *20*
+====
 
 Keyword appearance on Command Line: [purple-background white]`addtheater`
 
@@ -237,9 +243,15 @@ Examples:
 * `dt 1 th/2`
 
 [NOTE]
-Number of theater must be positive
+====
+Number of theater entered must be a *positive* integer
+
+The number entered should not be greater or equals to the current number of theater in that cinema
+====
 
 Keyword appearance on Command Line: [purple-background white]`deletetheater`
+
+// end::theaterCommands[]
 
 ==== Copying schedule: `copy` | `cp`
 `Coming in v2.0`
@@ -436,7 +448,8 @@ Edits the email message with `This will be a very long message, so I hope that y
 Keyword appearance on Command Line: [purple-background white]`email`
 
 === Security related commands
-// tag::dataencryption[]
+
+// tag::SecurityUtils[]
 ==== Encrypting data files : `encrypt` | `enc`
 `Available in v1.4`
 
@@ -473,8 +486,7 @@ Examples:
 * `decrypt pw/password` +
 You will be able to decrypt the `encryptedmovieplanner.xml` and obtain a `movieplanner.xml` if the password is the same as the one used for encryption.
 
-
-// end::dataencryption[]
+// end::SecurityUtils[]
 
 <<UserGuide.adoc#, Back to top>>
 

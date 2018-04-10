@@ -14,7 +14,9 @@ import seedu.address.model.screening.Screening;
  */
 public class Theater {
 
-    public static final String MESSAGE_THEATER_CONSTRAINTS = "Theater number should be positive.";
+    public static final String MESSAGE_THEATER_CONSTRAINTS = "Theater number given should be a positive integer!";
+    public static final String MESSAGE_THEATERSIZE_CONSTRAINTS = " Theater number given should be less than"
+            + " or equals to 20.";
 
     /**
      * Theater number must be positive

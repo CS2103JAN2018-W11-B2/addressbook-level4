@@ -111,14 +111,6 @@ public class AddCommandSystemTest extends MoviePlannerSystemTest {
                 + ADDRESS_DESC_TAMPINES + THEATER_DESC_THREE;
         assertCommandSuccess(command, toAdd);
 
-        /* Case: add a cinema with all fields same as another cinema in the movie planner except theater -> added */
-        toAdd = new CinemaBuilder().withName(VALID_NAME_SENGKANG).withPhone(VALID_PHONE_SENGKANG)
-                .withEmail(VALID_EMAIL_SENGKANG).withAddress(VALID_ADDRESS_SENGKANG)
-                .withTheater(VALID_NUMOFNEWTHEATERS).build();
-        command = AddCommand.COMMAND_WORD + NAME_DESC_SENGKANG + PHONE_DESC_SENGKANG + EMAIL_DESC_SENGKANG
-                + ADDRESS_DESC_SENGKANG + THEATER_DESC_FIVE;
-        assertCommandSuccess(command, toAdd);
-
         /* Case: add to empty movie planner -> added */
         deleteAllCinemas();
         assertCommandSuccess(ALJUNIED);
