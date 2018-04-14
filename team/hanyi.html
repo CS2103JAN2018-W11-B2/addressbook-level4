@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.6.1">
+<title>Oh Han Yi - Project Portfolio</title>
+<link rel="stylesheet" href="../stylesheets/gh-pages.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css">
+</head>
+<body class="article">
+<div id="header">
+<h1>Oh Han Yi - Project Portfolio</h1>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="project-movie-planner-mvp-v1-5rc"><a class="link" href="#project-movie-planner-mvp-v1-5rc">PROJECT: MoVie Planner (MVP) - V1.5rc</a></h2>
+<div class="sectionbody">
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>MoVie Planner (MVP) - is a desktop movie planner built to streamline a theater manager&#8217;s job by managing schedules of movies in different cinemas. It also has features such as encryption and emailing. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 20 kLoc.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Major enhancement</strong>: added <strong>the ability to find movies by different predicates</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: allows the user to choose different parameters to search.</p>
+</li>
+<li>
+<p>Justification: This feature allows the user to narrow down the search result significantly if the movie database is  huge. This feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.</p>
+</li>
+<li>
+<p>Highlights: The current implementation is using <code>and</code> for parameters to make the search stricter in order to filter away unwanted results. This feature could be further built on to allow a broader search, for example allowing the user to specify <code>and</code> or <code>or</code> in their input. This will increase the flexibility of the search function in our application.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Minor enhancement</strong>: added the Movie class with various parameters to allow integration with screenings.</p>
+</li>
+<li>
+<p><strong>Code contributed</strong>: [<a href="https://github.com/CS2103JAN2018-W11-B2/main/blob/master/collated/functional/slothhy.md">Functional code</a>] [<a href="https://github.com/CS2103JAN2018-W11-B2/main/blob/master/collated/test/slothhy.md">Test code</a>]</p>
+</li>
+<li>
+<p><strong>Other contributions</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Project management:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Managed releases <code>v1.3</code> - <code>v1.5rc</code> (3 releases) on GitHub</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Enhancements to existing features:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Wrote tests for existing features to increase coverage from 84% to 88% (Pull requests <a href="https://github.com/CS2103JAN2018-W11-B2/main/pull/52">#52</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Documentation:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Updated User Guide for Movie class : <a href="https://github.com/CS2103JAN2018-W11-B2/main/pull/94">#94</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Community:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com/CS2103JAN2018-T09-B3/main/issues/191">1</a>, <a href="https://github.com/CS2103JAN2018-T09-B3/main/issues/184">2</a>, <a href="https://github.com/CS2103JAN2018-T09-B3/main/issues/177">3</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Tools:</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect3">
+<h4 id="finding-movies-by-user-input-code-findmovie-code-code-fm-code-code-available-in-v1-3-code"><a class="link" href="#finding-movies-by-user-input-code-findmovie-code-code-fm-code-code-available-in-v1-3-code">Finding movies by user input: <code>findmovie</code> | <code>fm</code> | <code>Available in v1.3</code></a></h4>
+<div class="paragraph">
+<p>Alias: <code>fm</code></p>
+</div>
+<div class="paragraph">
+<p>To find movies based on the name, tag or start date, you can type the following command in the command box.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>findmovie [n/MOVIE_NAME] [t/TAG] [sd/START_DATE]</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The search is case insensitive. e.g <code>spiderman</code> will match <code>Spiderman</code>.</p>
+</li>
+<li>
+<p>The order of the keywords does not matter. e.g. <code>Thor Ragnarok</code> will match <code>Ragnarok Thor</code>.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>findmovie n/zombie</code><br>
+Displays all movies which name contains keyword <code>zombie</code> like <code>Zombie Graveyard</code> and <code>attack the zombie</code>.</p>
+</li>
+<li>
+<p><code>findmovie r/PG</code><br>
+Displays all movies with rating <code>PG</code>.</p>
+</li>
+<li>
+<p><code>fm t/horror</code><br>
+Displays all movies which belongs to the tag <code>horror</code>.</p>
+</li>
+<li>
+<p><code>findmovie sd/15/03/2017</code><br>
+Displays all movies that starts on <code>15/03/2017</code>.</p>
+</li>
+<li>
+<p><code>findmovie n/Spiderman t/superhero</code><br>
+Displays all movies from tag <code>superhero</code> with name <code>Spiderman</code> like <code>Spiderman 1</code> and <code>Spiderman 2</code>. An example is shown in the picture below.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/FindMovie.png" alt="FindMovie" width="1000">
+</div>
+<div class="title">Figure 1. Before and after <code>findmovie n/Spiderman t/superhero</code></div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="Implementation-Movie"><a class="link" href="#Implementation-Movie">Addition and deletion of movies</a></h3>
+<div class="paragraph">
+<p>The user can add and delete movies in MVP. The results will be shown on the <code>MovieListPanel</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Deletion of movies will delete the screenings in theaters that contain that movie.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="implementation-details"><a class="link" href="#implementation-details">Implementation details</a></h4>
+<div class="paragraph">
+<p>Addition and deletion of movies uses similar implementation. The sequence diagram below shows an overview of the high level interactions
+between components for the scenario when a <code>AddMovie</code> command is issued.</p>
+</div>
+<div id="high_level_movie" class="imageblock">
+<div class="content">
+<img src="../images/SDForMovie.PNG" alt="SDForMovie" width="1000">
+</div>
+<div class="title">Figure 2. Component interactions for <code>AddMovieCommand</code></div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AddMovieSequenceDiagram.PNG" alt="AddMovieSequenceDiagram" width="1000">
+</div>
+<div class="title">Figure 3. Sequence diagram of addmovie command</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design considerations</a></h4>
+<div class="paragraph">
+<p><strong>Aspects:</strong> Enable editing of movies.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Do not allow editing of Movie</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Will not cause overlap of schedule if user decides to edit duration of movie. For eg. two movies are planned back to back, editing the first movie to have a longer duration will cause it to overrun to the next movie.</p>
+</li>
+<li>
+<p>Cons: Users have to delete the movie and add it back if they make an error.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Allow editing of Movie</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: More convenient for users to edit if they make a typo.</p>
+</li>
+<li>
+<p>Cons: It might cause overlap of schedule as mentioned above.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="Implementation-FindMovie"><a class="link" href="#Implementation-FindMovie">Enhanced FindMovie command</a></h3>
+<div class="paragraph">
+<p>The user can find movies by <code>Category</code>, <code>MovieName</code> or <code>StartDate</code> or a combination of them as a multicriteria search.</p>
+</div>
+<div class="sect3">
+<h4 id="finding-movies"><a class="link" href="#finding-movies">Finding movies</a></h4>
+<div class="paragraph">
+<p>Movies can be found by using the <code>findmovie</code> command. The command is parsed by <code>FindMovieCommandParser</code> and be executed
+in <code>FindMovieCommand</code>.</p>
+</div>
+<div class="paragraph">
+<p>Figure below shows the interaction between the classes.</p>
+</div>
+<div class="paragraph">
+<p><strong>Finding by <code>MovieName</code> or/and <code>StartDate</code> or/and <code>Tag</code></strong></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/FindMovieSequenceDiagram.PNG" alt="FindMovieSequenceDiagram" width="1000">
+</div>
+<div class="title">Figure 4. Sequence diagram of findmovie command</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="implementation-details-2"><a class="link" href="#implementation-details-2">Implementation details</a></h4>
+<div class="paragraph">
+<p>The parser will take in all arguments the user specified and store it in an array. If the user search by <code>MovieName</code> or
+<code>StartDate</code> or <code>Category</code>, MVP will retrieve movie records in the storage with the matching keywords. If two or more conditions
+are specified, MVP will combine the predicates to get a smaller subset of results.</p>
+</div>
+<div class="paragraph">
+<p>As seen in the sequence diagram above, MVP will do the following</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Calls <code>arePrefixesPresent()</code> to check if the necessary prefixes n/, sd/ and t/, which are used for name, startDate and tag
+respectively are present.</p>
+</li>
+<li>
+<p>Calls <code>tokenize</code> method in <code>ArgumentTokenizer</code> to get value entered by user.</p>
+</li>
+<li>
+<p>Based on the <code>parameters</code> input by the user, <code>FindMovieCommand</code> will take in different predicates to get the correct result.
+The code snippet below shows when all parameters are chosen.</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">if</span> (!argMultimap.getAllValues(PREFIX_NAME).isEmpty()
+    &amp;&amp; !argMultimap.getAllValues(PREFIX_STARTDATE).isEmpty()
+    &amp;&amp; !argMultimap.getAllValues(PREFIX_TAG).isEmpty()) {
+    <span class="comment">//name, startDate, tag present</span>
+    nameValues = argMultimap.getValue(PREFIX_NAME).get();
+    startDateValues = argMultimap.getValue(PREFIX_STARTDATE).get();
+    tagValues = argMultimap.getValue(PREFIX_TAG).get();
+    nameKeywords = nameValues.split(<span class="string"><span class="delimiter">&quot;</span><span class="char">\\</span><span class="content">s+</span><span class="delimiter">&quot;</span></span>);
+    startDateKeywords = startDateValues.split(<span class="string"><span class="delimiter">&quot;</span><span class="char">\\</span><span class="content">s+</span><span class="delimiter">&quot;</span></span>);
+    tagKeywords = tagValues.split(<span class="string"><span class="delimiter">&quot;</span><span class="char">\\</span><span class="content">s+</span><span class="delimiter">&quot;</span></span>);
+    <span class="keyword">return</span> <span class="keyword">new</span> FindMovieCommand(<span class="keyword">new</span> NameAndStartDateAndTagContainsKeywordsPredicate
+    (<span class="predefined-type">Arrays</span>.asList(nameKeywords), <span class="predefined-type">Arrays</span>.asList(startDateKeywords), <span class="predefined-type">Arrays</span>.asList(tagKeywords)));
+} <span class="keyword">else</span> <span class="keyword">if</span> ... <span class="comment">//other parameters combination</span></code></pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>FindMovieCommand</code> then returns <code>CommandResult</code> to the user which shows the current status of the <code>Cinema</code>.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<code>parameters</code> above refers to parameters provided by the user. E.g. name only or name and tag
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design considerations</a></h4>
+<div class="paragraph">
+<p><strong>Aspects:</strong> Using <code>and</code> or <code>or</code> condition for the multicriteria search.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Using <code>and</code> condition for multicriteria search</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: User will be able to make a more detailed search to display on MVP.</p>
+</li>
+<li>
+<p>Cons: User cannot do a wider search with multiple keywords</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Using <code>or</code> condition for multicriteria search</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: User can search for multiple <code>tag</code> for example to find movies of those categories.</p>
+</li>
+<li>
+<p>Cons: User will not be able to make a detailed search to narrow down the results displayed on MVP.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+A future update is planned in <code>V2.0</code> to support both <code>and</code> and <code>or</code> functions in the FindMovie command
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2018-04-14 14:39:50 UTC
+</div>
+</div>
+</body>
+</html>

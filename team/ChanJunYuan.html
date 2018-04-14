@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.6.1">
+<title>Chan Jun Yuan - Project Portfolio</title>
+<link rel="stylesheet" href="../stylesheets/gh-pages.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css">
+</head>
+<body class="article">
+<div id="header">
+<h1>Chan Jun Yuan - Project Portfolio</h1>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="project-movie-planner-mvp-v1-5"><a class="link" href="#project-movie-planner-mvp-v1-5">PROJECT: MoVie Planner (MVP) - V1.5</a></h2>
+<div class="sectionbody">
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>MoVie Planner (MVP) - is a desktop application created to help simplify a
+cinema manager&#8217;s job by allowing them to manage schedules of cinema theaters,
+movies and their screenings. The user interacts with it using a CLI, and
+it has a GUI created with JavaFX. It is written in Java, and has about 15 kLoc.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Major enhancement</strong>: added <strong>encryption and decryption function</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: allows the user to encrypt and decrypt files using password specified.</p>
+</li>
+<li>
+<p>Justification: This feature allows the user to safeguard/retrieve sensitive information safely regarding the cinema, movie as well as the screening details. With this implementation, users can be reassured that even if unauthorised personnel gets hold of the encrypted data file, they would be unable to recover the details without the correct password to decrypt it.</p>
+</li>
+<li>
+<p>Highlights: The current implementation will create a encrypted file on top of the plaintext file, so users can choose to keep the plaintext file if they want, or they could discard it, leaving the encrypted file solely for security purposes. Users can also make use of the email feature provided by this application and send the encrypted file to others without loss of confidentiality.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Minor enhancement</strong>: added theater commands such as <code>addtheater</code> and <code>deletetheater</code> to allow user to manipulate size of the cinema.</p>
+</li>
+<li>
+<p><strong>Code contributed</strong>: [<a href="https://github.com/CS2103JAN2018-W11-B2/main/blob/master/collated/functional/tinyjy94.md">Functional code</a>] [<a href="https://github.com/CS2103JAN2018-W11-B2/main/blob/master/collated/test/tinyjy94.md">Test code</a>]</p>
+</li>
+<li>
+<p><strong>Other contributions</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Project management:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Managed releases <code>v1.0</code> - <code>v1.1</code> (1 release) on GitHub</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Enhancements to existing features:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Wrote tests for existing features to increase coverage from 77% to 81% (Pull requests <a href="https://github.com/CS2103JAN2018-W11-B2/main/pull/53">#53</a>, <a href="https://github.com/CS2103JAN2018-W11-B2/main/pull/91">#91</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Documentation:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Updated User Guide for encryption and decryption : <a href="https://github.com/CS2103JAN2018-W11-B2/main/pull/118">#118</a></p>
+</li>
+<li>
+<p>Updated User Guide for theater commands : <a href="https://github.com/CS2103JAN2018-W11-B2/main/pull/87">#87</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Community:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com/CS2103JAN2018-F12-B3/main/issues/110">1</a>, <a href="https://github.com/CS2103JAN2018-F12-B3/main/issues/107">2</a>, <a href="https://github.com/CS2103JAN2018-F12-B3/main/issues/111">3</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect3">
+<h4 id="encrypting-data-files-code-encrypt-code-code-enc-code-code-available-in-v1-4-code"><a class="link" href="#encrypting-data-files-code-encrypt-code-code-enc-code-code-available-in-v1-4-code">Encrypting data files : <code>encrypt</code> | <code>enc</code> | <code>Available in v1.4</code></a></h4>
+<div class="paragraph">
+<p>Alias: <code>enc</code></p>
+</div>
+<div class="paragraph">
+<p>To encrypt MVP, you can type the following command in the command box.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>encrypt pw/PASSWORD</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Before you execute this command, please ensure that there is a <code>movieplanner.xml</code>.
+You can check this by going to the <code>data</code> folder located in your home folder e.g. <code>C:\Users\student\MVP\data</code>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>If you cannot find the <code>movieplanner.xml</code>, you can create one by executing any add or delete commands. e.g. <code>at 1 th/1</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>A <code>encryptedmovieplanner.xml</code> file is created/overwritten upon successful <code>encrypt</code> command and it is located in the <code>data</code> folder.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>encrypt pw/secret</code><br>
+Encrypts MVP and creates a <code>encryptedmovieplanner.xml</code> using <strong>secret</strong> as the password.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="decrypting-encrypted-data-files-code-decrypt-code-code-dec-code-code-available-in-v1-4-code"><a class="link" href="#decrypting-encrypted-data-files-code-decrypt-code-code-dec-code-code-available-in-v1-4-code">Decrypting encrypted data files : <code>decrypt</code> | <code>dec</code> | <code>Available in v1.4</code></a></h4>
+<div class="paragraph">
+<p>Alias: <code>dec</code></p>
+</div>
+<div class="paragraph">
+<p>To decrypt the encrypted MVP file, you can type the following command in the command box.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>decrypt pw/PASSWORD</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Before you execute this command, please ensure that there is a <code>encryptedmovieplanner.xml</code>.
+You can check this by going to the <code>data</code> folder located in your home folder e.g. <code>C:\Users\student\MVP\data</code>.</p>
+</li>
+<li>
+<p>A <code>movieplanner.xml</code> file is created/overwritten upon successful <code>decrypt</code> command. You will be prompted to restart the application to see changes.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>decrypt pw/secret</code><br>
+Decrypts the <code>encryptedmovieplanner.xml</code> and recovers a <code>movieplanner.xml</code>, if the password(<strong>secret</strong> in this case) is the same as the one used for encryption.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><a href="UserGuide.html">Back to top</a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="data-encryption-decryption"><a class="link" href="#data-encryption-decryption">Data Encryption/Decryption</a></h3>
+<div class="paragraph">
+<p>MVP provides data encryption as well as decryption to allow for safe storage and transmission of data.</p>
+</div>
+<div class="paragraph">
+<p>The Sequence Diagram below shows how the components interact for the scenario where the user issues the command <code>encrypt pw/pass</code>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/SDforEncryption.png" alt="SDforEncryption" width="800">
+</div>
+<div class="title">Figure 1. Component interactions for <code>encrypt pw/pass</code> command (part 1)</div>
+</div>
+<div class="paragraph">
+<p>Figure 20  shows how the <code>EventsCenter</code> reacts to that event, which eventually results in the updates being saved to the hard disk.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/SDforEncryptEventHandling.png" alt="SDforEncryptEventHandling" width="800">
+</div>
+<div class="title">Figure 2. Component interactions for <code>encrypt pw/pass</code> command (part 2)</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<code>Decrypt</code> command also follows the same flow as shown in the Sequence Diagram above, but <code>DecryptionRequestEvent</code> is posted and <code>handleDecryptionRequestEvent</code> is called instead.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="implementation-details"><a class="link" href="#implementation-details">Implementation details</a></h4>
+<div class="paragraph">
+<p><code>SecurityUtil</code> is used to facilitate the encryption and decryption process by providing the <code>encrypt</code> and <code>decrypt</code> commands.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>When <code>encrypt pw/&lt;password&gt;</code> or <code>decrypt pw/&lt;password&gt;</code> command is entered by the user, <code>EncryptionRequestEvent</code> or <code>DecryptionRequestEvent</code> will be posted to the <code>EventsCenter</code> respectively.</p>
+</li>
+<li>
+<p><code>StorageManager</code> will then trigger <code>SecurityUtil</code> to perform the <code>encrypt</code> or <code>decrypt</code> command.</p>
+</li>
+<li>
+<p><code>generateKey()</code> and <code>processFile()</code> methods within <code>SecurityUtil</code> will then be executed to perform writing of files.</p>
+</li>
+<li>
+<p><code>encrypt</code> will create/overwrite an <code>encryptedmovieplanner.xml</code> by encrypting the data from <code>movieplanner.xml</code> using the password provided by the user.</p>
+</li>
+<li>
+<p><code>decrypt</code> will create/overwrite a <code>movieplanner.xml</code> by decrypting the data from <code>encryptedmovieplanner.xml</code> using the password provided by the user.</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>If the user enters a different password that was used to encrypt the file when decrypting, an error will be shown on the <code>CommandBox</code>.</p>
+</li>
+<li>
+<p><code>encrypt</code> and <code>decrypt</code> command can be performed repeatedly to overwrite the xml files.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="paragraph">
+<p><strong>Aspect:</strong> How to generate key</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Generating the key using password input by user</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Users can customise their own passwords.</p>
+</li>
+<li>
+<p>Cons: It might not be secured as users would probably use a weak password.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Generating the key using <code>java.crypto.KeyGenerator</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Password is quite strong, so even if outsiders were to obtain the data file, they would require tremendous effort to decrypt it.</p>
+</li>
+<li>
+<p>Cons: Users cannot customise their own passwords.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Aspect:</strong> Where to save password</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Users remember the password themselves</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: As the password is not stored anywhere in the application, unauthorized personnel would not be able to reverse-engineer the application to obtain the password.</p>
+</li>
+<li>
+<p>Cons: User will have to inform the other party about the password themselves through some secured means.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Password saved in application</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Password is not lost every time the application is started up.</p>
+</li>
+<li>
+<p>Cons: Password could be reversed-engineered from the application, which defeats the purpose of encryption.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2018-04-14 14:39:50 UTC
+</div>
+</div>
+</body>
+</html>

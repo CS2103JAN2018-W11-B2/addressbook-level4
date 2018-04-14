@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.6.1">
+<title>Chan Yik Wai - Project Portfolio</title>
+<link rel="stylesheet" href="../stylesheets/gh-pages.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css">
+</head>
+<body class="article">
+<div id="header">
+<h1>Chan Yik Wai - Project Portfolio</h1>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="project-movie-planner-mvp-v1-5"><a class="link" href="#project-movie-planner-mvp-v1-5">PROJECT: MoVie Planner (MVP) - V1.5</a></h2>
+<div class="sectionbody">
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>MoVie Planner (MVP) is a desktop application that aims to assist cinema managers in managing schedule of movies in different cinemas, providing features such as replicating cinemas’ schedules across periods of time, secure storage of cinema schedule and more.
+The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 20 kLoC.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Major enhancement</strong>: added <strong>the email feature</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: allows the user to send out an email to the target recipient, with or without an attachment.</p>
+</li>
+<li>
+<p>Justification: This feature improves the product significantly because it provides the user with a convenient means of
+sending out his schedule after he planned it right from the application itself.</p>
+</li>
+<li>
+<p>Highlights: This enhancement affects the existing model, because interacts with the model. The implementation of the email feature
+was challenging too as it requires the use of the JavaMail API.</p>
+</li>
+<li>
+<p>Credits: JavaMail API</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Minor enhancement</strong>: added a shortcut key combinations that allows the user to access certain commands with ease.</p>
+</li>
+<li>
+<p><strong>Code contributed</strong>: [<a href="https://github.com/CS2103JAN2018-W11-B2/main/blob/master/collated/functional/chanyikwai.md">Functional code</a>] [<a href="https://github.com/CS2103JAN2018-W11-B2/main/blob/master/collated/test/chanyikwai.md">Test code</a>]</p>
+</li>
+<li>
+<p><strong>Other contributions</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Enhancements to existing features:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Updated the GUI color scheme (Pull requests <a href="https://github.com/CS2103JAN2018-W11-B2/main/pull/117">#117</a>)</p>
+</li>
+<li>
+<p>Wrote additional tests for existing features to increase coverage from 69% to 70% (Pull requests <a href="https://github.com/CS2103JAN2018-W11-B2/main/pull/148">#148</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Documentation:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Updated User Guide with Email Feature: <a href="https://github.com/CS2103JAN2018-W11-B2/main/pull/100">#100</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Community:</p>
+</li>
+<li>
+<p>Tools:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Integrated a third party library (JavaMail) to the project (<a href="https://github.com/CS2103JAN2018-W11-B2/main/pull/100">#100</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="email-command"><a class="link" href="#email-command">Email command</a></h3>
+<div class="paragraph">
+<p>You can find email command and its relevant details in this section. This allows you to send email within MVP.</p>
+</div>
+<div class="sect3">
+<h4 id="emailing-schedule-code-email-code-code-eml-code-code-available-in-v1-3-code"><a class="link" href="#emailing-schedule-code-email-code-code-eml-code-code-available-in-v1-3-code">Emailing schedule: <code>email</code> | <code>eml</code> | <code>Available in v1.3</code></a></h4>
+<div class="paragraph">
+<p>Alias: <code>eml</code></p>
+</div>
+<div class="paragraph">
+<p>To send an email to a target recipient, you can type the following command in the command box.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>email msg/MESSAGE subj/SUBJECT recp/RECIPIENT func/&lt;SEND|CLEAR&gt; lgn/EMAIL_USERNAME:EMAIL_PASSWORD [attc/RELATIVE_FILE_PATH]</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The message <code>msg</code>, subject <code>subj</code>, and recipient <code>recp</code> must be filled before you send the email.</p>
+</li>
+<li>
+<p>The login <code>lgn</code> field requires you to provide an actual Gmail account.</p>
+</li>
+<li>
+<p>The parameters (e.g. <code>msg</code>, <code>subj</code>) can be edited without including other parameters.</p>
+</li>
+<li>
+<p>The <strong>"Allow less secure apps"</strong> setting should be enabled on the Gmail account. To do this, you can:</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Navigate to your Gmail account &#8594; My Account &#8594; Sign-in &amp; Security &#8594; Allow less secure apps</p>
+</li>
+<li>
+<p>Toggle it and make sure that it shows <strong>"Allow less secure apps: ON"</strong></p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>email msg/Hi Bob, Here is the schedule. subj/Schedule lgn/cmanager@gmail.com:1I2h@la recp/gv.manager@gmail.com attc/docs/images/Architecture.png func/send</code><br>
+Sends out an email with the following details:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Recipient: <code>gv.manager@gmail.com</code></p>
+</li>
+<li>
+<p>Subject: <code>Schedule</code></p>
+</li>
+<li>
+<p>Message: <code>Hi Bob, Here is the schedule.</code></p>
+</li>
+<li>
+<p>Attachment: <code>Architecture.png</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>eml msg/This will be a very long message, so I hope that you are attentive when you read this.</code><br>
+Edits the email message with <code>This will be a very long message, so I hope that you are attentive when you read this.</code></p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/Email.png" alt="Email" width="1000">
+</div>
+<div class="title">Figure 1. Before and after <code>email msg/Hi Bob, Here is the schedule. subj/Schedule recp/gv.manager@gmail.com</code></div>
+</div>
+<div class="paragraph">
+<p><a href="UserGuide.html">Back to top</a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="email-feature"><a class="link" href="#email-feature">Email feature</a></h3>
+<div class="paragraph">
+<p>The email feature is facilitated by the <code>Email</code> component. It supports the sending of email through an external library <code>JavaMail</code>.</p>
+</div>
+<div class="sect3">
+<h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
+<div class="paragraph">
+<p>MVP uses the email command to send an email. The following activity diagram displays the series of events that occurs when a user enters the email
+command.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/EmailActivityDiagram.png" alt="EmailActivityDiagram" width="800">
+</div>
+<div class="title">Figure 2. Activity Diagram of Email feature</div>
+</div>
+<div class="paragraph">
+<p>The email feature is constructed by 3 classes, <code>EmailLogin</code>, <code>EmailCompose</code>, <code>EmailSend</code>, which is handled by the <code>EmailManager</code>. More
+details about the classes are as provided:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>EmailLogin</code>: Handles the storage of login information and verifies whether the user is using a Gmail account to access
+the email feature.</p>
+</li>
+<li>
+<p><code>EmailCompose</code>: Handles the email composing and drafting using a <code>MessageDraft</code> object to store email information such
+as message, subject and recipient email.</p>
+</li>
+<li>
+<p><code>EmailSend</code>: Handles the sending of email by setting up a SMTP connection through the JavaMail API. The email cannot be sent if
+the following criteria are not met:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>the`MessageDraft` object in <code>EmailCompose</code> is empty or,</p>
+</li>
+<li>
+<p>the login details in <code>EmailLogin</code> is not valid.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how each component interacts when the email command is entered by the user.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/EmailUMLDiagram.png" alt="EmailUMLDiagram" width="800">
+</div>
+<div class="title">Figure 3. Sequence Diagram of Email feature</div>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how each component within the <code>EmailManager</code> interacts when the email command
+is entered by the user.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/EmailSendUMLDiagram.png" alt="EmailSendUMLDiagram" width="800">
+</div>
+<div class="title">Figure 4. Sequence Diagram of Email feature</div>
+</div>
+<div class="paragraph">
+<p>The following diagram shows how the email draft tab in the MVP UI is updated when the <code>EventCenter</code> responds to the
+<code>EmailDraftChangedEvent</code>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/EmailEventsDiagram.png" alt="EmailEventsDiagram" width="800">
+</div>
+<div class="title">Figure 5. Sequence Diagram of Email feature</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="implementation-of-javamail-api"><a class="link" href="#implementation-of-javamail-api">Implementation of JavaMail API</a></h4>
+<div class="paragraph">
+<p>The <code>Email</code> component uses the external library <code>JavaMail</code> to handle sending out of email from MVP. The following
+code snippet below shows the set up (via SMTP) for sending out email.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="comment">/**
+ * Sets up the default email properties
+ */</span>
+<span class="directive">private</span> <span class="type">void</span> setUpEmailProperties() {
+    props = <span class="keyword">new</span> <span class="predefined-type">Properties</span>();
+    props.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">mail.smtp.auth</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span>);
+    props.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">mail.smtp.host</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">smtp.gmail.com</span><span class="delimiter">&quot;</span></span>);
+    props.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">mail.smtp.socketFactory.port</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">465</span><span class="delimiter">&quot;</span></span>);
+    props.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">mail.smtp.socketFactory.class</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">javax.net.ssl.SSLSocketFactory</span><span class="delimiter">&quot;</span></span>);
+    props.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">mail.smtp.port</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">465</span><span class="delimiter">&quot;</span></span>);
+}
+
+<span class="comment">/**
+ * Sends email out using JavaMail API
+ *
+ * @param login email login account
+ * @param pass email login password
+ * @param message message to send
+ * @throws AuthenticationFailedException if gmail account can't be logged in
+ */</span>
+ <span class="directive">private</span> <span class="type">void</span> sendingEmail(<span class="predefined-type">String</span> login, <span class="predefined-type">String</span> pass, ReadOnlyMessageDraft message)
+        <span class="directive">throws</span> AuthenticationFailedException {
+    <span class="directive">final</span> <span class="predefined-type">String</span> username = login;
+    <span class="directive">final</span> <span class="predefined-type">String</span> password = pass;
+
+    Session session = Session.getInstance(props, <span class="keyword">new</span> javax.mail.Authenticator() {
+        <span class="annotation">@Override</span>
+        <span class="directive">protected</span> <span class="predefined-type">PasswordAuthentication</span> getPasswordAuthentication() {
+            <span class="keyword">return</span> <span class="keyword">new</span> <span class="predefined-type">PasswordAuthentication</span>(username, password);
+        }
+    });
+
+    <span class="keyword">try</span> {
+        Message newMessage = <span class="keyword">new</span> MimeMessage(session);
+        newMessage.setFrom(<span class="keyword">new</span> InternetAddress(username));
+        InternetAddress recipientEmail = <span class="keyword">new</span> InternetAddress(message.getRecipient());
+        newMessage.setRecipient(Message.RecipientType.TO, recipientEmail);
+        newMessage.setSubject(message.getSubject());
+        <span class="keyword">if</span> (message.getRelativeFilePath().isEmpty()) {
+            newMessage.setText(message.getMessage());
+        } <span class="keyword">else</span> {
+            BodyPart messageBodyPart = <span class="keyword">new</span> MimeBodyPart();
+            messageBodyPart.setText(message.getMessage());
+            Multipart multipart = <span class="keyword">new</span> MimeMultipart();
+            multipart.addBodyPart(messageBodyPart);
+            messageBodyPart = <span class="keyword">new</span> MimeBodyPart();
+            <span class="predefined-type">DataSource</span> source = <span class="keyword">new</span> FileDataSource(message.getRelativeFilePath());
+            messageBodyPart.setDataHandler(<span class="keyword">new</span> DataHandler(source));
+            messageBodyPart.setFileName(message.getRelativeFilePath());
+            multipart.addBodyPart(messageBodyPart);
+            newMessage.setContent(multipart);
+        }
+
+        Transport.send(newMessage);
+    } <span class="keyword">catch</span> (AuthenticationFailedException e) {
+        <span class="keyword">throw</span> <span class="keyword">new</span> AuthenticationFailedException();
+    } <span class="keyword">catch</span> (MessagingException e) {
+        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">RuntimeException</span>(e);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="paragraph">
+<p><strong>Aspect:</strong> Implementation of email feature</p>
+</div>
+<div class="paragraph">
+<p><strong>Alternative 1 (current choice):</strong> Adopt JavaMail API</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Pros:</strong> The email feature will be integrated within the MVP application.</p>
+</li>
+<li>
+<p><strong>Cons:</strong> The email is less secured.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Alternative 2:</strong> Link users to other email platforms</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Pros:</strong> Users will have more options in editing email information.</p>
+</li>
+<li>
+<p><strong>Cons:</strong> The email feature will not be integrated within the MVP application.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Aspect:</strong> Email Account Concealment (coming in V2.0)</p>
+</div>
+<div class="paragraph">
+<p><strong>Alternative 1 (current choice):</strong> Display email login details in command line</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Pros:</strong> The email account&#8217;s information (username and password) can be seen by the user.</p>
+</li>
+<li>
+<p><strong>Cons:</strong> The email account&#8217;s information (username and password) can be seen by other people.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Alternative 2:</strong> Conceal email login details in command line with placeholder symbols</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Pros:</strong> The email account&#8217;s information (username and password) is hidden from other people.</p>
+</li>
+<li>
+<p><strong>Cons:</strong> User may key in a wrong email password because they cannot identify what was typed.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2018-04-14 14:39:50 UTC
+</div>
+</div>
+</body>
+</html>

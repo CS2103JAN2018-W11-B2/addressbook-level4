@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.6.1">
+<title>Lai Qi Wei - Project Portfolio</title>
+<link rel="stylesheet" href="../stylesheets/gh-pages.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css">
+</head>
+<body class="article">
+<div id="header">
+<h1>Lai Qi Wei - Project Portfolio</h1>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="project-movie-planner-mvp-v1-5"><a class="link" href="#project-movie-planner-mvp-v1-5">PROJECT: MoVie Planner (MVP) - V1.5</a></h2>
+<div class="sectionbody">
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>MoVie Planner (MVP) is a desktop application that aims to help cinema managers manage the schedule of movies in
+different cinemas.
+The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 20 kLoC.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Major enhancement</strong>: Added scheduling system.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: Allows the user to add or delete a movie screening in a cinema.</p>
+</li>
+<li>
+<p>Justification: This feature makes cinema schedule planning much easier because the user can add a movie screening to a cinema&#8217;s theater
+without worrying about variables such as preparation delay and advertisement time. These variables are calculated automatically in MVP
+to see if a screening can be added to the cinema&#8217;s theater. Once added, the screening will be displayed for the user to view the schedule.</p>
+</li>
+<li>
+<p>Highlights: This enhancement interacts heavily with existing model and requires deep consideration
+on areas such as storage and ui. Displaying the schedule also affects existing commands and it requires careful testing.
+I have also added a jump command for user to navigate the dates in the schedule.</p>
+</li>
+<li>
+<p>Credits: CalendarFX API</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Minor enhancement</strong>: Added a panel to display the list of movies.</p>
+</li>
+<li>
+<p><strong>Code contributed</strong>: [<a href="https://github.com/CS2103JAN2018-W11-B2/main/blob/master/collated/functional/qwlai.md">Functional code</a>] [<a href="https://github.com/CS2103JAN2018-W11-B2/main/blob/master/collated/test/qwlai.md">Test code</a>]</p>
+</li>
+<li>
+<p><strong>Other contributions</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Managed releases <code>v1.3</code> - <code>v1.5rc</code> (3 releases) on GitHub</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Enhancements to existing features:</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Add alias to existing commands (Pull requests <a href="https://github.com/CS2103JAN2018-W11-B2/main/pull/24">#24</a>)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Documentation:</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Updated User Guide with gifs to show the before and after when a command is entered (example: <a href="https://github.com/CS2103JAN2018-W11-B2/main/commit/6a2884b4c57c69eb577db0e6859b0b630c7cf624">1</a>)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Tools:</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Integrated a third party library (CalendarFX) to the project (Pull requests <a href="https://github.com/CS2103JAN2018-W11-B2/main/pull/88">#88</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect3">
+<h4 id="adding-a-movie-screening-code-addscreening-code-code-as-code-code-available-in-v1-2-code"><a class="link" href="#adding-a-movie-screening-code-addscreening-code-code-as-code-code-available-in-v1-2-code">Adding a movie screening: <code>addscreening</code> | <code>as</code> | <code>Available in v1.2</code></a></h4>
+<div class="paragraph">
+<p>Alias: <code>as</code></p>
+</div>
+<div class="paragraph">
+<p>To add a screening of a movie to a cinema theater, you can type the following command in the command box.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>addscreening m/MOVIE_INDEX c/CINEMA_INDEX th/THEATER h/SCREEN_DATE_TIME</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><code>SCREEN_DATE_TIME</code> must not be before the release date of the movie.
+e.g. A movie is released on <code>05/04/2018</code> but adding a screening on <code>04/04/2018 10:00</code> will not be allowed.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the most recent listing.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive number</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+<li>
+<p>The movie to be screened must exist in MVP.</p>
+</li>
+<li>
+<p>The minutes in <code>SCREEN_DATE_TIME</code> must be in 5 minutes interval.</p>
+</li>
+<li>
+<p>The screenings that are being added must be between year 2000 and 2030, inclusive of 2000 and 2030.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>addscreening m/1 c/2 th/1 h/05/05/2015 13:30</code><br>
+Adds a screening of the 1st movie in the <code>Movie Display</code> to the 2nd cinema&#8217;s 1st theater.</p>
+</li>
+<li>
+<p><code>as m/2 c/3 th/2 h/13/04/2018 14:15</code><br>
+Adds a screening of the 2nd movie in the <code>Movie Display</code> to the 3rd cinema&#8217;s 2nd theater. An example is shown in the picture below.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AddScreening.png" alt="AddScreening" width="1000">
+</div>
+<div class="title">Figure 1. Before and after <code>as m/2 c/3 th/2 h/13/04/2018 14:15</code></div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deleting-a-screening-code-deletescreening-code-code-ds-code-code-available-in-v1-4-code"><a class="link" href="#deleting-a-screening-code-deletescreening-code-code-ds-code-code-available-in-v1-4-code">Deleting a screening: <code>deletescreening</code> | <code>ds</code> | <code>Available in v1.4</code></a></h4>
+<div class="paragraph">
+<p>Alias: <code>ds</code></p>
+</div>
+<div class="paragraph">
+<p>To delete a screening from a cinema theater, you can type the following command in the command box.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>deletescreening c/CINEMA_INDEX th/THEATER h/SCREEN_DATE_TIME</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The index refers to the index number shown in the most recent listing.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive number</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+<li>
+<p>The movie screening must exist in the cinema theater.</p>
+</li>
+<li>
+<p>The minutes in <code>SCREEN_DATE_TIME</code> must be in 5 minutes interval.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>deletescreening c/2 th/1 h/05/05/2015 13:30</code><br>
+Deletes the screening which screens on <code>05/05/2015 13:30</code> from the 2nd cinema&#8217;s 1st theater.</p>
+</li>
+<li>
+<p><code>ds c/3 th/2 h/13/04/2018 14:15</code><br>
+Deletes the screening which screens on <code>13/04/2018 14:15</code> from the 3rd cinema&#8217;s 2nd theater. An example is shown in the picture below.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/DeleteScreening.png" alt="DeleteScreening" width="1000">
+</div>
+<div class="title">Figure 2. Before and after <code>ds c/3 th/2 h/13/04/2018 14:15</code></div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="jumping-to-a-specified-date-code-jump-code-code-j-code-code-available-in-v1-3-code"><a class="link" href="#jumping-to-a-specified-date-code-jump-code-code-j-code-code-available-in-v1-3-code">Jumping to a specified date : <code>jump</code> | <code>j</code> | <code>Available in v1.3</code></a></h4>
+<div class="paragraph">
+<p>Alias: <code>j</code></p>
+</div>
+<div class="paragraph">
+<p>To view the schedule of a cinema on a specified date, you can type the following command in the command box.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>jump dd/mm/yyyy</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Remember to select a cinema using the <code>select</code> command before executing the jump command.</p>
+</li>
+<li>
+<p>You can only jump to a date between year 2000 and 2030, inclusive of 2000 and 2030.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>jump 03/05/2018</code><br>
+Jumps to the schedule of the selected cinema. You will be able to view the schedule of the cinema on 03/05/2018.</p>
+</li>
+<li>
+<p><code>j 03/03/2017</code><br>
+Jumps to the schedule of the selected cinema. You will be able to view the schedule of the cinema on 03/03/2017. An example is shown in the picture below.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/Jump.png" alt="Jump" width="1000">
+</div>
+<div class="title">Figure 3. Before and after <code>j 03/03/2017</code></div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="Implementation-SchedulingSystem"><a class="link" href="#Implementation-SchedulingSystem">Scheduling System</a></h3>
+<div class="paragraph">
+<p>In MVP, the scheduling system enables the user to plan a schedule of the cinema&#8217;s theater via addition and removal of screenings.
+The user can then use the <code>BrowserPanel</code> to view the cinema&#8217;s schedule.</p>
+</div>
+<div class="sect3">
+<h4 id="implementation-details"><a class="link" href="#implementation-details">Implementation details</a></h4>
+<div class="paragraph">
+<p>Addition and removal of screenings uses similar implementation. The sequence diagram below shows an overview
+of the high level interactions between components for the scenario when a <code>addscreening</code> command issued.</p>
+</div>
+<div id="high_level_sd_scheduling" class="imageblock">
+<div class="content">
+<img src="../images/SDForAddScreening.png" alt="SDForAddScreening" width="1000">
+</div>
+</div>
+<div class="sect4">
+<h5 id="add-screening-command"><a class="link" href="#add-screening-command">Add Screening Command</a></h5>
+<div class="paragraph">
+<p>MVP makes use of the <code>addscreening</code> command to add a new screening to a cinema&#8217;s theater.</p>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows the interactions inside the Logic Component
+for <code>addscreening</code> command.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AddScreeningSequenceDiagram.png" alt="AddScreeningSequenceDiagram" width="1000">
+</div>
+<div class="title">Figure 4. Sequence diagram of the interactions inside the Logic Component for <code>addscreening</code> command</div>
+</div>
+<div class="paragraph">
+<p>As seen in the sequence diagram above, MVP will do the following to execute the <code>addscreening</code> command</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>LogicManager</code> calls the <code>MoviePlannerParser</code> to parse the user command.</p>
+</li>
+<li>
+<p><code>MoviePlannerParser</code> calls the <code>AddScreeningCommandParser</code> to process the prefixes <code>c/, m/, th/, h/</code>, which stands for
+cinema index, movie, theater number and date time respectively.</p>
+</li>
+<li>
+<p>This results in a <code>Command</code> object which is executed by <code>LogicManager</code>.</p>
+</li>
+<li>
+<p><code>isValidScreening()</code> in <code>AddScreeningCommand</code> ensures a couple of properties before creating a <code>Screening</code> object.</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>The movie index provided is valid.</p>
+</li>
+<li>
+<p>The cinema index provided is valid.</p>
+</li>
+<li>
+<p>The theater number provided is valid.</p>
+</li>
+<li>
+<p>The screening can fit into existing theater schedule.</p>
+</li>
+<li>
+<p>The screening date is not before the release date of the movie.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The code snippet below shows how MVP checks if the screening is valid.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">    <span class="directive">private</span> <span class="type">boolean</span> isValidScreening() <span class="directive">throws</span> CommandException {
+        movie = getValidMovie();
+        cinema = getValidCinema();
+        theater = getValidTheater(cinema);
+        <span class="predefined-type">ArrayList</span>&lt;Screening&gt; screeningList = theater.getScreeningList();
+        toAddScreeningEndDateTime = getEndTime();
+
+        <span class="keyword">return</span> isSlotAvailable(screeningList) &amp;&amp; canAddMovie(movie);
+    }</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The formula used to calculate the screening&#8217;s end time is (start time + movie&#8217;s duration + preparation delay) rounded up to the nearest 5 minutes.</p>
+</li>
+<li>
+<p>By default the preparation delay is <strong>15 minutes</strong>.</p>
+</li>
+<li>
+<p>E.g. Screening is scheduled to start at 13:30, movie&#8217;s duration is 93 minutes.
+The end time of this screening is calculated by (13:30 + 15 minutes + 93 minutes) = 15:18.
+By rounding up to the nearest 5 minutes, the screening will end at 15:20.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="4">
+<li>
+<p>The command execution can affect the <code>Model</code> as it updates the <code>Cinema</code> object to include the new <code>Screening</code>.</p>
+</li>
+<li>
+<p>The result of the execution is encapsulated as a <code>CommandResult</code> object which is passed back to the <code>UI</code>.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="storing-screenings-to-xml"><a class="link" href="#storing-screenings-to-xml">Storing screenings to xml</a></h5>
+<div class="paragraph">
+<p>Once a <code>Screening</code> is added to a cinema&#8217;s theater, the <code>Cinema</code> needs to be updated and
+saved into XML format.</p>
+</div>
+<div class="paragraph">
+<p>The part in red border below shows the class diagram of the storage component
+and the relationship between <code>XMLAdaptedCinema</code>, <code>XMLAdaptedTheater</code> and <code>XMLAdaptedScreening</code>.</p>
+</div>
+<div id="screening_storage" class="imageblock">
+<div class="content">
+<img src="../images/ScreeningStorageComponent.png" alt="ScreeningStorageComponent" width="500">
+</div>
+<div class="title">Figure 5. Class diagram of storage component</div>
+</div>
+<div class="paragraph">
+<p>The data will be stored as such in the movieplanner.xml file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml">    <span class="tag">&lt;cinemas&gt;</span>
+        <span class="tag">&lt;name&gt;</span>Cathay<span class="tag">&lt;/name&gt;</span>
+        ...
+        <span class="tag">&lt;theater</span> <span class="attribute-name">number</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+        <span class="tag">&lt;theater</span> <span class="attribute-name">number</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">2</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+            <span class="tag">&lt;screening&gt;</span>
+                <span class="tag">&lt;movie&gt;</span>Finding Nemo<span class="tag">&lt;/movie&gt;</span>
+                <span class="tag">&lt;startDateTime&gt;</span>11/11/2015 13:35<span class="tag">&lt;/startDateTime&gt;</span>
+                <span class="tag">&lt;endDateTime&gt;</span>11/11/2015 15:50<span class="tag">&lt;/endDateTime&gt;</span>
+            <span class="tag">&lt;/screening&gt;</span>
+        <span class="tag">&lt;/theater&gt;</span>
+    <span class="tag">&lt;/cinemas&gt;</span>
+    <span class="tag">&lt;cinemas&gt;</span>
+        <span class="tag">&lt;name&gt;</span>Shaws<span class="tag">&lt;/name&gt;</span>
+        ...
+        <span class="tag">&lt;theater</span> <span class="attribute-name">number</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+            <span class="tag">&lt;screening&gt;</span>
+                <span class="tag">&lt;movie&gt;</span>Incredible Hulk<span class="tag">&lt;/movie&gt;</span>
+                <span class="tag">&lt;startDateTime&gt;</span>11/11/2015 13:35<span class="tag">&lt;/startDateTime&gt;</span>
+                <span class="tag">&lt;endDateTime&gt;</span>11/11/2015 15:50<span class="tag">&lt;/endDateTime&gt;</span>
+            <span class="tag">&lt;/screening&gt;</span>
+        <span class="tag">&lt;/theater&gt;</span>
+    <span class="tag">&lt;/cinemas&gt;</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="reading-screenings-from-code-movieplanner-xml-code"><a class="link" href="#reading-screenings-from-code-movieplanner-xml-code">Reading screenings from <code>movieplanner.xml</code></a></h5>
+<div class="paragraph">
+<p>As shown in <a href="#screening_storage">Class diagram of storage component</a>, it shows the relationship between <code>XMLAdaptedCinema</code>, <code>XMLAdaptedTheater</code> and <code>XMLAdaptedScreening</code>.</p>
+</div>
+<div class="paragraph">
+<p>The following steps show how MVP extracts the list of cinemas and converts the <code>XMLAdaptedScreening</code> back into
+screening object.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>In <code>XMLAdaptedCinema</code>, an ArrayList is created to store the <code>XMLAdaptedTheater</code>, this ArrayList contains theaters in a cinema.</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">XmlAdaptedCinema</span> {
+    <span class="annotation">@XmlElement</span>(name = <span class="string"><span class="delimiter">&quot;</span><span class="content">theater</span><span class="delimiter">&quot;</span></span>)
+    <span class="directive">private</span> <span class="predefined-type">ArrayList</span>&lt;XmlAdaptedTheater&gt; theaters = <span class="keyword">new</span> <span class="predefined-type">ArrayList</span>&lt;&gt;();
+    ...
+}</code></pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>In <code>XMLAdaptedTheater</code>, an ArrayList is created to store the <code>XMLAdaptedScreening</code>,
+this ArrayList contains screenings in a theater. It also creates the <code>Screening</code> object to be stored in the <code>Theater</code>.</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">XmlAdaptedTheater</span> {
+    <span class="annotation">@XmlAttribute</span>(name = <span class="string"><span class="delimiter">&quot;</span><span class="content">number</span><span class="delimiter">&quot;</span></span>)
+    <span class="directive">private</span> <span class="type">int</span> theaterNumber;
+    <span class="annotation">@XmlElement</span>(name = <span class="string"><span class="delimiter">&quot;</span><span class="content">screening</span><span class="delimiter">&quot;</span></span>)
+    <span class="directive">private</span> <span class="predefined-type">ArrayList</span>&lt;XmlAdaptedScreening&gt; screenings = <span class="keyword">new</span> <span class="predefined-type">ArrayList</span>&lt;&gt;();
+    ...
+
+    public Theater toModelType() <span class="directive">throws</span> IllegalValueException {
+        ...
+        Theater theater = <span class="keyword">new</span> Theater(theaterNumber);
+        <span class="keyword">for</span> (XmlAdaptedScreening s : screenings) {
+            <span class="comment">// logic to create a screening object</span>
+            theater.addScreeningToTheater(screening);
+        }
+        ...
+        return theater;
+    }
+    ...
+}</code></pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>In <code>XMLAdaptedScreening</code>, it will read the movie name, the start and end date time of a screening.</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">XMLAdaptedScreening</span> {
+    <span class="annotation">@XmlElement</span>(required = <span class="predefined-constant">true</span>, name = <span class="string"><span class="delimiter">&quot;</span><span class="content">movie</span><span class="delimiter">&quot;</span></span>)
+    <span class="directive">private</span> <span class="predefined-type">String</span> movieName;
+    <span class="annotation">@XmlElement</span>(required = <span class="predefined-constant">true</span>, name = <span class="string"><span class="delimiter">&quot;</span><span class="content">startDateTime</span><span class="delimiter">&quot;</span></span>)
+    <span class="directive">private</span> <span class="predefined-type">String</span> screeningDateTime;
+    <span class="annotation">@XmlElement</span>(required = <span class="predefined-constant">true</span>, name = <span class="string"><span class="delimiter">&quot;</span><span class="content">endDateTime</span><span class="delimiter">&quot;</span></span>)
+    <span class="directive">private</span> <span class="predefined-type">String</span> screeningEndDateTime;
+    ...
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="displaying-screenings-on-ui"><a class="link" href="#displaying-screenings-on-ui">Displaying screenings on UI</a></h5>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<code>BrowserPanel</code> uses the CalendarFX API to display the cinema&#8217;s schedule. You can refer to <a href="http://dlsc.com/wp-content/html/calendarfx/manual.html" class="bare">http://dlsc.com/wp-content/html/calendarfx/manual.html</a> to find out more about CalendarFX.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Once a screening is added to a cinema&#8217;s theater, the user can view the screening on the <code>BrowserPanel</code>.
+As seen in the diagram below, the <code>BrowserPanel</code> shows the schedule of a cinema.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/BrowserPanelDisplay.png" alt="BrowserPanelDisplay" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>Extending on <a href="#high_level_sd_scheduling">[high_level_sd_scheduling]</a>, the following sequence diagram shows how the UI is notified on a new screening.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/SDForAddScreeningEventHandling.png" alt="SDForAddScreeningEventHandling" width="800">
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<code>BrowserPanel</code> subscribes to the <code>ReloadBrowserPanel</code> and will load all the schedules of the cinema in MVP.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="paragraph">
+<p><strong>Aspect:</strong> Displaying cinema theater&#8217;s schedule</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Use an external framework such as <code>CalendarFX</code> to display the schedule</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: <code>CalendarFX</code> is visually appealing and there are a lot of functionalities such as the ability to add an entry with date and time.</p>
+</li>
+<li>
+<p>Cons: Requires some time to be familiar with the API.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Use <code>JavaFX</code> to display the schedule</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: <code>JavaFX</code> is well documented.</p>
+</li>
+<li>
+<p>Cons: Lacks calendar specific functionalities such as the ability to add an entry with date and time.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Aspect:</strong> Edit command for screenings</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1:</strong> Implement an edit command for screening</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: User can edit their screenings to their preferred date and timing.</p>
+</li>
+<li>
+<p>Cons: Edit command may introduce potential problems such as verifying a screening can be edited to another timeslot.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2 (current choice):</strong> Use existing command <code>deletescreening</code> and <code>addscreening</code> to perform an edit equivalent action</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Less commands for the user to learn about.</p>
+</li>
+<li>
+<p>Cons: User will need to delete existing screening and add the screening with new details to perform an edit equivalent action.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2018-04-14 14:39:50 UTC
+</div>
+</div>
+</body>
+</html>
