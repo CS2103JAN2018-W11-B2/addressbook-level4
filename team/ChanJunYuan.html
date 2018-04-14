@@ -226,6 +226,126 @@ Decrypts the <code>encryptedmovieplanner.xml</code> and recovers a <code>moviepl
 <p><a href="UserGuide.html">Back to top</a></p>
 </div>
 </div>
+<div class="sect3">
+<h4 id="adding-theaters-code-addtheater-code-code-at-code-code-available-in-v1-2-code"><a class="link" href="#adding-theaters-code-addtheater-code-code-at-code-code-available-in-v1-2-code">Adding theaters: <code>addtheater</code> | <code>at</code> | <code>Available in v1.2</code></a></h4>
+<div class="paragraph">
+<p>Alias: <code>at</code></p>
+</div>
+<div class="paragraph">
+<p>To add theaters to a cinema, you can type the following command in the command box.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>addtheater CINEMA_INDEX th/NUMBER_OF_THEATER</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The index refers to the index number shown in the last cinema listing.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+<li>
+<p>The number of theaters entered must be a <strong>positive</strong> number.</p>
+</li>
+<li>
+<p>The maximum number of theaters per cinema is <strong>20</strong>.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>addtheater 2 th/2</code><br>
+Adds <code>2</code> theaters to the 2nd cinema in the <code>Cinema Display</code>.</p>
+</li>
+<li>
+<p><code>at 2 th/3</code><br>
+Adds <code>3</code> theaters to the 2nd cinema in the <code>Cinema Display</code>. An example is shown in the picture below.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AddTheater.png" alt="AddTheater" width="1000">
+</div>
+<div class="title">Figure 1. Before and after <code>at 2 th/3</code></div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deleting-theaters-code-deletetheater-code-code-dt-code-code-available-in-v1-2-code"><a class="link" href="#deleting-theaters-code-deletetheater-code-code-dt-code-code-available-in-v1-2-code">Deleting theaters: <code>deletetheater</code> | <code>dt</code> | <code>Available in v1.2</code></a></h4>
+<div class="paragraph">
+<p>Alias: <code>dt</code></p>
+</div>
+<div class="paragraph">
+<p>To delete theaters from a cinema, you can type the following command in the command box.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>deletetheater CINEMA_INDEX th/NUMBER_OF_THEATER</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The index refers to the index number shown in the last cinema listing.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+<li>
+<p>The number of theaters entered must be a <strong>positive</strong> number.</p>
+</li>
+<li>
+<p>The number of theaters entered should be fewer than the current number of theaters in that cinema.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>deletetheater 2 th/9</code><br>
+Deletes <code>5</code> theaters from the 2nd cinema in the <code>Cinema Display</code>.</p>
+</li>
+<li>
+<p><code>dt 1 th/2</code><br>
+Deletes <code>2</code> theaters from the 1st cinema in the <code>Cinema Display</code>. An example is shown in the picture below.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/DeleteTheater.png" alt="DeleteTheater" width="1000">
+</div>
+<div class="title">Figure 2. Before and after <code>dt 1 th/2</code></div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -253,7 +373,7 @@ Decrypts the <code>encryptedmovieplanner.xml</code> and recovers a <code>moviepl
 <div class="content">
 <img src="../images/SDforEncryption.png" alt="SDforEncryption" width="800">
 </div>
-<div class="title">Figure 1. Component interactions for <code>encrypt pw/pass</code> command (part 1)</div>
+<div class="title">Figure 3. Component interactions for <code>encrypt pw/pass</code> command (part 1)</div>
 </div>
 <div class="paragraph">
 <p>Figure 20  shows how the <code>EventsCenter</code> reacts to that event, which eventually results in the updates being saved to the hard disk.</p>
@@ -262,7 +382,7 @@ Decrypts the <code>encryptedmovieplanner.xml</code> and recovers a <code>moviepl
 <div class="content">
 <img src="../images/SDforEncryptEventHandling.png" alt="SDforEncryptEventHandling" width="800">
 </div>
-<div class="title">Figure 2. Component interactions for <code>encrypt pw/pass</code> command (part 2)</div>
+<div class="title">Figure 4. Component interactions for <code>encrypt pw/pass</code> command (part 2)</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -392,12 +512,119 @@ Decrypts the <code>encryptedmovieplanner.xml</code> and recovers a <code>moviepl
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="add-delete-theater"><a class="link" href="#add-delete-theater">Add/Delete Theater</a></h3>
+<div class="paragraph">
+<p>When creating a new <code>Cinema</code>, the initial number of theaters must be stated. This value will be used to create a corresponding number of <code>Theater</code>, which is stored as an ArrayList&lt;Theater&gt; in <code>Cinema</code>.</p>
+</div>
+<div class="sect3">
+<h4 id="implementation-details-2"><a class="link" href="#implementation-details-2">Implementation details</a></h4>
+<div class="paragraph">
+<p><strong>Add Theater Command</strong></p>
+</div>
+<div class="paragraph">
+<p>When there is a need to resize the <code>Cinema</code>, the user can use <code>addTheater</code> and <code>deleteTheater</code> commands to increase/decrease the number of theaters respectively.</p>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows the interactions inside the Logic Component for <code>addTheater</code> command.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AddTheaterSequenceDiagram.png" alt="AddTheaterSequenceDiagram" width="1000">
+</div>
+<div class="title">Figure 5. Sequence diagram of addTheater Command</div>
+</div>
+<div class="olist NOTE">
+<ol class="NOTE">
+<li>
+<p><code>deleteTheater</code> follows the same flow as the diagram shown above, but uses <code>DeleteTheaterCommand</code> and <code>DeleteTheaterCommandParser</code> instead.</p>
+</li>
+<li>
+<p>The maximum number of theaters per cinema is <strong>20</strong>.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The addition and deletion of <code>Theater</code> in <code>Cinema</code> are facilitated by <code>addTheater</code> and <code>deleteTheater</code> commands. When executing these commands, MVP will do the following</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Calls <code>tokenize</code> method in <code>ArgumentTokenizer</code> to get value entered by user.</p>
+</li>
+<li>
+<p>Calls <code>parseIndex</code> and <code>parseTheaters</code> methods in <code>ParserUtil</code> to parse input into objects required for <code>addTheater</code> command and checks for invalid format of user input.</p>
+</li>
+<li>
+<p>Creates a <code>AddTheaterCommand</code> object to take in the <code>parameters</code>. Checks are present in <code>AddTheaterCommand</code> to ensure values provided by user is valid.</p>
+</li>
+<li>
+<p><code>AddTheaterCommand</code> then returns a <code>Command</code> object to the <code>LogicManager</code> for it to execute.</p>
+</li>
+<li>
+<p>The <code>LogicManager</code> will then create the newly resized cinema and update the <code>Model</code>.</p>
+</li>
+<li>
+<p>Upon success, the result of this execution will then be returned as a <code>CommandResult</code> object back to the UI.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<code>parameters</code> above refers to parameters provided by the user. E.g. Index and number of theaters
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-consideration"><a class="link" href="#design-consideration">Design Consideration</a></h4>
+<div class="paragraph">
+<p>Aspect: Implementation of <code>addTheater</code> and <code>deleteTheater</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Using <code>addTheater</code> and <code>deleteTheater</code> commands to add and remove theaters respectively</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Users will be clear that they are increasing or decreasing the size of cinema, as compared to previous implementation where the number of theaters is just overwritten in the <code>EditCommand</code>.</p>
+</li>
+<li>
+<p>Cons: Each respective command only does an action, thus two commands are required instead of one.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Reusing the existing <code>editCommand</code> to add or delete theaters</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: A single command is needed to increase and reduce number of theaters in cinema.</p>
+</li>
+<li>
+<p>Cons: Overwrites current value of <code>Theater</code> in cinema, which might cause the user to lose information in theater.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-14 14:39:50 UTC
+Last updated 2018-04-14 15:04:10 UTC
 </div>
 </div>
 </body>
