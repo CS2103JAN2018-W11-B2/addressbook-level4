@@ -459,7 +459,7 @@ Deletes <code>2</code> theaters from the 1st cinema in the <code>Cinema Display<
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Generating the key using password input by user</p>
+<p><strong>Alternative 1 (current choice):</strong> Generating the key using password input by user.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -472,7 +472,7 @@ Deletes <code>2</code> theaters from the 1st cinema in the <code>Cinema Display<
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Generating the key using <code>java.crypto.KeyGenerator</code></p>
+<p><strong>Alternative 2:</strong> Generating the key using <code>java.crypto.KeyGenerator</code>.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -492,20 +492,20 @@ Deletes <code>2</code> theaters from the 1st cinema in the <code>Cinema Display<
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Users remember the password themselves</p>
+<p><strong>Alternative 1 (current choice):</strong> Users remember the password themselves.</p>
 <div class="ulist">
 <ul>
 <li>
 <p>Pros: As the password is not stored anywhere in the application, unauthorized personnel would not be able to reverse-engineer the application to obtain the password.</p>
 </li>
 <li>
-<p>Cons: User will have to inform the other party about the password themselves through some secured means.</p>
+<p>Cons: User will have to inform the other party about the password themselves through some means.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Password saved in application</p>
+<p><strong>Alternative 2:</strong> Password saved in application.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -543,8 +543,15 @@ Deletes <code>2</code> theaters from the 1st cinema in the <code>Cinema Display<
 </div>
 <div class="title">Figure 6. Sequence diagram of addTheater Command</div>
 </div>
-<div class="olist NOTE">
-<ol class="NOTE">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="olist arabic">
+<ol class="arabic">
 <li>
 <p><code>deleteTheater</code> follows the same flow as the diagram shown above, but uses <code>DeleteTheaterCommand</code> and <code>DeleteTheaterCommandParser</code> instead.</p>
 </li>
@@ -553,8 +560,12 @@ Deletes <code>2</code> theaters from the 1st cinema in the <code>Cinema Display<
 </li>
 </ol>
 </div>
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
-<p>The addition and deletion of <code>Theater</code> in <code>Cinema</code> are facilitated by <code>addTheater</code> and <code>deleteTheater</code> commands. When executing these commands, MVP will do the following</p>
+<p>The addition and deletion of <code>Theater</code> in <code>Cinema</code> are facilitated by <code>addTheater</code> and <code>deleteTheater</code> commands. When executing these commands, MVP will do the following:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -571,7 +582,7 @@ Deletes <code>2</code> theaters from the 1st cinema in the <code>Cinema Display<
 <p><code>AddTheaterCommand</code> then returns a <code>Command</code> object to the <code>LogicManager</code> for it to execute.</p>
 </li>
 <li>
-<p>The <code>LogicManager</code> will then create the newly resized cinema and update the <code>Model</code>.</p>
+<p><code>LogicManager</code> will then create the newly resized cinema and update the <code>Model</code>.</p>
 </li>
 <li>
 <p>Upon success, the result of this execution will then be returned as a <code>CommandResult</code> object back to the UI.</p>
@@ -582,7 +593,7 @@ Deletes <code>2</code> theaters from the 1st cinema in the <code>Cinema Display<
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-<code>parameters</code> above refers to parameters provided by the user. E.g. Index and number of theaters
+<code>parameters</code> above refers to parameters provided by the user. e.g. Index and number of theaters
 </td>
 </tr>
 </table>
@@ -633,7 +644,7 @@ Deletes <code>2</code> theaters from the 1st cinema in the <code>Cinema Display<
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 13:13:12 UTC
+Last updated 2018-04-15 14:09:51 UTC
 </div>
 </div>
 </body>

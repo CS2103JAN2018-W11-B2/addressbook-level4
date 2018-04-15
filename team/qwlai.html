@@ -340,7 +340,7 @@ The user can then use the <code>BrowserPanel</code> to view the cinema&#8217;s s
 <h4 id="implementation-details"><a class="link" href="#implementation-details">Implementation details</a></h4>
 <div class="paragraph">
 <p>Addition and removal of screenings uses similar implementation. The sequence diagram below shows an overview
-of the high level interactions between components for the scenario when a <code>addscreening</code> command issued.</p>
+of the high level interactions between components for the scenario when a <code>addscreening</code> command is issued.</p>
 </div>
 <div id="high_level_sd_scheduling" class="imageblock">
 <div class="content">
@@ -364,7 +364,7 @@ for <code>addscreening</code> command.</p>
 <div class="title">Figure 5. Sequence diagram of the interactions inside the Logic Component for <code>addscreening</code> command</div>
 </div>
 <div class="paragraph">
-<p>As seen in the sequence diagram above, MVP will do the following to execute the <code>addscreening</code> command</p>
+<p>As seen in the sequence diagram above, MVP will do the following:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -434,7 +434,7 @@ cinema index, movie, theater number and date time respectively.</p>
 <p>By default the preparation delay is <strong>15 minutes</strong>.</p>
 </li>
 <li>
-<p>E.g. Screening is scheduled to start at 13:30, movie&#8217;s duration is 93 minutes.
+<p>e.g. Screening is scheduled to start at 13:30, movie&#8217;s duration is 93 minutes.
 The end time of this screening is calculated by (13:30 + 15 minutes + 93 minutes) = 15:18.
 By rounding up to the nearest 5 minutes, the screening will end at 15:20.</p>
 </li>
@@ -520,7 +520,7 @@ screening object.</p>
 <ol class="arabic" start="2">
 <li>
 <p>In <code>XMLAdaptedTheater</code>, an ArrayList is created to store the <code>XMLAdaptedScreening</code>,
-this ArrayList contains screenings in a theater. It also creates the <code>Screening</code> object to be stored in the <code>Theater</code>.</p>
+this ArrayList contains screenings in a theater. It also creates the <code>Screening</code> object to be stored in <code>Theater</code>.</p>
 </li>
 </ol>
 </div>
@@ -622,7 +622,7 @@ As seen in the diagram below, the <code>BrowserPanel</code> shows the schedule o
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Use an external framework such as <code>CalendarFX</code> to display the schedule</p>
+<p><strong>Alternative 1 (current choice):</strong> Use an external framework such as <code>CalendarFX</code> to display the schedule.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -635,7 +635,7 @@ As seen in the diagram below, the <code>BrowserPanel</code> shows the schedule o
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Use <code>JavaFX</code> to display the schedule</p>
+<p><strong>Alternative 2:</strong> Use <code>JavaFX</code> to display the schedule.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -655,7 +655,7 @@ As seen in the diagram below, the <code>BrowserPanel</code> shows the schedule o
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1:</strong> Implement an edit command for screening</p>
+<p><strong>Alternative 1:</strong> Implement an edit command for screening.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -668,7 +668,7 @@ As seen in the diagram below, the <code>BrowserPanel</code> shows the schedule o
 </div>
 </li>
 <li>
-<p><strong>Alternative 2 (current choice):</strong> Use existing command <code>deletescreening</code> and <code>addscreening</code> to perform an edit equivalent action</p>
+<p><strong>Alternative 2 (current choice):</strong> Use existing command <code>deletescreening</code> and <code>addscreening</code> to perform an edit equivalent action.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -689,7 +689,7 @@ As seen in the diagram below, the <code>BrowserPanel</code> shows the schedule o
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 13:13:12 UTC
+Last updated 2018-04-15 14:09:51 UTC
 </div>
 </div>
 </body>

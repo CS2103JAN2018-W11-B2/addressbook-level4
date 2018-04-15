@@ -235,7 +235,7 @@ Edits the email message with <code>This will be a very long message, so I hope t
 <div class="sect2">
 <h3 id="email-feature"><a class="link" href="#email-feature">Email feature</a></h3>
 <div class="paragraph">
-<p>The email feature is facilitated by the <code>Email</code> component. It supports the sending of email through an external library <code>JavaMail</code>.</p>
+<p>The email feature is facilitated by the <code>Email</code> component. It supports sending of email through an external library <code>JavaMail</code>.</p>
 </div>
 <div class="sect3">
 <h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
@@ -269,10 +269,10 @@ the following criteria are not met:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>the`MessageDraft` object in <code>EmailCompose</code> is empty or,</p>
+<p><code>MessageDraft</code> object in <code>EmailCompose</code> is empty or,</p>
 </li>
 <li>
-<p>the login details in <code>EmailLogin</code> is not valid.</p>
+<p>login details in <code>EmailLogin</code> is not valid.</p>
 </li>
 </ul>
 </div>
@@ -289,7 +289,7 @@ the following criteria are not met:</p>
 <div class="title">Figure 3. Sequence Diagram of Email feature</div>
 </div>
 <div class="paragraph">
-<p>The following sequence diagram shows how each component within the <code>EmailManager</code> interacts when the email command
+<p>The following sequence diagram shows how the classes within the <code>EmailManager</code> interact when the email command
 is entered by the user.</p>
 </div>
 <div class="imageblock">
@@ -312,8 +312,8 @@ is entered by the user.</p>
 <div class="sect3">
 <h4 id="implementation-of-javamail-api"><a class="link" href="#implementation-of-javamail-api">Implementation of JavaMail API</a></h4>
 <div class="paragraph">
-<p>The <code>Email</code> component uses the external library <code>JavaMail</code> to handle sending out of email from MVP. The following
-code snippet below shows the set up (via SMTP) for sending out email.</p>
+<p>The <code>Email</code> component uses the external library <code>JavaMail</code> to handle sending of email from MVP.
+The code snippet below shows the set up (via SMTP) for sending email.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -386,7 +386,7 @@ code snippet below shows the set up (via SMTP) for sending out email.</p>
 <p><strong>Aspect:</strong> Implementation of email feature</p>
 </div>
 <div class="paragraph">
-<p><strong>Alternative 1 (current choice):</strong> Adopt JavaMail API</p>
+<p><strong>Alternative 1 (current choice):</strong> Adopt JavaMail API.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -399,7 +399,7 @@ code snippet below shows the set up (via SMTP) for sending out email.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p><strong>Alternative 2:</strong> Link users to other email platforms</p>
+<p><strong>Alternative 2:</strong> Link users to other email platforms.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -415,7 +415,7 @@ code snippet below shows the set up (via SMTP) for sending out email.</p>
 <p><strong>Aspect:</strong> Email Account Concealment (coming in V2.0)</p>
 </div>
 <div class="paragraph">
-<p><strong>Alternative 1 (current choice):</strong> Display email login details in command line</p>
+<p><strong>Alternative 1 (current choice):</strong> Display email login details in command line.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -428,7 +428,7 @@ code snippet below shows the set up (via SMTP) for sending out email.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p><strong>Alternative 2:</strong> Conceal email login details in command line with placeholder symbols</p>
+<p><strong>Alternative 2:</strong> Conceal email login details in command line with placeholder symbols.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -447,7 +447,7 @@ code snippet below shows the set up (via SMTP) for sending out email.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 13:13:12 UTC
+Last updated 2018-04-15 14:09:51 UTC
 </div>
 </div>
 </body>
