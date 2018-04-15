@@ -96,6 +96,7 @@
 <li><a href="#launch-and-shutdown">G.1. Launch and Shutdown</a></li>
 <li><a href="#deleting-a-cinema">G.2. Deleting a cinema</a></li>
 <li><a href="#saving-data">G.3. Saving data</a></li>
+<li><a href="#scheduling-system">G.4. Scheduling system</a></li>
 </ul>
 </li>
 </ul>
@@ -106,7 +107,7 @@
 <div class="sectionbody">
 <div class="paragraph">
 <p>MoVie Planner (MVP) is a desktop application that aims to assist cinema managers in managing schedule of
-movies in different cinemas, providing features such as replicating cinemas’ schedules across periods of
+movies in different cinemas, providing features such as managing cinemas’ schedules across periods of
 time, secured storage of cinema schedule and more.</p>
 </div>
 <div class="paragraph">
@@ -352,6 +353,9 @@ Having both Travis and AppVeyor ensures your App works on both Unix-based platfo
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="Design-Architecture"><a class="link" href="#Design-Architecture">3.1. Architecture</a></h3>
+<div class="paragraph">
+<p>The following section contains information about the components in MVP to help you better understand how MVP is designed.</p>
+</div>
 <div class="imageblock">
 <div class="content">
 <img src="images/Architecture.png" alt="Architecture" width="600">
@@ -3292,14 +3296,17 @@ This allows the user to add movies and delete movies from the movie list. It als
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">lazy cinema manager</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">copy cinema&#8217;s schedule</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">copy the schedule of 1 cinema to another quickly</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">lazy cinema manager</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">have keyboard shortcuts</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">execute commands quickly</p></td>
 </tr>
 </tbody>
 </table>
-<div class="paragraph">
-<p><em>{More to be added}</em></p>
-</div>
 <div class="paragraph">
 <p><a href="#">Back to top</a></p>
 </div>
@@ -3403,9 +3410,6 @@ This allows the user to add movies and delete movies from the movie list. It als
 </ul>
 </div>
 <div class="paragraph">
-<p><em>{More to be added}</em></p>
-</div>
-<div class="paragraph">
 <p><a href="#">Back to top</a></p>
 </div>
 </div>
@@ -3440,9 +3444,6 @@ This allows the user to add movies and delete movies from the movie list. It als
 <p>Should be easy to use for user without any programming knowledge.</p>
 </li>
 </ol>
-</div>
-<div class="paragraph">
-<p><em>{More to be added}</em></p>
 </div>
 <div class="paragraph">
 <p><a href="#">Back to top</a></p>
@@ -3547,7 +3548,7 @@ Expected: The most recent window size and location is retained.</p>
 </li>
 <li>
 <p>Test case: <code>delete 1</code><br>
-Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.</p>
+Expected: First cinema is deleted from the list. Details of the deleted cinema shown in the status message. Timestamp in the status bar is updated.</p>
 </li>
 <li>
 <p>Test case: <code>delete 0</code><br>
@@ -3561,9 +3562,6 @@ Expected: Similar to previous.</p>
 </div>
 </li>
 </ol>
-</div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
 </div>
 </div>
 <div class="sect2">
@@ -3582,8 +3580,185 @@ Expected: Similar to previous.</p>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
+</div>
+<div class="sect2">
+<h3 id="scheduling-system"><a class="link" href="#scheduling-system">G.4. Scheduling system</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Adding a screening to MVP</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: List all cinemas and movies using the list command. Multiple cinemas and movies in the list.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The 1st movie has a duration of 100 minutes. The calculated duration for this screening is 115 minutes.</p>
+</li>
+<li>
+<p>The 1st movie release date is on 31/03/2018.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Test case:</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p><code>addscreening m/1 c/1 th/1 h/01/04/2018 11:00</code><br></p>
+</li>
+<li>
+<p><code>addscreening m/1 c/1 th/1 h/01/04/2018 12:55</code><br>
+Expected: This screening will be successfully added to the cinema&#8217;s theater. The <code>BrowserPanel</code> will show new information about this screening.
+Details of the screening will be shown in the status message.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Test case:</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p><code>addscreening m/1 c/1 th/1 h/01/04/2018 11:00</code><br></p>
+</li>
+<li>
+<p><code>addscreening m/1 c/1 th/1 h/01/04/2018 13:15</code><br></p>
+</li>
+<li>
+<p><code>addscreening m/1 c/1 th/1 h/01/04/2018 13:00</code><br>
+Expected: This screening will not be added to the cinema&#8217;s theater due to conflicting timeslot.
+An error message "Please ensure that there is no conflict of screening before and after this. Please also make sure the screening date is after the movie release date." will be shown in the status message.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Test case:</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p><code>addscreening m/1 c/1 th/1 h/29/03/2018 11:00</code><br>
+Expected: This screening will not be added to the cinema&#8217;s theater as the screening date is before the release date of the movie.
+An error message "Please ensure that there is no conflict of screening before and after this. Please also make sure the screening date is after the movie release date." will be shown in the status message.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Test case:</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p><code>addscreening m/1 c/1 th/1 h/01/04/2018 11:04</code><br>
+Expected: This screening will not be added to the cinema&#8217;s theater as the minutes of the screening is not within the 5 minutes interval.
+An error message "Please provide a valid date and time in the form DD/MM/YYYY HH/mm. With the minutes being in 5 minutes interval. E.g. 05/05/2015 23:0" will be shown in the status message.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Deleting a screening from MVP</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: List all cinemas using the list command.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The 1st cinema&#8217;s 1st theater has only 1 screening and it is on 01/04/2018 11:00. The movie in this screening has a duration of 100 minutes. The screening lasts from 11:00 to 12:55.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Test case:</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p><code>deletescreening c/1 th/1 h/01/04/2018 11:00</code><br>
+Expected: This screening is deleted from the cinema&#8217;s theater. The <code>BrowserPanel</code> will show the updated schedule of the cinema&#8217;s theater.
+Details of the screening will be shown in the status message.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Test case:</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p><code>deletescreening c/1 th/1 h/01/04/2018 11:20</code><br>
+Expected: This screening is not deleted from the cinema&#8217;s theater as the time provided is not the exact time when the screening starts.
+An error message "Please ensure that the screening exist in the given cinema. Please also ensure that the time given is the exact time when the screening starts." will be shown in the status message.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Test case:</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p><code>deletescreening c/1 th/1 h/01/04/2018 10:20</code><br>
+Expected: No screening is found.
+An error message "Please ensure that the screening exist in the given cinema. Please also ensure that the time given is the exact time when the screening starts." will be shown in the status message.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Navigating the dates in the schedule</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: A cinema is selected.</p>
+</li>
+<li>
+<p>Test case:</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p><code>jump 28/03/2018</code><br>
+Expected: This command will bring you to the date of 28/03/2018. You should be able to see the screenings of the cinema on 28/03/2018.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Test case:</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p><code>jump 28/03/2031</code><br>
+Expected: This command will fail as the year is not between 2000 to 2030. An error message "Please provide a valid year. The year provided should be between 2000 and 2030, inclusive of year 2000 and 2030." will be shown in the status message.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Test case:</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p><code>jump 28/03/1999</code><br>
+Expected: This command will fail as the year is not between 2000 to 2030. An error message "Please provide a valid year. The year provided should be between 2000 and 2030, inclusive of year 2000 and 2030." will be shown in the status message.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
 </div>
 <div class="paragraph">
 <p><a href="#">Back to top</a></p>
@@ -3594,7 +3769,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 09:35:39 UTC
+Last updated 2018-04-15 09:36:56 UTC
 </div>
 </div>
 </body>
