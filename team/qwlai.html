@@ -133,10 +133,6 @@ I have also added a jump command for user to navigate the dates in the schedule.
 <div class="paragraph">
 <p>Format: <code>addscreening m/MOVIE_INDEX c/CINEMA_INDEX th/THEATER h/SCREEN_DATE_TIME</code></p>
 </div>
-<div class="paragraph">
-<p><code>SCREEN_DATE_TIME</code> is in this format e.g. 31/01/2018 15:00. <code>31</code> is the day, <code>01</code> is the month, <code>2018</code> is the year,
-<code>15:00</code> is the time.</p>
-</div>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -147,6 +143,10 @@ I have also added a jump command for user to navigate the dates in the schedule.
 <div class="ulist">
 <ul>
 <li>
+<p><code>SCREEN_DATE_TIME</code> must not be before the release date of the movie.
+e.g. A movie is released on <code>05/04/2018</code> but adding a screening on <code>04/04/2018 10:00</code> will not be allowed.</p>
+</li>
+<li>
 <p>The index refers to the index number shown in the most recent listing.</p>
 </li>
 <li>
@@ -154,10 +154,6 @@ I have also added a jump command for user to navigate the dates in the schedule.
 </li>
 <li>
 <p>The movie to be screened must exist in MVP.</p>
-</li>
-<li>
-<p><code>SCREEN_DATE_TIME</code> must not be before the release date of the movie.<br>
-e.g. A movie is released on <code>05/04/2018</code> but adding a screening on <code>04/04/2018 10:00</code> will not be allowed.</p>
 </li>
 <li>
 <p>The minutes in <code>SCREEN_DATE_TIME</code> must be in 5 minutes interval.</p>
@@ -204,10 +200,6 @@ Adds a screening of the 2nd movie in the <code>Movie Display</code> to the 3rd c
 <div class="paragraph">
 <p>Format: <code>deletescreening c/CINEMA_INDEX th/THEATER h/SCREEN_DATE_TIME</code></p>
 </div>
-<div class="paragraph">
-<p><code>SCREEN_DATE_TIME</code> is in this format e.g. 31/01/2018 15:00. <code>31</code> is the day, <code>01</code> is the month, <code>2018</code> is the year,
-<code>15:00</code> is the time.</p>
-</div>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -225,10 +217,6 @@ Adds a screening of the 2nd movie in the <code>Movie Display</code> to the 3rd c
 </li>
 <li>
 <p>The movie screening must exist in the cinema theater.</p>
-</li>
-<li>
-<p>The time in <code>SCREEN_DATE_TIME</code> requires you to give the <strong>exact time</strong> when the screening starts.<br>
-e.g. There is a screening that lasts from 11:00 to 12:55, to delete the screening you have to give <strong>11:00</strong>, not 11:15 or 12:55.</p>
 </li>
 <li>
 <p>The minutes in <code>SCREEN_DATE_TIME</code> must be in 5 minutes interval.</p>
@@ -698,7 +686,7 @@ As seen in the diagram below, the <code>BrowserPanel</code> shows the schedule o
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 09:36:56 UTC
+Last updated 2018-04-15 09:36:40 UTC
 </div>
 </div>
 </body>
