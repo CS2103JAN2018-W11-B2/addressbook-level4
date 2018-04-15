@@ -189,128 +189,6 @@ Displays all movies from tag <code>superhero</code> with name <code>Spiderman</c
 <div class="title">Figure 1. Before and after <code>findmovie n/Spiderman t/superhero</code></div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="finding-movies-by-user-input-code-findmovie-code-code-fm-code-code-available-in-v1-3-code-2"><a class="link" href="#finding-movies-by-user-input-code-findmovie-code-code-fm-code-code-available-in-v1-3-code-2">Finding movies by user input: <code>findmovie</code> | <code>fm</code> | <code>Available in v1.3</code></a></h4>
-<div class="paragraph">
-<p>Alias: <code>fm</code></p>
-</div>
-<div class="paragraph">
-<p>To find movies based on the name, tag or start date, you can type the following command in the command box.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>findmovie [n/MOVIE_NAME] [t/TAG] [sd/START_DATE]</code></p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>The search is case insensitive. e.g <code>spiderman</code> will match <code>Spiderman</code>.</p>
-</li>
-<li>
-<p>The order of the keywords does not matter. e.g. <code>Thor Ragnarok</code> will match <code>Ragnarok Thor</code>.</p>
-</li>
-</ul>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>findmovie n/zombie</code><br>
-Displays all movies which name contains keyword <code>zombie</code> like <code>Zombie Graveyard</code> and <code>attack the zombie</code>.</p>
-</li>
-<li>
-<p><code>findmovie r/PG</code><br>
-Displays all movies with rating <code>PG</code>.</p>
-</li>
-<li>
-<p><code>fm t/horror</code><br>
-Displays all movies which belongs to the tag <code>horror</code>.</p>
-</li>
-<li>
-<p><code>findmovie sd/15/03/2017</code><br>
-Displays all movies that starts on <code>15/03/2017</code>.</p>
-</li>
-<li>
-<p><code>findmovie n/Spiderman t/superhero</code><br>
-Displays all movies from tag <code>superhero</code> with name <code>Spiderman</code> like <code>Spiderman 1</code> and <code>Spiderman 2</code>. An example is shown in the picture below.</p>
-</li>
-</ul>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/FindMovie.png" alt="FindMovie" width="1000">
-</div>
-<div class="title">Figure 2. Before and after <code>findmovie n/Spiderman t/superhero</code></div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="deleting-a-movie-code-deletemovie-code-code-dm-code-code-available-in-v1-2-code"><a class="link" href="#deleting-a-movie-code-deletemovie-code-code-dm-code-code-available-in-v1-2-code">Deleting a movie : <code>deletemovie</code> | <code>dm</code> | <code>Available in V1.2</code></a></h4>
-<div class="paragraph">
-<p>Alias: <code>dm</code></p>
-</div>
-<div class="paragraph">
-<p>To delete a specified movie from MVP, you can type the following command in the command box.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>deletemovie INDEX</code></p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>The index refers to the index number shown in the most recent listing.</p>
-</li>
-<li>
-<p>The index <strong>must be a positive number</strong> 1, 2, 3, &#8230;&#8203;</p>
-</li>
-</ul>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>list</code><br>
-<code>deletemovie 2</code><br>
-Deletes the 2nd movie in <code>Movie Display</code>.</p>
-</li>
-<li>
-<p><code>findmovie t/superhero</code><br>
-<code>dm 3</code><br>
-Deletes the 3rd movie in the results of the <code>find</code> command. An example is shown in the picture below.</p>
-</li>
-</ul>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/DeleteMovie.png" alt="DeleteMovie" width="1000">
-</div>
-<div class="title">Figure 3. Before and after <code>dm 3</code></div>
-</div>
-</div>
 </div>
 </div>
 <div class="sect1">
@@ -353,13 +231,13 @@ between components for the scenario when a <code>AddMovie</code> command is issu
 <div class="content">
 <img src="../images/SDForMovie.PNG" alt="SDForMovie" width="1000">
 </div>
-<div class="title">Figure 4. Component interactions for <code>AddMovieCommand</code></div>
+<div class="title">Figure 2. Component interactions for <code>AddMovieCommand</code></div>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="../images/AddMovieSequenceDiagram.PNG" alt="AddMovieSequenceDiagram" width="1000">
 </div>
-<div class="title">Figure 5. Sequence diagram of addmovie command</div>
+<div class="title">Figure 3. Sequence diagram of addmovie command</div>
 </div>
 </div>
 <div class="sect3">
@@ -420,7 +298,7 @@ in <code>FindMovieCommand</code>.</p>
 <div class="content">
 <img src="../images/FindMovieSequenceDiagram.PNG" alt="FindMovieSequenceDiagram" width="1000">
 </div>
-<div class="title">Figure 6. Sequence diagram of findmovie command</div>
+<div class="title">Figure 4. Sequence diagram of findmovie command</div>
 </div>
 </div>
 <div class="sect3">
@@ -539,7 +417,7 @@ Future updates are planned in <code>V2.0</code> to support both <code>and</code>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 14:09:51 UTC
+Last updated 2018-04-15 14:09:04 UTC
 </div>
 </div>
 </body>
