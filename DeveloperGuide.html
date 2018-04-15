@@ -51,9 +51,10 @@
 <li><a href="#Implementation-Configuration">4.4. Configuration</a></li>
 <li><a href="#email-feature">4.5. Email feature</a></li>
 <li><a href="#Implementation-Movie">4.6. Addition and deletion of movies</a></li>
-<li><a href="#Implementation-FindMovie">4.7. Enhanced FindMovie command</a></li>
-<li><a href="#Implementation-SchedulingSystem">4.8. Scheduling System</a></li>
-<li><a href="#add-delete-theater">4.9. Add/Delete Theater</a></li>
+<li><a href="#Implementation-ListMovie">4.7. Listing movies</a></li>
+<li><a href="#Implementation-FindMovie">4.8. Enhanced FindMovie command</a></li>
+<li><a href="#Implementation-SchedulingSystem">4.9. Scheduling System</a></li>
+<li><a href="#add-delete-theater">4.10. Add/Delete Theater</a></li>
 </ul>
 </li>
 <li><a href="#documentation">5. Documentation</a>
@@ -377,10 +378,10 @@ The <code>.pptx</code> files used to create diagrams in this document can be fou
 <div class="ulist">
 <ul>
 <li>
-<p>At app launch: Initializes the components in the correct sequence, and connects them up with each other.</p>
+<p>At app launch: Initializing the components in the correct sequence, and connecting them with one another.</p>
 </li>
 <li>
-<p>At shut down: Shuts down the components and invokes cleanup method where necessary.</p>
+<p>At shut down: Shutting down the components and invoking cleanup method where necessary.</p>
 </li>
 </ul>
 </div>
@@ -501,7 +502,7 @@ the structure of the <code>Ui</code> component.</p>
 <p><strong>API</strong> : <a href="https://github.com/CS2103JAN2018-W11-B2/main/tree/master/src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></p>
 </div>
 <div class="paragraph">
-<p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>CinemaListPanel</code>, <code>StatusBarFooter</code>, <code>BrowserPanel</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
+<p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>CinemaListPanel</code>, <code>MovieListPanel</code>, <code>StatusBarFooter</code>, <code>BrowserPanel</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
 </div>
 <div class="paragraph">
 <p>The <code>Ui</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/CS2103JAN2018-W11-B2/main/tree/master/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/CS2103JAN2018-W11-B2/main/tree/master/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
@@ -577,7 +578,7 @@ Figures 6 and 7 shows the structure of the <code>Logic</code> component.</p>
 <p>The <code>Model</code> component manages cinemas and movies in MVP, providing <em>APIs</em> to create, read, update and delete.
 Figure 9 shows the structure of the <code>Model</code> component.</p>
 </div>
-<div class="imageblock">
+<div id="model_component" class="imageblock">
 <div class="content">
 <img src="images/ModelClassDiagram.png" alt="ModelClassDiagram" width="800">
 </div>
@@ -598,12 +599,21 @@ Figure 9 shows the structure of the <code>Model</code> component.</p>
 <p>storing the Movie Planner data.</p>
 </li>
 <li>
-<p>exposing an unmodifiable <code>ObservableList&lt;Cinema&gt;</code> that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.</p>
-</li>
-<li>
-<p>not dependent on any of the other three components.</p>
+<p>exposing an unmodifiable <code>ObservableList&lt;Cinema&gt;</code> and <code>ObservableList&lt;Movie&gt;</code> that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.</p>
 </li>
 </ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The <code>Model</code> component is not dependent on any of the other three components.
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
@@ -1468,12 +1478,82 @@ between components for the scenario when a <code>AddMovie</code> command is issu
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-FindMovie"><a class="link" href="#Implementation-FindMovie">4.7. Enhanced FindMovie command</a></h3>
+<h3 id="Implementation-ListMovie"><a class="link" href="#Implementation-ListMovie">4.7. Listing movies</a></h3>
+<div class="paragraph">
+<p>In MVP, once the user has added or deleted any movies. The <code>MovieListPanel</code> will show any changes made to the list of movies.</p>
+</div>
+<div class="sect3">
+<h4 id="implementation-details-3"><a class="link" href="#implementation-details-3">4.7.1. Implementation details</a></h4>
+<div class="paragraph">
+<p>Whenever a movie is added or deleted, the <code>FilteredList&lt;Movie&gt;</code> is updated in the <code>Model</code> component. The <code>Model</code> component then exposes
+an unmodifiable <code>ObservableList&lt;Movie&gt;</code> as shown in <a href="#model_component">Figure 9, &#8220;Structure of the Model Component&#8221;</a>. The <code>MovieListPanel</code> which resides in the UI Component is bound to
+this <code>ObservableList&lt;Movie&gt;</code> object so that any changes made to the list of movies will be displayed. The <code>MovieListPanel</code> contains a list of movies in the form of <code>MovieCard</code> objects.
+These <code>MovieCard</code> objects contain details about the movie as seen in the diagram below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/MovieCard.png" alt="MovieCard" width="300">
+</div>
+<div class="title">Figure 28. Movie cards</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The tags of the movie have been colored to make the tags easily identifiable. To add more colors to a tag, you can
+modify the <code>TAG_COLORS</code> array list in <code>MovieCard</code>.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">4.7.2. Design considerations</a></h4>
+<div class="paragraph">
+<p><strong>Aspects:</strong> How to display the list of movies.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Use a <code>MovieCard</code> to display the details of each movie.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement as existing implementation of cinema uses <code>CinemaCard</code>.</p>
+</li>
+<li>
+<p>Cons: It might take a long time for user to scroll through the list of movies especially when the user has a lot of movies.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Use a table to display the details of each movie.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Movies can be displayed in a more compact manner.</p>
+</li>
+<li>
+<p>Cons: May not be visually appealing and the problem of scrolling through the list of movies still persists.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="Implementation-FindMovie"><a class="link" href="#Implementation-FindMovie">4.8. Enhanced FindMovie command</a></h3>
 <div class="paragraph">
 <p>The user can find movies by <code>Category</code>, <code>MovieName</code> or <code>StartDate</code> or a combination of them as a multicriteria search.</p>
 </div>
 <div class="sect3">
-<h4 id="finding-movies"><a class="link" href="#finding-movies">4.7.1. Finding movies</a></h4>
+<h4 id="finding-movies"><a class="link" href="#finding-movies">4.8.1. Finding movies</a></h4>
 <div class="paragraph">
 <p>Movies can be found by using the <code>findmovie</code> command. The command is parsed by <code>FindMovieCommandParser</code> and be executed
 in <code>FindMovieCommand</code>.</p>
@@ -1488,11 +1568,11 @@ in <code>FindMovieCommand</code>.</p>
 <div class="content">
 <img src="images/FindMovieSequenceDiagram.PNG" alt="FindMovieSequenceDiagram" width="1000">
 </div>
-<div class="title">Figure 28. Sequence diagram of findmovie command</div>
+<div class="title">Figure 29. Sequence diagram of findmovie command</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="implementation-details-3"><a class="link" href="#implementation-details-3">4.7.2. Implementation details</a></h4>
+<h4 id="implementation-details-4"><a class="link" href="#implementation-details-4">4.8.2. Implementation details</a></h4>
 <div class="paragraph">
 <p>The parser will take in all arguments the user specified and store it in an array. If the user search by <code>MovieName</code> or
 <code>StartDate</code> or <code>Category</code>, MVP will retrieve movie records in the storage with the matching keywords. If two or more conditions
@@ -1554,7 +1634,7 @@ The code snippet below shows when all parameters are chosen.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">4.7.3. Design considerations</a></h4>
+<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">4.8.3. Design considerations</a></h4>
 <div class="paragraph">
 <p><strong>Aspects:</strong> Using <code>and</code> or <code>or</code> condition for the multicriteria search.</p>
 </div>
@@ -1603,13 +1683,13 @@ A future update is planned in <code>V2.0</code> to support both <code>and</code>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-SchedulingSystem"><a class="link" href="#Implementation-SchedulingSystem">4.8. Scheduling System</a></h3>
+<h3 id="Implementation-SchedulingSystem"><a class="link" href="#Implementation-SchedulingSystem">4.9. Scheduling System</a></h3>
 <div class="paragraph">
 <p>In MVP, the scheduling system enables the user to plan a schedule of a cinema via addition and removal of screenings.
 The user can then use the <code>BrowserPanel</code> to view the cinema&#8217;s schedule.</p>
 </div>
 <div class="sect3">
-<h4 id="implementation-details-4"><a class="link" href="#implementation-details-4">4.8.1. Implementation details</a></h4>
+<h4 id="implementation-details-5"><a class="link" href="#implementation-details-5">4.9.1. Implementation details</a></h4>
 <div class="paragraph">
 <p>Addition and removal of screenings uses similar implementation. The sequence diagram below shows an overview
 of the high level interactions between components for the scenario when a <code>addscreening</code> command issued.</p>
@@ -1618,6 +1698,7 @@ of the high level interactions between components for the scenario when a <code>
 <div class="content">
 <img src="images/SDForAddScreening.png" alt="SDForAddScreening" width="1000">
 </div>
+<div class="title">Figure 30. Sequence diagram showing high level interactions</div>
 </div>
 <div class="sect4">
 <h5 id="add-screening-command"><a class="link" href="#add-screening-command">Add Screening Command</a></h5>
@@ -1632,7 +1713,7 @@ for <code>addscreening</code> command.</p>
 <div class="content">
 <img src="images/AddScreeningSequenceDiagram.png" alt="AddScreeningSequenceDiagram" width="1000">
 </div>
-<div class="title">Figure 29. Sequence diagram of the interactions inside the Logic Component for <code>addscreening</code> command</div>
+<div class="title">Figure 31. Sequence diagram of the interactions inside the Logic Component for <code>addscreening</code> command</div>
 </div>
 <div class="paragraph">
 <p>As seen in the sequence diagram above, MVP will do the following to execute the <code>addscreening</code> command</p>
@@ -1740,7 +1821,7 @@ and the relationship between <code>XMLAdaptedCinema</code>, <code>XMLAdaptedThea
 <div class="content">
 <img src="images/ScreeningStorageComponent.png" alt="ScreeningStorageComponent" width="500">
 </div>
-<div class="title">Figure 30. Class diagram of storage component</div>
+<div class="title">Figure 32. Class diagram of storage component</div>
 </div>
 <div class="paragraph">
 <p>The data will be stored as such in the movieplanner.xml file:</p>
@@ -1765,7 +1846,7 @@ and the relationship between <code>XMLAdaptedCinema</code>, <code>XMLAdaptedThea
 <div class="sect4">
 <h5 id="reading-screenings-from-code-movieplanner-xml-code"><a class="link" href="#reading-screenings-from-code-movieplanner-xml-code">Reading screenings from <code>movieplanner.xml</code></a></h5>
 <div class="paragraph">
-<p>As shown in <a href="#screening_storage">Figure 30, &#8220;Class diagram of storage component&#8221;</a>, it shows the relationship between <code>XMLAdaptedCinema</code>, <code>XMLAdaptedTheater</code> and <code>XMLAdaptedScreening</code>.</p>
+<p>As shown in <a href="#screening_storage">Figure 32, &#8220;Class diagram of storage component&#8221;</a>, it shows the relationship between <code>XMLAdaptedCinema</code>, <code>XMLAdaptedTheater</code> and <code>XMLAdaptedScreening</code>.</p>
 </div>
 <div class="paragraph">
 <p>The following steps show how MVP extracts the list of cinemas and converts the <code>XMLAdaptedScreening</code> back into
@@ -1863,13 +1944,13 @@ As seen in the diagram below, the <code>BrowserPanel</code> shows the schedule o
 </div>
 </div>
 <div class="paragraph">
-<p>Extending on <a href="#high_level_sd_scheduling">[high_level_sd_scheduling]</a>, the following sequence diagram shows how the UI component is notified on a new screening.</p>
+<p>Extending on <a href="#high_level_sd_scheduling">Figure 30, &#8220;Sequence diagram showing high level interactions&#8221;</a>, the following sequence diagram shows how the UI component is notified on a new screening.</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/SDForAddScreeningEventHandling.png" alt="SDForAddScreeningEventHandling" width="800">
 </div>
-<div class="title">Figure 31. ReloadBrowserPanelEvent in execution</div>
+<div class="title">Figure 33. ReloadBrowserPanelEvent in execution</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1886,7 +1967,7 @@ As seen in the diagram below, the <code>BrowserPanel</code> shows the schedule o
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">4.8.2. Design Considerations</a></h4>
+<h4 id="design-considerations-7"><a class="link" href="#design-considerations-7">4.9.2. Design Considerations</a></h4>
 <div class="paragraph">
 <p><strong>Aspect:</strong> How to display a cinema&#8217;s schedule</p>
 </div>
@@ -1956,12 +2037,12 @@ As seen in the diagram below, the <code>BrowserPanel</code> shows the schedule o
 </div>
 </div>
 <div class="sect2">
-<h3 id="add-delete-theater"><a class="link" href="#add-delete-theater">4.9. Add/Delete Theater</a></h3>
+<h3 id="add-delete-theater"><a class="link" href="#add-delete-theater">4.10. Add/Delete Theater</a></h3>
 <div class="paragraph">
 <p>When creating a new <code>Cinema</code>, the initial number of theaters must be stated. This value will be used to create a corresponding number of <code>Theater</code>, which is stored as an ArrayList&lt;Theater&gt; in <code>Cinema</code>.</p>
 </div>
 <div class="sect3">
-<h4 id="implementation-details-5"><a class="link" href="#implementation-details-5">4.9.1. Implementation details</a></h4>
+<h4 id="implementation-details-6"><a class="link" href="#implementation-details-6">4.10.1. Implementation details</a></h4>
 <div class="paragraph">
 <p><strong>Add Theater Command</strong></p>
 </div>
@@ -1975,7 +2056,7 @@ As seen in the diagram below, the <code>BrowserPanel</code> shows the schedule o
 <div class="content">
 <img src="images/AddTheaterSequenceDiagram.png" alt="AddTheaterSequenceDiagram" width="1000">
 </div>
-<div class="title">Figure 32. Sequence diagram of addTheater Command</div>
+<div class="title">Figure 34. Sequence diagram of addTheater Command</div>
 </div>
 <div class="olist NOTE">
 <ol class="NOTE">
@@ -2026,7 +2107,7 @@ As seen in the diagram below, the <code>BrowserPanel</code> shows the schedule o
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-consideration"><a class="link" href="#design-consideration">4.9.2. Design Consideration</a></h4>
+<h4 id="design-consideration"><a class="link" href="#design-consideration">4.10.2. Design Consideration</a></h4>
 <div class="paragraph">
 <p>Aspect: Implementation of <code>addTheater</code> and <code>deleteTheater</code></p>
 </div>
@@ -2126,7 +2207,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 33. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 35. Saving documentation as PDF files in Chrome</div>
 </div>
 <div class="paragraph">
 <p><a href="#">Back to top</a></p>
@@ -3009,7 +3090,7 @@ Expected: This command will fail as the year is not between 2000 to 2030. An err
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 11:50:36 UTC
+Last updated 2018-04-15 12:40:00 UTC
 </div>
 </div>
 </body>
