@@ -333,7 +333,7 @@ Jumps to the schedule of the selected cinema. You will be able to view the sched
 <div class="sect2">
 <h3 id="Implementation-SchedulingSystem"><a class="link" href="#Implementation-SchedulingSystem">Scheduling System</a></h3>
 <div class="paragraph">
-<p>In MVP, the scheduling system enables the user to plan a schedule of the cinema&#8217;s theater via addition and removal of screenings.
+<p>In MVP, the scheduling system enables the user to plan a schedule of a cinema via addition and removal of screenings.
 The user can then use the <code>BrowserPanel</code> to view the cinema&#8217;s schedule.</p>
 </div>
 <div class="sect3">
@@ -486,17 +486,6 @@ and the relationship between <code>XMLAdaptedCinema</code>, <code>XMLAdaptedThea
                 <span class="tag">&lt;endDateTime&gt;</span>11/11/2015 15:50<span class="tag">&lt;/endDateTime&gt;</span>
             <span class="tag">&lt;/screening&gt;</span>
         <span class="tag">&lt;/theater&gt;</span>
-    <span class="tag">&lt;/cinemas&gt;</span>
-    <span class="tag">&lt;cinemas&gt;</span>
-        <span class="tag">&lt;name&gt;</span>Shaws<span class="tag">&lt;/name&gt;</span>
-        ...
-        <span class="tag">&lt;theater</span> <span class="attribute-name">number</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-            <span class="tag">&lt;screening&gt;</span>
-                <span class="tag">&lt;movie&gt;</span>Incredible Hulk<span class="tag">&lt;/movie&gt;</span>
-                <span class="tag">&lt;startDateTime&gt;</span>11/11/2015 13:35<span class="tag">&lt;/startDateTime&gt;</span>
-                <span class="tag">&lt;endDateTime&gt;</span>11/11/2015 15:50<span class="tag">&lt;/endDateTime&gt;</span>
-            <span class="tag">&lt;/screening&gt;</span>
-        <span class="tag">&lt;/theater&gt;</span>
     <span class="tag">&lt;/cinemas&gt;</span></code></pre>
 </div>
 </div>
@@ -527,7 +516,7 @@ screening object.</p>
 </div>
 </div>
 <div class="olist arabic">
-<ol class="arabic">
+<ol class="arabic" start="2">
 <li>
 <p>In <code>XMLAdaptedTheater</code>, an ArrayList is created to store the <code>XMLAdaptedScreening</code>,
 this ArrayList contains screenings in a theater. It also creates the <code>Screening</code> object to be stored in the <code>Theater</code>.</p>
@@ -558,7 +547,7 @@ this ArrayList contains screenings in a theater. It also creates the <code>Scree
 </div>
 </div>
 <div class="olist arabic">
-<ol class="arabic">
+<ol class="arabic" start="3">
 <li>
 <p>In <code>XMLAdaptedScreening</code>, it will read the movie name, the start and end date time of a screening.</p>
 </li>
@@ -602,12 +591,13 @@ As seen in the diagram below, the <code>BrowserPanel</code> shows the schedule o
 </div>
 </div>
 <div class="paragraph">
-<p>Extending on <a href="#high_level_sd_scheduling">[high_level_sd_scheduling]</a>, the following sequence diagram shows how the UI is notified on a new screening.</p>
+<p>Extending on <a href="#high_level_sd_scheduling">[high_level_sd_scheduling]</a>, the following sequence diagram shows how the UI component is notified on a new screening.</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="../images/SDForAddScreeningEventHandling.png" alt="SDForAddScreeningEventHandling" width="800">
 </div>
+<div class="title">Figure 6. ReloadBrowserPanelEvent in execution</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -626,7 +616,7 @@ As seen in the diagram below, the <code>BrowserPanel</code> shows the schedule o
 <div class="sect3">
 <h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
 <div class="paragraph">
-<p><strong>Aspect:</strong> Displaying cinema theater&#8217;s schedule</p>
+<p><strong>Aspect:</strong> How to display a cinema&#8217;s schedule</p>
 </div>
 <div class="ulist">
 <ul>
@@ -659,7 +649,7 @@ As seen in the diagram below, the <code>BrowserPanel</code> shows the schedule o
 </ul>
 </div>
 <div class="paragraph">
-<p><strong>Aspect:</strong> Edit command for screenings</p>
+<p><strong>Aspect:</strong> How to edit screening details</p>
 </div>
 <div class="ulist">
 <ul>
@@ -671,7 +661,7 @@ As seen in the diagram below, the <code>BrowserPanel</code> shows the schedule o
 <p>Pros: User can edit their screenings to their preferred date and timing.</p>
 </li>
 <li>
-<p>Cons: Edit command may introduce potential problems such as verifying a screening can be edited to another timeslot.</p>
+<p>Cons: Edit command may introduce problems such as verifying a screening can be edited to another timeslot.</p>
 </li>
 </ul>
 </div>
@@ -698,7 +688,7 @@ As seen in the diagram below, the <code>BrowserPanel</code> shows the schedule o
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 10:57:11 UTC
+Last updated 2018-04-15 11:07:47 UTC
 </div>
 </div>
 </body>
