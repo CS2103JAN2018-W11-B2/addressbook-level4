@@ -95,8 +95,9 @@
 <ul class="sectlevel2">
 <li><a href="#launch-and-shutdown">G.1. Launch and Shutdown</a></li>
 <li><a href="#deleting-a-cinema">G.2. Deleting a cinema</a></li>
-<li><a href="#saving-data">G.3. Saving data</a></li>
-<li><a href="#scheduling-system">G.4. Scheduling system</a></li>
+<li><a href="#theater-commands">G.3. Theater commands</a></li>
+<li><a href="#saving-data">G.4. Saving data</a></li>
+<li><a href="#scheduling-system">G.5. Scheduling system</a></li>
 </ul>
 </li>
 </ul>
@@ -3565,7 +3566,65 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-data"><a class="link" href="#saving-data">G.3. Saving data</a></h3>
+<h3 id="theater-commands"><a class="link" href="#theater-commands">G.3. Theater commands</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Adding theaters to a cinema</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: The specified cinema must have less than <strong>20</strong> theaters. Multiple cinemas in the list.</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>The first cinema has <strong>x</strong>(where x is any integer smaller than 20) theaters.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Test case: <code>addtheater 1 th/1</code><br>
+Expected: First cinema will have 1 theater added. Details of the resized cinema shown in the status message. Timestamp in the status bar is updated.</p>
+</li>
+<li>
+<p>Test case: <code>addtheater 1 th/0</code><br>
+Expected: No theater is added to the first cinema. Error details shown in the status message. Status bar remains the same.</p>
+</li>
+<li>
+<p>Other incorrect addtheater commands to try: <code>addtheater 0 th/3</code>, <code>addtheater 1 th/10</code> (where 10 + <strong>x</strong> is larger than <strong>20</strong>)
+Expected: Similar to previous.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Deleting theaters from a cinema</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: The specified cinema must have more than <strong>1</strong> theater. Multiple cinemas in the list.</p>
+</li>
+<li>
+<p>Test case: <code>deletetheater 1 th/1</code><br>
+Expected: First cinema will have 1 theater removed from the back. Details of the resized cinema shown in the status message. Timestamp in the status bar is updated.</p>
+</li>
+<li>
+<p>Test case: <code>deletetheater 1 th/0</code><br>
+Expected: No theater is removed from the first cinema. Error details shown in the status message. Status bar remains the same.</p>
+</li>
+<li>
+<p>Other incorrect deletetheater commands to try: <code>deletetheater 0 th/3</code>, <code>deletetheater 1 th/10</code> (where number of theaters in the first cinema is <strong>10</strong> or less).
+Expected: Similar to previous.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="saving-data"><a class="link" href="#saving-data">G.4. Saving data</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -3582,7 +3641,7 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="scheduling-system"><a class="link" href="#scheduling-system">G.4. Scheduling system</a></h3>
+<h3 id="scheduling-system"><a class="link" href="#scheduling-system">G.5. Scheduling system</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -3769,7 +3828,7 @@ Expected: This command will fail as the year is not between 2000 to 2030. An err
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 09:42:58 UTC
+Last updated 2018-04-15 10:26:19 UTC
 </div>
 </div>
 </body>
