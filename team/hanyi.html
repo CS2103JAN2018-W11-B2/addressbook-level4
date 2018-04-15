@@ -124,6 +124,60 @@
 </tbody>
 </table>
 <div class="sect3">
+<h4 id="adding-a-movie-code-addmovie-code-code-am-code-code-available-in-v1-2-code"><a class="link" href="#adding-a-movie-code-addmovie-code-code-am-code-code-available-in-v1-2-code">Adding a movie: <code>addmovie</code> | <code>am</code> | <code>Available in v1.2</code></a></h4>
+<div class="paragraph">
+<p>Alias: <code>am</code></p>
+</div>
+<div class="paragraph">
+<p>To add a movie to MVP, you can type the following command in the command box.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>addmovie n/MOVIE_NAME d/DURATION r/RATING sd/START_DATE t/TAG</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Movies can have the same name but <code>StartDate</code> must be different.</p>
+</li>
+<li>
+<p>Once a movie is tagged, you cannot add or remove tags to a movie.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>addmovie n/The Incredibles d/115 r/PG sd/18/11/2014 t/Animation</code><br>
+Adds a movie named <code>The Incredibles</code> released on <code>18/11/2014</code> with a duration of <code>115 minutes</code> with a rating of <code>PG</code>.</p>
+</li>
+<li>
+<p><code>am n/Spiderman 1 d/121 r/PG sd/29/04/2012 t/superhero t/Spiderman</code><br>
+Adds a movie named <code>Spiderman 1</code> released on <code>29/04/2012</code> with a duration of <code>121 minutes</code> with a rating of <code>PG</code>. An example is shown in the picture below.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AddMovie.png" alt="AddMovie" width="1000">
+</div>
+<div class="title">Figure 1. Before and after <code>am n/Spiderman 1 d/121 r/PG sd/29/04/2012 t/superhero t/Spiderman</code></div>
+</div>
+</div>
+<div class="sect3">
 <h4 id="finding-movies-by-user-input-code-findmovie-code-code-fm-code-code-available-in-v1-3-code"><a class="link" href="#finding-movies-by-user-input-code-findmovie-code-code-fm-code-code-available-in-v1-3-code">Finding movies by user input: <code>findmovie</code> | <code>fm</code> | <code>Available in v1.3</code></a></h4>
 <div class="paragraph">
 <p>Alias: <code>fm</code></p>
@@ -186,7 +240,63 @@ Displays all movies from tag <code>superhero</code> with name <code>Spiderman</c
 <div class="content">
 <img src="../images/FindMovie.png" alt="FindMovie" width="1000">
 </div>
-<div class="title">Figure 1. Before and after <code>findmovie n/Spiderman t/superhero</code></div>
+<div class="title">Figure 2. Before and after <code>findmovie n/Spiderman t/superhero</code></div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deleting-a-movie-code-deletemovie-code-code-dm-code-code-available-in-v1-2-code"><a class="link" href="#deleting-a-movie-code-deletemovie-code-code-dm-code-code-available-in-v1-2-code">Deleting a movie : <code>deletemovie</code> | <code>dm</code> | <code>Available in V1.2</code></a></h4>
+<div class="paragraph">
+<p>Alias: <code>dm</code></p>
+</div>
+<div class="paragraph">
+<p>To delete a specified movie from MVP, you can type the following command in the command box.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>deletemovie INDEX</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The index refers to the index number shown in the most recent listing.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive number</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>list</code><br>
+<code>deletemovie 2</code><br>
+Deletes the 2nd movie in <code>Movie Display</code>.</p>
+</li>
+<li>
+<p><code>findmovie t/superhero</code><br>
+<code>dm 3</code><br>
+Deletes the 3rd movie in the results of the <code>find</code> command. An example is shown in the picture below.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/DeleteMovie.png" alt="DeleteMovie" width="1000">
+</div>
+<div class="title">Figure 3. Before and after <code>dm 3</code></div>
 </div>
 </div>
 </div>
@@ -231,13 +341,13 @@ between components for the scenario when a <code>AddMovie</code> command is issu
 <div class="content">
 <img src="../images/SDForMovie.PNG" alt="SDForMovie" width="1000">
 </div>
-<div class="title">Figure 2. Component interactions for <code>AddMovieCommand</code></div>
+<div class="title">Figure 4. Component interactions for <code>AddMovieCommand</code></div>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="../images/AddMovieSequenceDiagram.PNG" alt="AddMovieSequenceDiagram" width="1000">
 </div>
-<div class="title">Figure 3. Sequence diagram of addmovie command</div>
+<div class="title">Figure 5. Sequence diagram of addmovie command</div>
 </div>
 </div>
 <div class="sect3">
@@ -298,7 +408,7 @@ in <code>FindMovieCommand</code>.</p>
 <div class="content">
 <img src="../images/FindMovieSequenceDiagram.PNG" alt="FindMovieSequenceDiagram" width="1000">
 </div>
-<div class="title">Figure 4. Sequence diagram of findmovie command</div>
+<div class="title">Figure 6. Sequence diagram of findmovie command</div>
 </div>
 </div>
 <div class="sect3">
@@ -417,7 +527,7 @@ Future updates are planned in <code>V2.0</code> to support both <code>and</code>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 14:09:04 UTC
+Last updated 2018-04-15 15:16:11 UTC
 </div>
 </div>
 </body>

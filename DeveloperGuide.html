@@ -92,6 +92,7 @@
 <li><a href="#deleting-a-cinema">F.2. Deleting a cinema</a></li>
 <li><a href="#theater-commands">F.3. Theater commands</a></li>
 <li><a href="#scheduling-system">F.4. Scheduling system</a></li>
+<li><a href="#sending-a-email">F.5. Sending a email</a></li>
 </ul>
 </li>
 </ul>
@@ -2658,22 +2659,22 @@ This allows the user to add movies and delete movies from the movie list. It als
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User requests to list movie</p>
+<p>User requests to list movie.</p>
 </li>
 <li>
-<p>MoviePlanner shows a list of movies</p>
+<p>MoviePlanner shows a list of movies.</p>
 </li>
 <li>
-<p>User requests to delete a specific movie in the list</p>
+<p>User requests to delete a specific movie in the list.</p>
 </li>
 <li>
-<p>MoviePlanner shows confirmation box for deleting the selected movie</p>
+<p>MoviePlanner shows confirmation box for deleting the selected movie.</p>
 </li>
 <li>
-<p>User confirms deletion of selected movie</p>
+<p>User confirms deletion of selected movie.</p>
 </li>
 <li>
-<p>MoviePlanner deletes the selected movie upon confirmation</p>
+<p>MoviePlanner deletes the selected movie upon confirmation.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2713,10 +2714,10 @@ This allows the user to add movies and delete movies from the movie list. It als
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User requests to find movie</p>
+<p>User requests to find movie.</p>
 </li>
 <li>
-<p>MoviePlanner shows a list of cinema screening corresponding movie</p>
+<p>MoviePlanner shows a list of cinema screening corresponding movie.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2738,6 +2739,59 @@ This allows the user to add movies and delete movies from the movie list. It als
 <p>2b. Movie name does not exist.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-add-theater" class="discrete">Use case: Add Theater</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to add theaters to a specific cinema in the list.</p>
+</li>
+<li>
+<p>User enters addtheater command.</p>
+</li>
+<li>
+<p>MoviePlanner adds theaters to the selected cinema.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. User enters wrong format.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. MoviePlanner displays wrong format error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>2b. User enters too many theaters such that the result is greater than 20.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2b1. MoviePlanner displays "too many theater" error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
 </div>
 </li>
 </ul>
@@ -3075,6 +3129,219 @@ Expected: This command will fail as the year is not between 2000 to 2030. An err
 </li>
 </ol>
 </div>
+</div>
+<div class="sect2">
+<h3 id="sending-a-email"><a class="link" href="#sending-a-email">F.5. Sending a email</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Editing the email message field</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: The email command&#8217;s msg parameter should have at least <strong>1</strong> character.</p>
+</li>
+<li>
+<p>Test case:</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p><code>email msg/This is a message.</code><br>
+Expected: "This is a message." will be reflected in the Message field of the Email Draft tab.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Test case:</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p><code>email msg/</code><br>
+Expected: This command will fail as the msg parameter is empty.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Editing the email subject field</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: The email command&#8217;s subj parameter should have at least <strong>1</strong> character.</p>
+</li>
+<li>
+<p>Test case:</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p><code>email subj/Main subject</code><br>
+Expected: "Main subject" will be reflected in the Subject field of the Email Draft tab.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Test case:</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p><code>email subj/</code><br>
+Expected: This command will fail as the subj parameter is empty.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Editing the email recipient field</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: The email command&#8217;s recp parameter should have at least <strong>1</strong> character.</p>
+</li>
+<li>
+<p>Test case:</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p><code>email recp/someone@gmail.com</code><br>
+Expected: "<a href="mailto:someone@gmail.com">someone@gmail.com</a>" will be reflected in the Recipients field of the Email Draft tab.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Test case:</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p><code>email recp/</code><br>
+Expected: This command will fail as the msg parameter is empty.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Logging in using Gmail account in MVP</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: A Gmail account must be provided to log in to the email feature. The username and password parameter must not be empty.</p>
+</li>
+<li>
+<p>Test case:</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p><code>email lgn/test@gmail.com:123</code><br>
+Expected: "You are logged in to <a href="mailto:test@gmail.com">test@gmail.com</a>" will be shown in the status message.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Test case:</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p><code>email lgn/</code><br>
+Expected: This command will fail as the username and password parameters are empty.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Test case:</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p><code>email lgn/test@gmail.com</code><br>
+Expected: This command will fail as the password parameter is empty.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Test case:</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p><code>email lgn/:123</code><br>
+Expected: This command will fail as the username parameter is empty.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Test case:</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p><code>email lgn/test@yahoo.com:123</code><br>
+Expected: This command will fail as the account provided is not a Gmail account.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Sending an email via MVP</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: The Subject, Recipients and Message field must not be empty, and you must be logged in with a registered Gmail account and have the <strong>Allow less secured apps</strong> setting turned on.</p>
+</li>
+<li>
+<p>Test case:</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p><code>email func/send</code><br>
+Expected: Assuming a registered email account "<a href="mailto:test@gmail.com">test@gmail.com</a>" is successfully logged in. Then "Email have been sent using <a href="mailto:test@gmail.com">test@gmail.com</a>" will be shown in the status message.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Test case:</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p><code>email func/send</code><br>
+Expected: Assuming a non-registered email account, or an incorrect username or password has been entered.
+An error message "MVP is unable to log in to your gmail account. Please check the following: " will be shown in the status message.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Test case:</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p><code>email func/send</code><br>
+Expected: Assuming an invalid file path to an attachment had been entered.
+An error message "An unexpected error have occurred. Please try again later." will be shown in the status message.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
 <div class="paragraph">
 <p><a href="#">Back to top</a></p>
 </div>
@@ -3084,7 +3351,7 @@ Expected: This command will fail as the year is not between 2000 to 2030. An err
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 14:09:04 UTC
+Last updated 2018-04-15 15:16:11 UTC
 </div>
 </div>
 </body>
