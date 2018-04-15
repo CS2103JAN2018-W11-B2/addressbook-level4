@@ -3142,26 +3142,12 @@ Expected: This command will fail as the year is not between 2000 to 2030. An err
 <p>Prerequisites: The email command&#8217;s msg parameter should have at least <strong>1</strong> character.</p>
 </li>
 <li>
-<p>Test case:</p>
-<div class="olist lowerroman">
-<ol class="lowerroman" type="i">
-<li>
-<p><code>email msg/This is a message.</code><br>
+<p>Test case: <code>email msg/This is a message.</code><br>
 Expected: "This is a message." will be reflected in the Message field of the Email Draft tab.</p>
 </li>
-</ol>
-</div>
-</li>
 <li>
-<p>Test case:</p>
-<div class="olist lowerroman">
-<ol class="lowerroman" type="i">
-<li>
-<p><code>email msg/</code><br>
+<p>Test case: <code>email msg/</code><br>
 Expected: This command will fail as the msg parameter is empty.</p>
-</li>
-</ol>
-</div>
 </li>
 </ol>
 </div>
@@ -3174,26 +3160,12 @@ Expected: This command will fail as the msg parameter is empty.</p>
 <p>Prerequisites: The email command&#8217;s subj parameter should have at least <strong>1</strong> character.</p>
 </li>
 <li>
-<p>Test case:</p>
-<div class="olist lowerroman">
-<ol class="lowerroman" type="i">
-<li>
-<p><code>email subj/Main subject</code><br>
+<p>Test case: <code>email subj/Main subject</code><br>
 Expected: "Main subject" will be reflected in the Subject field of the Email Draft tab.</p>
 </li>
-</ol>
-</div>
-</li>
 <li>
-<p>Test case:</p>
-<div class="olist lowerroman">
-<ol class="lowerroman" type="i">
-<li>
-<p><code>email subj/</code><br>
+<p>Test case: <code>email subj/</code><br>
 Expected: This command will fail as the subj parameter is empty.</p>
-</li>
-</ol>
-</div>
 </li>
 </ol>
 </div>
@@ -3206,26 +3178,12 @@ Expected: This command will fail as the subj parameter is empty.</p>
 <p>Prerequisites: The email command&#8217;s recp parameter should have at least <strong>1</strong> character.</p>
 </li>
 <li>
-<p>Test case:</p>
-<div class="olist lowerroman">
-<ol class="lowerroman" type="i">
-<li>
-<p><code>email recp/someone@gmail.com</code><br>
+<p>Test case: <code>email recp/someone@gmail.com</code><br>
 Expected: "<a href="mailto:someone@gmail.com">someone@gmail.com</a>" will be reflected in the Recipients field of the Email Draft tab.</p>
 </li>
-</ol>
-</div>
-</li>
 <li>
-<p>Test case:</p>
-<div class="olist lowerroman">
-<ol class="lowerroman" type="i">
-<li>
-<p><code>email recp/</code><br>
+<p>Test case: <code>email recp/</code><br>
 Expected: This command will fail as the msg parameter is empty.</p>
-</li>
-</ol>
-</div>
 </li>
 </ol>
 </div>
@@ -3238,59 +3196,24 @@ Expected: This command will fail as the msg parameter is empty.</p>
 <p>Prerequisites: A Gmail account must be provided to log in to the email feature. The username and password parameter must not be empty.</p>
 </li>
 <li>
-<p>Test case:</p>
-<div class="olist lowerroman">
-<ol class="lowerroman" type="i">
-<li>
-<p><code>email lgn/test@gmail.com:123</code><br>
+<p>Test case: <code>email lgn/test@gmail.com:123</code><br>
 Expected: "You are logged in to <a href="mailto:test@gmail.com">test@gmail.com</a>" will be shown in the status message.</p>
 </li>
-</ol>
-</div>
-</li>
 <li>
-<p>Test case:</p>
-<div class="olist lowerroman">
-<ol class="lowerroman" type="i">
-<li>
-<p><code>email lgn/</code><br>
+<p>Test case: <code>email lgn/</code><br>
 Expected: This command will fail as the username and password parameters are empty.</p>
 </li>
-</ol>
-</div>
-</li>
 <li>
-<p>Test case:</p>
-<div class="olist lowerroman">
-<ol class="lowerroman" type="i">
-<li>
-<p><code>email lgn/test@gmail.com</code><br>
+<p>Test case: <code>email lgn/test@gmail.com</code><br>
 Expected: This command will fail as the password parameter is empty.</p>
 </li>
-</ol>
-</div>
-</li>
 <li>
-<p>Test case:</p>
-<div class="olist lowerroman">
-<ol class="lowerroman" type="i">
-<li>
-<p><code>email lgn/:123</code><br>
+<p>Test case: <code>email lgn/:123</code><br>
 Expected: This command will fail as the username parameter is empty.</p>
 </li>
-</ol>
-</div>
-</li>
 <li>
-<p>Test case:</p>
-<div class="olist lowerroman">
-<ol class="lowerroman" type="i">
-<li>
-<p><code>email lgn/test@yahoo.com:123</code><br>
+<p>Test case: <code>email lgn/test@yahoo.com:123</code><br>
 Expected: This command will fail as the account provided is not a Gmail account.</p>
-</li>
-</ol>
-</div>
 </li>
 </ol>
 </div>
@@ -3303,39 +3226,18 @@ Expected: This command will fail as the account provided is not a Gmail account.
 <p>Prerequisites: The Subject, Recipients and Message field must not be empty, and you must be logged in with a registered Gmail account and have the <strong>Allow less secured apps</strong> setting turned on.</p>
 </li>
 <li>
-<p>Test case:</p>
-<div class="olist lowerroman">
-<ol class="lowerroman" type="i">
-<li>
-<p><code>email func/send</code><br>
+<p>Test case: <code>email func/send</code><br>
 Expected: Assuming a registered email account "<a href="mailto:test@gmail.com">test@gmail.com</a>" is successfully logged in. Then "Email have been sent using <a href="mailto:test@gmail.com">test@gmail.com</a>" will be shown in the status message.</p>
 </li>
-</ol>
-</div>
-</li>
 <li>
-<p>Test case:</p>
-<div class="olist lowerroman">
-<ol class="lowerroman" type="i">
-<li>
-<p><code>email func/send</code><br>
+<p>Test case: <code>email func/send</code><br>
 Expected: Assuming a non-registered email account, or an incorrect username or password has been entered.
 An error message "MVP is unable to log in to your gmail account. Please check the following: " will be shown in the status message.</p>
 </li>
-</ol>
-</div>
-</li>
 <li>
-<p>Test case:</p>
-<div class="olist lowerroman">
-<ol class="lowerroman" type="i">
-<li>
-<p><code>email func/send</code><br>
+<p>Test case: <code>email func/send</code><br>
 Expected: Assuming an invalid file path to an attachment had been entered.
 An error message "An unexpected error have occurred. Please try again later." will be shown in the status message.</p>
-</li>
-</ol>
-</div>
 </li>
 </ol>
 </div>
@@ -3351,7 +3253,7 @@ An error message "An unexpected error have occurred. Please try again later." wi
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 15:18:08 UTC
+Last updated 2018-04-15 15:25:22 UTC
 </div>
 </div>
 </body>
